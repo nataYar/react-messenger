@@ -15,9 +15,8 @@ class SignupComponent extends React.Component {
       passwordConfirmation: null,
       errorSubmit: ''
      };
-    // this.submitSignUp = this.submitSignUp.bind(this);
+    this.submitSignUp = this.submitSignUp.bind(this);
   }
-  
   
   render () {
 
