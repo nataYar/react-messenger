@@ -41,7 +41,11 @@ class SignupComponent extends React.Component {
             <input type="password" id="password" required/>
             <br/>
 
+<<<<<<< HEAD
             <label for="passwordConfirmation">Confirm password</label>
+=======
+            <label for="passwordConfirmation">Confirm your password</label>
+>>>>>>> working on sign up page
             <input type="password" id="passwordConfirmation" required/>
             <br/>
 
