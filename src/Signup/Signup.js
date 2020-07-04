@@ -12,50 +12,82 @@ class SignupComponent extends React.Component {
     this.state = { 
       email: null,
       password: null,
-      passwordConfirmation: null,
+      passConfirmation: null,
       errorSubmit: ''
      };
     this.submitSignUp = this.submitSignUp.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+   
   }
-  
+
+  handleInput(inputType, e) {
+    switch (inputType) {
+      case 'email':
+        this.setState({
+          email: e.target.value
+        });
+        break;
+      case 'password':
+        this.setState({
+          password: e.target.value
+        });
+        break;
+      case 'passwordConfirmation':
+        this.setState({
+          passConfirmation: e.target.value
+        });
+        break;
+    }
+  } 
+  //check the validity of the password
+   verifyPasswords() {
+    this.password == this.passConfirmation
+  }
+
+   //we should add passportVerify function before submitting
+   submitSignUp(e) {
+    e.preventDefault();
+
+    if(!verifyPasswords) {
+      this.setState({
+        errorSubmit: 'Passwords should match!'
+      })
+    }
+  };
+
+
+
   render () {
-
-    //we should add passportVerify function before submitting
-    // submitSignUp = (e) => {
-    //   e.preventDefault();
-    // };
-
-
     return (
       <main className="mainContainer">
         <div className="signupContainer">
           <h1>Sign up</h1>
-          {/* onSubmit={e => this.submitSignUp} */}
-          <form>
-            <label for="email">Email</label>
-            <input type="text" id="email" required/>
+          <form onSubmit={e => this.submitSignUp}>
+            <input placeholder="Email" type="text" className="inputBox" 
+            value={this.state.email}
+            onChange={(type, e) => this.handleInput} required/>
             <br/>
 
-            <label for="password">Enter your password</label>
-            <input type="password" id="password" required/>
+            <input placeholder="Password" type="password" className="inputBox"  minLength="4" 
+            value={this.state.password}
+            onChange={(type, e) => this.handleInput} required/>
             <br/>
 
-<<<<<<< HEAD
-            <label for="passwordConfirmation">Confirm password</label>
-=======
-            <label for="passwordConfirmation">Confirm your password</label>
->>>>>>> working on sign up page
-            <input type="password" id="passwordConfirmation" required/>
+            <input placeholder="Confirm password" type="password" 
+            value={this.state.passConfirmation} className="inputBox"  minLength="4"
+            onChange={(type, e) => this.handleInput} required/>
             <br/>
 
-          
-            <button type="button" onclick="alert('Hello World!')">Sign up</button>
+            <button className="submitButton" type="submit">Sign up</button>
+            <p>Registered user?</p>
+            
+            <Link to="/login">Log in</Link>
           </form>
-
         </div>
       </main>
     )
   }
+
 };
 
 export default SignupComponent;
