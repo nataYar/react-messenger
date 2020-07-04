@@ -17,7 +17,7 @@ class SignupComponent extends React.Component {
      };
     this.submitSignUp = this.submitSignUp.bind(this);
     this.handleInput = this.handleInput.bind(this);
-   
+    this.verifyPasswords = this.verifyPasswords.bind(this);
   }
 
   handleInput(inputType, e) {
@@ -40,15 +40,18 @@ class SignupComponent extends React.Component {
     }
   } 
   //check the validity of the password
-   verifyPasswords() {
-    this.password == this.passConfirmation
+  verifyPasswords() {
+    if (this.password == this.passConfirmation) {
+      return true;
+    }
+    
   }
 
    //we should add passportVerify function before submitting
    submitSignUp(e) {
     e.preventDefault();
 
-    if(!verifyPasswords) {
+    if(!this.verifyPasswords) {
       this.setState({
         errorSubmit: 'Passwords should match!'
       })
