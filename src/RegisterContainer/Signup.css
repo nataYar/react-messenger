@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;         
+}
+
+.registerContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background-color: rgb(210, 210, 210);
+  width: 400px;
+  font-family: 'Abel', sans-serif;
+  
+  min-height: 450px;
+  height: auto;
+  border-radius: 5px;
+  margin: 2% auto;
+  box-shadow: 0 9px 30px hsla(20, 67%, 75%, 0.20);
+  padding: 2%;
+}
+  /* -webkit-justify-content: space-around;
+  justify-content: space-around;
+  margin: 0 auto; */
+
+.header {
+  margin-top: 2%;
+  text-align: center;
+  letter-spacing: 0.05em;
+  font-size: 250%;
+  font-family: 'Playfair Display', serif;
+  color: #3e403f;
+}
+
+input.inputBox {
+  display: flex;
+  /* align-items: center; */
+  /* align-content: center; */
+  /* justify-content: center; */
+  width: 240px;
+  height: 45px;
+
+  margin-top: 6%;
+  padding: 15px;
+  
+  font-size: 16px;
+  font-family: 'Abel', sans-serif;
+  color: #5E6472;
+
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s linear;
+  
+}
+input #txt-input {width: 250px;}
+
+input:focus {
+    transform: translateX(-4px);
+    border-radius: 5px;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  color: #252537;
+
+  width: 100px;
+  height: 35px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  margin: 7% auto;
+  letter-spacing: 0.05em;
+  
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  transition: all 0.2s linear;
+}
+
+.submitButton:hover {
+  animation: fly 0.7s ease-in-out infinite;
+}
+@keyframes fly {
+  0% {
+      transform: translateY(3px);
+  }
+  100% {
+      transform: translateY(6px);
+  }
+}
+
+
+/* mobile devices mode */
+@media only screen and (max-width: 600px) {
+    .signupContainer {
+      background-color: pink;
+      height: 300px;
+      width: 250px;
+    }
+  }
+
+

@@ -1,0 +1,40 @@
+.dashboard-cont {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    background-color: #f8f8f6;
+   
+    justify-content: center;
+    align-items: center;
+    
+    height: 100vh;
+    width: 100vw;
+}
+
+.dashboard {
+    display: flex;
+    background: rgba(227, 227, 227, 0.4);
+    position: relative;
+    margin: auto;
+
+    height: 600px;
+    width: 900px;
+
+    border-radius: 7px;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
+}
+
+.leftPanel {
+    float: left;
+    background: rgba(185, 184, 184, 0.5);
+    width: 30%;
+    height: 100%;
+   
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+
+
+    
+

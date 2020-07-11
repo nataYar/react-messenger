@@ -1,0 +1,41 @@
+.listOfChats {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.newChatButton {
+    border-radius: 7px;
+    width: 100%;
+    height: 4em;
+    border: none;
+    outline: none;
+    color: rgb(38, 38, 38);
+    background-color:rgba(62, 163, 247, 0.5);
+}
+
+/* for every chat in a left pannel */
+.chatListItem {
+    height: 4em;
+    color: purple;
+}
+
+.chatListItem h1 {
+    color: green;
+}
+
+.chatListItem p {
+    color: orange;
+}
+
+
+
+
+
+
+/* 
+  unreadMessage {
+    color: red;
+    position: absolute;
+    top: 0;
+    right: 5px;
+  }  */

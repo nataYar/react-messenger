@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import SignupComponent from './Signup/Signup';
+import SignupComponent from './RegisterContainer/Signup';
 import LoginComponent from './Login/Login';
+import DashboardComponent from './Dashboard/Dashboard';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 const firebase = require("firebase");
-// import { firestore } from ‘@firebase/firestore’;
-// Required for side-effects
 require("firebase/firestore");
 
 firebase.initializeApp({
@@ -24,11 +23,12 @@ firebase.initializeApp({
 });
 
 const routing = (
+  //gives us history attribute
   <Router>
     <div>
       <Route exact path='/signup' component={SignupComponent}/>
       <Route exact path='/login' component={LoginComponent}/>
-      {/* <Route path='/contact' render={() => <h1>Contact</h1>}/> */}
+      <Route exact path='/dashboard' component={DashboardComponent}/>
     </div>
   </Router>
 );
