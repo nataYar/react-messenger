@@ -101,20 +101,21 @@ class SignupComponent extends React.Component {
             value={this.state.email}
             onChange={(e) => this.handleInput('email', e)} required/>
 
-            <input className="inputBox" id="txt-input" placeholder="Password" type="password"   minLength="4" 
+            <input className="inputBox" placeholder="Password" type="password"   minLength="4" 
             value={this.state.password}
             onChange={(e) => this.handleInput('password', e)} required/>
    
-            <input className="inputBox" id="txt-input" placeholder="Confirm password" type="password" 
+            <input className="inputBox" placeholder="Confirm password" type="password" 
             value={this.state.passConfirmation}  minLength="4"
             onChange={(e) => this.handleInput('passConfirmation', e)} required/>
 
-            <button className="submitButton" type="submit">Sign up</button>
+            <button className="signupButton" type="submit">Sign up</button>
             {
               this.state.errorSignup ? <h5>{this.state.errorSignup}</h5> : null
             }
-            <p>Registered user?</p>
-            <Link to="/login">Log in</Link>
+            <p id='redirect'>Registered user?</p>
+            <Link id='redirectlink' style={{ marginLeft: '3%'}} to="/login">Log in</Link>
+            
           </form>
         </div>
       </main>

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 0;
-    background-color: #f8f8f6;
+    background: linear-gradient(117.81089044264013deg, rgb(86, 187, 215) 6.472719522591646%,rgb(148, 245, 211) 94.87851662404091%);
    
     justify-content: center;
     align-items: center;
@@ -13,26 +13,54 @@
 
 .dashboard {
     display: flex;
-    background: rgba(227, 227, 227, 0.4);
-    position: relative;
+    flex-flow: column wrap;
+    background: rgba(255, 255, 255, 0.123);
     margin: auto;
 
-    height: 600px;
-    width: 900px;
+    height: 40em;
+    width: 60em;
 
     border-radius: 7px;
     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
 }
-
-.leftPanel {
+.listOfChats {
     float: left;
-    background: rgba(185, 184, 184, 0.5);
+    
+    background-color: rgba(255, 255, 255, 0.090);
+    width: 35%;
+    height: 93%;
+    margin-top: 0;
+   
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.signOutButton {
+
+    position: relative;
+
+    font-size: 0.9em;
+    border-radius: 7px;
+    width: 20em;
+    height: 7%;
+    border: none;
+    outline: none;
+    color: rgb(38, 38, 38);
+    background-color:rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    font-family: 'Abel', sans-serif;
+}
+
+/* .leftPanel {
+    float: left;
+    /* display: block; 
+    background-color: rgba(255, 255, 255, 0.090);
     width: 30%;
     height: 100%;
    
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
-}
+} */
 
 
 

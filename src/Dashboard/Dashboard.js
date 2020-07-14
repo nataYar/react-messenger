@@ -1,11 +1,9 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Dashboard from './Dashboard.css';
 import ChatListComponent from '../ChatList/ChatList';
+import CurrentChatComponent from '../CurrentChat/CurrentChat';
+
 const firebase = require('firebase');
 
 class DashboardComponent extends React.Component {
@@ -15,44 +13,58 @@ class DashboardComponent extends React.Component {
       chats: [],
       email: null,
       selectedChat: null,
-      chatHidden: true
+      chatVisible: true
     }
     this.createNewChat = this.createNewChat.bind(this);
     this.chooseChat = this.chooseChat.bind(this);
-  }
-
-  createNewChat = () => {
-    this.setState({
-      chatHidden: false,
-      selectedChat: null
-    });
-  }
-
-  chooseChat = (index) => {
-    this.setState({
-      selectedChat: index,
-    });
+    this.signOut = this.signOut.bind(this);
   }
   
   render () {
     return (
       <main className='dashboard-cont'>
         <div className='dashboard'>
-          <div className='leftPanel'>
-            <ChatListComponent 
-            history={this.props.history}
-            chats={this.state.chats} 
-            userEmail={this.state.email}
-            selectedChatIndex={this.state.selectedChat}
-            newChat={this.createNewChat}
-            select={this.chooseChat}
-            >
+          
+            <ChatListComponent className='listOfChats'
+              history={this.props.history}
+              chats={this.state.chats} 
+              userEmail={this.state.email}
+              selectedChatIndex={this.state.selectedChat}
+              
+              newChat={this.createNewChat}
+              select={this.chooseChat}>
             </ChatListComponent>
-          </div>
-          {/* here's the place for messages container */}
+            <button className='signOutButton'
+              onClick={this.signOut}>
+              Sign out</button>
+
+            <CurrentChatComponent 
+              chat={this.state.chats[this.state.selectedChat]} 
+              user={this.state.email}
+              chatNotVisible={this.state.chatHidden}>
+            </CurrentChatComponent>
+            
+            
+          
         </div>
       </main>
     )
+  }
+
+  signOut = () => firebase.auth().signOut();
+
+  createNewChat = () => {
+    this.setState({
+      chatVisible: true,
+      selectedChat: null
+    });
+  }
+
+  chooseChat = async(index) => {
+    await this.setState({
+      selectedChat: index,
+      chatVisible: true
+    });
   }
 
   //to get the current user by setting an observer on the Auth object:
