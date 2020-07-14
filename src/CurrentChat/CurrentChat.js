@@ -11,10 +11,11 @@ class CurrentChatComponent extends React.Component {
             return (
                 <main>
                     {
-                        this.props.chat.messages.map((_msg, _index) => {
+                        this.props.chat.messages.map((mess, index) => {
                             return(
-                            <div key={_index}>
-                                {_msg.message}
+                            <div key={index} className={ this.props.user === mess.sender ? 
+                                'friendMess' : 'userMess'}>
+                                {mess.message}
                             </div>
                             )
                         })
@@ -26,3 +27,13 @@ class CurrentChatComponent extends React.Component {
   };
 
 export default CurrentChatComponent;
+
+// {
+//     this.props.chat.messages.map((_msg, _index) => {
+//         return(
+//         <div key={_index}>
+//             {_msg.message}
+//         </div>
+//         )
+//     })
+// }

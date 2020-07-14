@@ -4,10 +4,10 @@
     justify-content: space-between;
 }
 
-.userMessage {
+.userMess {
     background-color: rgb(255, 255, 255);
     
 }
-.friendMessage {
-    background-color: rgb(203, 203, 203);
+.friendMess {
+    background-color: rgb(18, 197, 108);
 }

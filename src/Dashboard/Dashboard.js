@@ -34,6 +34,7 @@ class DashboardComponent extends React.Component {
               newChat={this.createNewChat}
               select={this.chooseChat}>
             </ChatListComponent>
+
             <button className='signOutButton'
               onClick={this.signOut}>
               Sign out</button>
