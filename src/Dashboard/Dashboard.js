@@ -19,6 +19,7 @@ class DashboardComponent extends React.Component {
     this.chooseChat = this.chooseChat.bind(this);
     this.signOut = this.signOut.bind(this);
     this.addMsg = this.addMsg.bind(this);
+    this.buildDocId = this.buildDocId.bind(this);
   }
   
   render () {
@@ -70,15 +71,16 @@ class DashboardComponent extends React.Component {
     });
   }
 
+  buildDocId = (friend) => [this.state.email, friend].sort().join(':');
   //send msg to the chat & add msg to chat.messages array
   addMsg = (msg) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
-    const docId = (friend) => [this.state.email, friend].sort().join(":");
-    //nata@gmail.com:pata@gmail.com
-    console.log(friend);
+    //doc ID:   nata@gmail.com:pata@gmail.com
+    const docId = this.buildDocId(friend);
+    
     console.log(docId);
-    //FirebaseError: Function FieldValue.arrayUnion() called with invalid data. 
-    //Unsupported field value: a custom Class object
+    // FirebaseError: Function FieldValue.arrayUnion() called with invalid data. 
+    // Unsupported field value: a custom Class object
     firebase
       .firestore()
       .collection('chats')
@@ -88,8 +90,9 @@ class DashboardComponent extends React.Component {
           message: msg,
           sender: this.state.email,
           timestamp: Date.now()
-        })
-      });
+        }),
+        recieverHasRead: false
+  });
   }
   
   //to get the current user by setting an observer on the Auth object:

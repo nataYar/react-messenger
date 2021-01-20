@@ -32,16 +32,20 @@ class MessageInputComponent extends React.Component {
         }
     }
     // we set up message text to an input
-    // this.setState({msgText: e.target.value});
     onType = (e) => e.keyCode === 13? this.sendMsg() : this.setState({msgText: e.target.value});
+
     userClickedInput = () => console.log('User clicked input'); 
+
     textValidFn = (msg) => msg && msg.trim().length;
+
     sendMsg = () => {
         console.log('clicked send')
         //checking if the message id valid
-        if(this.textValidFn(this.state.msgText) > 0) {
-            //here should be submit function from it's parent
-            document.getElementById('txtInput').value = ''
+        if (this.textValidFn(this.state.msgText)) {
+            //here should submit function from its parent(Dashboard)
+            this.props.addMsgFn(this.state.msgText);
+            //clear the input area
+            document.getElementById('txtInput').value = '';
         };
     };
     } 
