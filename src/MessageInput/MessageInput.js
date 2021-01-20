@@ -42,8 +42,6 @@ class MessageInputComponent extends React.Component {
         if(this.textValidFn(this.state.msgText) > 0) {
             //here should be submit function from it's parent
             document.getElementById('txtInput').value = ''
-        } else {
-            console.log('no text')
         };
     };
     } 
