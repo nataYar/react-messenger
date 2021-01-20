@@ -25,10 +25,9 @@
 }
 .listOfChats {
     float: left;
-    
     background-color: rgba(255, 255, 255, 0.090);
     width: 30%;
-    height: 93%;
+    height: 90%;
     margin-top: 0;
    
     border-top-left-radius: 7px;
@@ -39,25 +38,22 @@
     font-size: 0.9em;
     border-radius: 7px;
     width: 30%;
-    height: 7%;
+    height: 10%;
     border: none;
     outline: none;
     color: rgb(38, 38, 38);
-    background-color:rgba(255, 255, 255, 0.6);
+    background-color:rgb(0, 110, 125);
+    color: white;
     cursor: pointer;
     font-family: 'Abel', sans-serif;
 }
 
-/* .leftPanel {
-    float: left;
-    /* display: block; 
-    background-color: rgba(255, 255, 255, 0.090);
-    width: 30%;
-    height: 100%;
-   
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-} */
+
+
+
+
+
+
 
 
 

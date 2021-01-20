@@ -25,7 +25,7 @@ class ChatListComponent extends React.Component {
                     return (
                         <div key={_index}>
                             <div className='chatListItem' 
-                            onClick={() => this.select(_index)} 
+                            onClick={() => this.select(_index)}
                             selected={this.props.selectedChatIndex === _index}>
                                 
                                 <div className='avatar-circle'>
@@ -52,19 +52,18 @@ class ChatListComponent extends React.Component {
                 New Chat</button> 
             );
         }
-  }
+    }
 
-newChat = () => {
-// console.log(this.props);
-this.props.newChat();
-}
+    newChat = () => {
+    // console.log(this.props);
+    this.props.newChat();
+    }
 
-select = (index) => {
-    // console.log(_index);
-    this.props.select(index);
-    // chooseChat = async(index)
-}
-
+    select = (index) => {
+        // console.log(_index);
+        this.props.select(index);
+        // chooseChat = async(index)
+    }
 };
 
 export default ChatListComponent;

@@ -1,18 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;700;900&display=swap');
 
-/* .listOfChats {
-    float: left;
-    
-    background-color: rgba(255, 255, 255, 0.090);
-    width: 25em;
-    height: 90%;
-    margin-top: 0;
-   
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-} */
-
 .newChatButton {
     font-size: 0.9em;
     border-radius: 7px;
@@ -71,12 +59,3 @@
     font-family: "Playfair", monospace;
     font-weight: bold;
 } 
-
-
-/* 
-  unreadMessage {
-    color: red;
-    position: absolute;
-    top: 0;
-    right: 5px;
-  }  */

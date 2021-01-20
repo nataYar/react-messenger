@@ -6,15 +6,15 @@ const firebase = require("firebase");
 class CurrentChatComponent extends React.Component {
     render () {
         if(this.props.chat === undefined) {
-            return( <div>lala</div>)
+            return( <div>i'm an empty chat</div>)
         } else {
             return (
-                <main>
+                <main className='chatBoard'>
                     {
                         this.props.chat.messages.map((mess, index) => {
                             return(
                             <div key={index} className={ this.props.user === mess.sender ? 
-                                'friendMess' : 'userMess'}>
+                                'userMess' : 'friendMess'} id='font'>
                                 {mess.message}
                             </div>
                             )
@@ -27,13 +27,3 @@ class CurrentChatComponent extends React.Component {
   };
 
 export default CurrentChatComponent;
-
-// {
-//     this.props.chat.messages.map((_msg, _index) => {
-//         return(
-//         <div key={_index}>
-//             {_msg.message}
-//         </div>
-//         )
-//     })
-// }
