@@ -4,12 +4,14 @@
 
 .chatBoard {
     grid-area: 1 / 2 / 2 / 2;
-    background-color: rgb(125, 10, 231);
+    /* background-color: rgb(125, 10, 231); */
     width: 99.4%;
     height: 100%;
     overflow-y: scroll;
-    overflow: auto;
+    
+    
 } 
+
 
 .userMess {
     background-color: rgb(255, 255, 255);

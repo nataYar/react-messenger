@@ -3,6 +3,10 @@ import CurrentChat from './CurrentChat.css';
 const firebase = require("firebase");
 
 class CurrentChatComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.scrollToBottom = this.scrollToBottom.bind(this);
+      }
     render () {
         if(this.props.chat === undefined) {
             return( <div>i'm an empty chat</div>)
@@ -19,10 +23,24 @@ class CurrentChatComponent extends React.Component {
                             )
                         })
                     }
+                    <div style={{ float:"left", clear: "both" }}
+                        ref={(el) => { this.messagesEnd = el }}>
+                    </div>
                 </main>
             )
         }
     }
+    scrollToBottom = () => {
+        this.messagesEnd && this.messagesEnd.scrollIntoView({behavior: 'smooth'});
+      }
+      
+    componentDidMount() {
+        this.scrollToBottom();
+      }
+      
+    componentDidUpdate() {
+        this.scrollToBottom();
+      }
   };
 
 export default CurrentChatComponent;

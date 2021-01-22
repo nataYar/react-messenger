@@ -29,11 +29,11 @@ class ChatListComponent extends React.Component {
                             selected={this.props.selectedChatIndex === _index}>
                                 
                                 <div className='avatar-circle'>
-                                    <h1 className='initials'>{_chat.users.filter(_user => _user = this.props.userEmail)[1].split('')[0]}</h1>
+                                    <h1 className='initials'>{_chat.users.find(friend => friend !== this.props.userEmail).split('')[0]}</h1>
                                 </div>
                                 
                                 <div className='text'>
-                                    <p id='textLine1'>{_chat.users.filter(_user => _user = this.props.userEmail)[1]}</p>
+                                    <p id='textLine1'>{_chat.users.filter(_user => _user !== this.props.userEmail)[0]}</p>
                                     <br></br>
                                     <p>"{_chat.messages[_chat.messages.length - 1].message.slice(0, 25)}..."</p>
                                 </div>
