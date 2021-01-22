@@ -1,12 +1,15 @@
 #font {
-    font-size: 1.2em;
+    font-size: 18px;
 }
+
 .chatBoard {
-    background-color: blueviolet;
-    width: 70%;
-    height: 80%;
-    display: inline-block;
-}
+    /* font-size: 1em; */
+    background-color: rgb(112, 88, 134);
+    width: 50em;
+    height: 30em;
+    overflow-y: scroll;
+    overflow: auto;
+} 
 
 .userMess {
     background-color: rgb(255, 255, 255);
@@ -26,3 +29,4 @@
     float: left;
     clear: both;
 }
+

@@ -24,34 +24,35 @@ class DashboardComponent extends React.Component {
   
   render () {
     return (
-      <main className='dashboard-cont'>
-        <div className='dashboard'>
-          <ChatListComponent className='listOfChats'
-            history={this.props.history}
-            chats={this.state.chats} 
-            userEmail={this.state.email}
-            selectedChatIndex={this.state.selectedChat}
-            
-            newChat={this.createNewChat}
-            select={this.chooseChat}>
-          </ChatListComponent>
+        <div className='dashboard-cont'>
+          <div className='dashboard'>
+            <ChatListComponent
+              history={this.props.history}
+              chats={this.state.chats} 
+              userEmail={this.state.email}
+              selectedChatIndex={this.state.selectedChat}
+              
+              newChat={this.createNewChat}
+              select={this.chooseChat}>
+            </ChatListComponent>
 
-          <button className='signOutButton'
-            onClick={this.signOut}>
-            Sign out</button>
+            <button className='signOutButton'
+              onClick={this.signOut}> Sign Out
+              </button>
 
-          <CurrentChatComponent 
-            chat={this.state.chats[this.state.selectedChat]} 
-            user={this.state.email}>
-          </CurrentChatComponent>
+            <CurrentChatComponent 
+              chat={this.state.chats[this.state.selectedChat]} 
+              user={this.state.email}>
+            </CurrentChatComponent>
 
-          <MessageInputComponent
-            visibility={this.state.chatVisible}
-            selected={this.state.selectedChat}
-            addMsgFn={this.addMsg}>
-          </MessageInputComponent>
+            <MessageInputComponent
+              visibility={this.state.chatVisible}
+              selected={this.state.selectedChat}
+              addMsgFn={this.addMsg}>
+            </MessageInputComponent>
+          </div>
         </div>
-      </main>
+
     )
   }
 

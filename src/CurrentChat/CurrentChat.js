@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import CurrentChat from './CurrentChat.css';
 const firebase = require("firebase");
 

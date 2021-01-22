@@ -1,12 +1,9 @@
 .dashboard-cont {
     display: flex;
-    flex-direction: column;
-    margin-top: 0;
+    /* margin-top: 0; */
     background: linear-gradient(117.81089044264013deg, rgb(86, 187, 215) 6.472719522591646%,rgb(148, 245, 211) 94.87851662404091%);
-   
     justify-content: center;
     align-items: center;
-    
     height: 100vh;
     width: 100vw;
 }
@@ -14,39 +11,51 @@
 .dashboard {
     display: flex;
     flex-flow: column wrap;
+    width: 70em;
+    height: 43em;
+    
+    /* flex-flow: column wrap; */
     background: rgba(255, 255, 255, 0.123);
-    margin: auto;
-
-    height: 40em;
-    width: 60em;
-
+    /* height: 40em;
+    max-width: 60em; */
     border-radius: 7px;
     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
 }
-.listOfChats {
-    float: left;
-    background-color: rgba(255, 255, 255, 0.090);
-    width: 30%;
-    height: 90%;
-    margin-top: 0;
-   
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-}
+
 
 .signOutButton {
-    font-size: 0.9em;
-    border-radius: 7px;
-    width: 30%;
-    height: 10%;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    opacity: 0.5;
+    border-color: rgba(10, 156, 182, 0.3);
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+    font-weight: 400;
+    font-family: 'Abel', sans-serif;
+    border-radius: 7px; 
+    /* font-size: 1em;
+    
+    width: 17em;
+    height: 3em;
     border: none;
     outline: none;
     color: rgb(38, 38, 38);
     background-color:rgb(0, 110, 125);
     color: white;
     cursor: pointer;
-    font-family: 'Abel', sans-serif;
+    font-family: 'Abel', sans-serif; */
 }
+
+/* .chatBoard {
+    font-size: 20em;
+    background-color: rgb(90, 18, 156);
+    width: 400em;
+    height: 30em;
+    overflow: scroll;
+}  */
+
 
 
 

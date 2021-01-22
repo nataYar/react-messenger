@@ -1,38 +1,28 @@
 .txtInputContainer {
-    /* height: auto;
-    width: auto;  */
-    display: inline-block;
-    background: rgba(255, 255, 255, 0);
-    /* margin: 0; */
-    /* margin-bottom: 0; */
-    /* padding: 5px; */
+    /* height: 40em;
+    width: 40em;   */
+    /* align-self: flex-end; */
+    background-color: blue;
     font-size: 0.9em;
     border-radius: 7px;
     border: none;
     outline: none;
-    margin: 0;
 }
 
-#txtInput {
-    /* display: inline-block; */
-    background: rgba(199, 33, 33);
-    position: relative;
+.txtInput {
+    /* background: rgba(199, 33, 33); */
     border: none;
-    width: 85%;
-    /* height: 70%; */
-    padding: 8px;
     outline: none;
-    color: rgba(0, 0, 0, 0.9);
+    color: rgb(181, 63, 63);
     font-size: 1.4em;
     /* margin-bottom: 0; */
 }
 
-#sendIcon {
-
-    /* display: inline-block; */
+.sendIcon {
     background-color: chartreuse;
     /* width: 0px; */
     cursor: pointer;
-    float: right;
-    padding: 0.5em;
+    /* :hover: {
+      color: 'gray'
+    } */
 }
