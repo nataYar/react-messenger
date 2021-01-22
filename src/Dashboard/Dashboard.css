@@ -9,43 +9,32 @@
 }
 
 .dashboard {
-    display: flex;
-    flex-flow: column wrap;
-    width: 70em;
-    height: 43em;
-    
-    /* flex-flow: column wrap; */
+    display: grid;
+    grid-template: 80% 1fr 1fr/ 25% 75%;
+    grid-gap: 5px 5px;
+
+    width: 1100px;
+    height: 680px;
+
     background: rgba(255, 255, 255, 0.123);
-    /* height: 40em;
-    max-width: 60em; */
     border-radius: 7px;
     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
 }
 
 
 .signOutButton {
-    position: absolute;
-    top: 25px;
-    left: 25px;
-    opacity: 0.5;
-    border-color: rgba(10, 156, 182, 0.3);
-    width: 3em;
-    height: 3em;
+    grid-area: 3 / 1 / 4 / 1;
+    background-color: transparent;
+    border-color: transparent;
+    width: 50%;
+    height: 100%; 
     cursor: pointer;
     font-weight: 400;
     font-family: 'Abel', sans-serif;
-    border-radius: 7px; 
-    /* font-size: 1em;
-    
-    width: 17em;
-    height: 3em;
-    border: none;
-    outline: none;
-    color: rgb(38, 38, 38);
-    background-color:rgb(0, 110, 125);
-    color: white;
-    cursor: pointer;
-    font-family: 'Abel', sans-serif; */
+    border-radius: 100%; 
+}
+button {
+    color: black;
 }
 
 /* .chatBoard {

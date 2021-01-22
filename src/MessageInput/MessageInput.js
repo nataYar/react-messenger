@@ -17,7 +17,7 @@ class MessageInputComponent extends React.Component {
         if (this.props.visibility && this.props.selected != null ) {
             return (
                 <main className='txtInputContainer'>
-                    <textarea className='txtInput' placeholder="Write a message..." type="text" 
+                    <textarea id='txtInput' placeholder="Write a message..." type="text" 
                     onKeyUp={e => this.onType(e)} 
                     onFocus={this.userClickedInput}>
                     </textarea> 

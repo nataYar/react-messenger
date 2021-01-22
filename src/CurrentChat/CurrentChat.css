@@ -3,10 +3,10 @@
 }
 
 .chatBoard {
-    /* font-size: 1em; */
-    background-color: rgb(112, 88, 134);
-    width: 50em;
-    height: 30em;
+    grid-area: 1 / 2 / 2 / 2;
+    background-color: rgb(125, 10, 231);
+    width: 99.4%;
+    height: 100%;
     overflow-y: scroll;
     overflow: auto;
 } 
