@@ -1,34 +1,41 @@
-#font {
-    font-size: 18px;
-}
-
 .chatBoard {
     grid-area: 1 / 2 / 2 / 2;
-    /* background-color: rgb(125, 10, 231); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
     width: 99.4%;
     height: 100%;
-    overflow-y: scroll;
-    
-    
+    overflow-y: scroll; 
+    overflow-wrap: break-word;  
 } 
 
-
 .userMess {
+    flex: 1 1px;
+    align-self: flex-end;    
+    position: relative;
+    float: right;
+    max-width: 40%;    
+    flex-basis: min-content;
     background-color: rgb(255, 255, 255);
     padding: 0.5em 0.8em;
     margin: 0.8em 1.7em;
     border-radius: 0.5em;
-    position: relative;
-    float: right;
-    clear: both;
+    font-size: 1.2rem;
+    /* position: relative;
+    float: right; */
+    /* clear: both; */
 }
 .friendMess {
     background-color: rgb(18, 197, 108);
     padding: 0.5em 0.8em;
     margin: 0.8em 1.7em;
     border-radius: 0.5em;
-    position: relative;
     float: left;
-    clear: both;
+    flex: 1 1px;
+    align-self: flex-start;    
+    max-width: 40%;
+    font-size: 1.2rem;
+
 }
 

@@ -35,7 +35,7 @@ class ChatListComponent extends React.Component {
                                 <div className='text'>
                                     <p id='textLine1'>{_chat.users.filter(_user => _user !== this.props.userEmail)[0]}</p>
                                     <br></br>
-                                    <p>"{_chat.messages[_chat.messages.length - 1].message.slice(0, 25)}..."</p>
+                                    <p>"{_chat.messages[_chat.messages.length - 1].message.slice(0, 15)}..."</p>
                                 </div>
                             </div>
                         </div>
