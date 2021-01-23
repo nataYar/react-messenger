@@ -13,7 +13,8 @@ class DashboardComponent extends React.Component {
       chats: [],
       email: null,
       selectedChat: null,
-      chatVisible: true
+      chatVisible: true,
+      newMessages: true
     }
     this.createNewChat = this.createNewChat.bind(this);
     this.chooseChat = this.chooseChat.bind(this);
@@ -30,10 +31,12 @@ class DashboardComponent extends React.Component {
               history={this.props.history}
               chats={this.state.chats} 
               userEmail={this.state.email}
+              newMessages={this.state.newMessages}
               selectedChatIndex={this.state.selectedChat}
               
               newChat={this.createNewChat}
-              select={this.chooseChat}>
+              select={this.chooseChat}
+              >
             </ChatListComponent>
 
             <button className='signOutButton'
@@ -68,7 +71,8 @@ class DashboardComponent extends React.Component {
   chooseChat = async(index) => {
     await this.setState({
       selectedChat: index,
-      chatVisible: true
+      chatVisible: true,
+      newMessages: false
     });
   }
 
@@ -91,9 +95,8 @@ class DashboardComponent extends React.Component {
           message: msg,
           sender: this.state.email,
           timestamp: Date.now()
-        }),
-        recieverHasRead: false
-  });
+        })
+      });
   }
   
   //to get the current user by setting an observer on the Auth object:
@@ -119,8 +122,9 @@ class DashboardComponent extends React.Component {
         })
     }
   });
-}
-};
+  // this.checkForNewMessages(this.state.chats);
+}}
+
 
 
 export default DashboardComponent;

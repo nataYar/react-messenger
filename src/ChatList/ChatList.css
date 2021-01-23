@@ -27,14 +27,14 @@
 }
 
 /* for every chat in a left pannel */
-.chatListItem {
+#chatListItem {
     display: flex;
     flex-flow: row wrap;
     margin: 0.5rem 0;
     vertical-align: baseline;
     height: 4rem;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
+    /* background-color: rgba(255, 255, 255, 0.2); */
     border-radius: 7px;
     cursor: pointer;
 }
@@ -69,3 +69,11 @@
     font-family: "Playfair", monospace;
     font-weight: bold;
 } 
+
+.unreadMessDetected {
+    background-color: red;
+}
+
+.allMessAreRead {
+    background-color: green;
+}
