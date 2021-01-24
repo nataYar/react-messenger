@@ -25,11 +25,9 @@ class ChatListComponent extends React.Component {
                 this.props.chats.map((_chat, _index) => {
                     return (
                         <div key={_index}>
-                            {/* _chat.messages[_chat.messages.length - 1].sender !== this.props.userEmail  */}
                             <div id='chatListItem' className={_chat.messages[_chat.messages.length - 1].sender !== this.props.userEmail && this.props.newMessages ? 
                             'unreadMessDetected' : 'allMessAreRead'} 
                             onClick={() => this.select(_index)}
-                            // onClick={() => this.newMessageRecieved()}
                             selected={this.props.selectedChatIndex === _index}>
                                 
                                 <div className='avatar-circle'>
@@ -57,16 +55,12 @@ class ChatListComponent extends React.Component {
             );
         }
     }
-    // = (chat) => {
-    //     if(this.props.chats[chat].messages[chat.messages.length - 1].sender !== this.props.userEmail) {
-    //        this.setState({this.props.newMessages: true})
-    //    }}
+
     
     
 
     newChat = () => {
-    // console.log(this.props);
-    this.props.newChat();
+        this.props.newChat();
     }
 
     select = (index) => {
