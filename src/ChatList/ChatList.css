@@ -1,21 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;700;900&display=swap');
 
-.listOfChats {
-    grid-area: 1 / 1 / 2 / 1;
-    background-color: rgba(255, 255, 255, 0.090);
-    margin-top: 0;
-   
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-}
-
-
 .newChatButton {
+    grid-area: 1 / 2 / 2 / 2;
     font-size: 0.9em;
     border-radius: 7px;
     width: 100%;
-    height: 3rem;
+    height: 100%;
     border: none;
     outline: none;
     color: rgb(38, 38, 38);
@@ -26,32 +17,27 @@
     font-family: 'Abel', sans-serif;
 }
 
-/* for every chat in a left pannel */
-#chatListItem {
-    display: flex;
-    flex-flow: row wrap;
-    margin: 0.5rem 0;
+/* .listOfChats {
+    grid-area: 2 / 1 / 4 / 3; 
+    background-color: rgba(186, 34, 34, 0.09);
+    margin-top: 0;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+
+.chatListItem { 
+     display: flex;
+    flex-flow: row wrap; 
+    margin: 0.5rem 0; 
     vertical-align: baseline;
     height: 4rem;
     width: 100%;
-    /* background-color: rgba(255, 255, 255, 0.2); */
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 7px;
     cursor: pointer;
-}
+}  */
 
-.text {
-    position: relative;
-    margin-left: 1rem;
-    line-height: 3%;
-    color: rgb(6, 91, 93); 
-    font-family: 'Abel', sans-serif 
-}
-
-#textLine1 {
-    font-weight: 700;
-}
-
-/*avatar circle */
 .avatar-circle {
     width: 3.125rem;
     height: 3.125rem;
@@ -65,10 +51,24 @@
     position: relative;
     font-size: 30px; 
     line-height: 2px; 
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-family: "Playfair", monospace;
     font-weight: bold;
 } 
+.text {
+    position: relative;
+    margin-left: 1rem;
+    line-height: 3%;
+    color: rgb(6, 91, 93); 
+    font-family: 'Abel', sans-serif 
+}
+#friendsEmail {
+    font-weight: 600;
+}
+
+
+
+
 
 .unreadMessDetected {
     background-color: red;

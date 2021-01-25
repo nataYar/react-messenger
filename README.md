@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 # nat-react-messenger
-My web messenger build with React
+My web messenger built with React
 =======
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -27,6 +27,11 @@ class DashboardComponent extends React.Component {
     return (
         <div className='dashboard-cont'>
           <div className='dashboard'>
+
+            <button className='signOutButton'
+              onClick={this.signOut}> Sign Out
+              </button>
+
             <ChatListComponent
               history={this.props.history}
               chats={this.state.chats} 
@@ -38,10 +43,6 @@ class DashboardComponent extends React.Component {
               select={this.chooseChat}
               >
             </ChatListComponent>
-
-            <button className='signOutButton'
-              onClick={this.signOut}> Sign Out
-              </button>
 
             <CurrentChatComponent 
               chat={this.state.chats[this.state.selectedChat]} 
@@ -123,6 +124,7 @@ class DashboardComponent extends React.Component {
     }
   });
   // this.checkForNewMessages(this.state.chats);
+  
 }}
 
 

@@ -21,8 +21,8 @@ class MessageInputComponent extends React.Component {
                     onKeyUp={e => this.onType(e)} 
                     onFocus={this.userClickedInput}>
                     </textarea> 
-                    <h3 className='sendIcon' 
-                    onClick={this.sendMsg}>Send</h3>
+                    <button className='sendIcon' 
+                    onClick={this.sendMsg}></button>
                 </main>
             )
         } else {
