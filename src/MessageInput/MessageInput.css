@@ -1,7 +1,7 @@
 .txtInputContainer {
     grid-area: 3 / 3 / 4 / 4;
     display: inline-flex;
-    background-color: rgba(255, 255, 255, 0.090);
+    background-color: rgb(255, 255, 255, 0.2);
     border-radius: 7px;
     border: none;
     outline: none;
@@ -9,7 +9,7 @@
 
 #txtInput {
     width: 91%;
-    height: 90%;
+    height: 87%;
     border: none;
     outline: none;
     padding: 5px;
@@ -21,11 +21,12 @@
 
 .sendIcon {
     margin: 0;
-    width: 8%;
-    height: 100%;
-    border-radius: 0.5em;
-    background-size: 30px 30px;
+    width: 7.5%;
+    height: 99%;
+    border-radius: 0.5rm;
+    background-size: 2rem 2rem;
     background: url('send.png');
+    /* background-color: rgb(255, 255, 255, 0.2); */
     background-position:center;
     background-repeat:no-repeat;
     border: none;

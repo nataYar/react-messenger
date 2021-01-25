@@ -16,7 +16,7 @@ class DashboardComponent extends React.Component {
       chatVisible: true,
       newMessages: true
     }
-    this.createNewChat = this.createNewChat.bind(this);
+    this.newChat = this.newChat.bind(this);
     this.chooseChat = this.chooseChat.bind(this);
     this.signOut = this.signOut.bind(this);
     this.addMsg = this.addMsg.bind(this);
@@ -31,6 +31,10 @@ class DashboardComponent extends React.Component {
             <button className='signOutButton'
               onClick={this.signOut}> Sign Out
               </button>
+            
+            <button className='newChatButton'
+                onClick={this.newChat}>
+                New Chat</button> 
 
             <ChatListComponent
               history={this.props.history}
@@ -38,8 +42,6 @@ class DashboardComponent extends React.Component {
               userEmail={this.state.email}
               newMessages={this.state.newMessages}
               selectedChatIndex={this.state.selectedChat}
-              
-              newChat={this.createNewChat}
               select={this.chooseChat}
               >
             </ChatListComponent>
@@ -62,7 +64,7 @@ class DashboardComponent extends React.Component {
 
   signOut = () => firebase.auth().signOut();
 
-  createNewChat = () => {
+  newChat = () => {
     this.setState({
       chatVisible: true,
       selectedChat: null
