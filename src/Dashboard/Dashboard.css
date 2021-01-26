@@ -41,9 +41,11 @@
     font-family: 'Abel', sans-serif;
 
 }
-.signOutButton:hover {
-    /* color:#ffffff; */
+.signOutButton:hover,
+.newChatButton:hover {
+    background-color: rgb(255, 255, 255, 0.8);
 }
+
 
 .newChatButton {
     grid-area: 1 / 2 / 2 / 2;
