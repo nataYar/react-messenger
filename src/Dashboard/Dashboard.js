@@ -13,7 +13,7 @@ class DashboardComponent extends React.Component {
       chats: [],
       email: null,
       selectedChat: null,
-      chatVisible: true,
+      chatVisible: false,
       newMessages: true
     }
     this.newChat = this.newChat.bind(this);
