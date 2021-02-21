@@ -7,6 +7,6 @@ class newChatComponent extends React.Component {
     }
     render() {
         return {
-
+          lallalaallal
         }
     }};
