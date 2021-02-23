@@ -4,8 +4,9 @@
     flex-direction: column;
     justify-content: space-between;
     align-content: space-between;
-    width: 99.4%;
-    height: 100%;
+    width: 94%;
+    height: 94%;
+    margin: 3%;
     overflow-y: scroll; 
     overflow-wrap: break-word;  
 } 

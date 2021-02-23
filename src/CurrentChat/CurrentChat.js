@@ -9,7 +9,7 @@ class CurrentChatComponent extends React.Component {
       }
     render () {
         if(this.props.chat === undefined) {
-            return( <div>i'm an empty chat</div>)
+            return( <div></div>)
         } else {
             return (
                 <main className='chatBoard'>

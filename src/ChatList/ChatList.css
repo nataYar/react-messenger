@@ -5,7 +5,7 @@
 
 .listOfChats {
     grid-area: 2 / 1 / 4 / 3; 
-    background-color: rgb(255, 255, 255, 0.2);
+    /* background-color: rgb(255, 255, 255, 0.2); */
     margin-top: 0;
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
@@ -23,6 +23,10 @@
     border-radius: 7px;
     cursor: pointer;
 } 
+
+.chatListItem:hover {
+    background-color: rgb(255, 255, 255, 0.8);
+}
 
 .avatar-circle {
     width: 21%;

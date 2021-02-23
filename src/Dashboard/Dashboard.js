@@ -4,19 +4,21 @@ import Dashboard from './Dashboard.css';
 import ChatListComponent from '../ChatList/ChatList';
 import CurrentChatComponent from '../CurrentChat/CurrentChat';
 import MessageInputComponent from '../MessageInput/MessageInput';
+import NewChatComponent from '../NewChat/NewChat';
 const firebase = require('firebase');
 
 class DashboardComponent extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       chats: [],
       email: null,
       selectedChat: null,
       chatVisible: false,
-      newMessages: true
+      newMessages: true,
+      newChatFormVisible: false
     }
-    this.newChat = this.newChat.bind(this);
+    this.showNewChatForm = this.showNewChatForm.bind(this);
     this.chooseChat = this.chooseChat.bind(this);
     this.signOut = this.signOut.bind(this);
     this.addMsg = this.addMsg.bind(this);
@@ -27,35 +29,39 @@ class DashboardComponent extends React.Component {
     return (
         <div className='dashboard-cont'>
           <div className='dashboard'>
-
             <button className='signOutButton'
               onClick={this.signOut}> Sign Out
               </button>
-            
-            <button className='newChatButton'
-                onClick={this.newChat}>
-                New Chat</button> 
 
+            <button className='newChatButton'
+              onClick={this.showNewChatForm}>
+              New Chat
+              </button>   
+              
+            { this.state.newChatFormVisible ? <NewChatComponent>
+              </NewChatComponent> :  null
+            }
+              
             <ChatListComponent
               history={this.props.history}
               chats={this.state.chats} 
               userEmail={this.state.email}
               newMessages={this.state.newMessages}
               selectedChatIndex={this.state.selectedChat}
-              select={this.chooseChat}
-              >
-            </ChatListComponent>
+              select={this.chooseChat}>
+              </ChatListComponent>
 
             <CurrentChatComponent 
               chat={this.state.chats[this.state.selectedChat]} 
               user={this.state.email}>
-            </CurrentChatComponent>
+              </CurrentChatComponent> 
+            
 
             <MessageInputComponent
               visibility={this.state.chatVisible}
               selected={this.state.selectedChat}
               addMsgFn={this.addMsg}>
-            </MessageInputComponent>
+              </MessageInputComponent>
           </div>
         </div>
 
@@ -64,9 +70,10 @@ class DashboardComponent extends React.Component {
 
   signOut = () => firebase.auth().signOut();
 
-  newChat = () => {
+  showNewChatForm = () => {
+    console.log('New chat btn clicked');
     this.setState({
-      chatVisible: true,
+      newChatFormVisible: true,
       selectedChat: null
     });
   }
@@ -75,17 +82,18 @@ class DashboardComponent extends React.Component {
     await this.setState({
       selectedChat: index,
       chatVisible: true,
-      newMessages: false
+      newMessages: false,
+      newChatFormVisible: false
     });
   }
 
   buildDocId = (friend) => [this.state.email, friend].sort().join(':');
+
   //send msg to the chat & add msg to chat.messages array
   addMsg = (msg) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
     //doc ID:   nata@gmail.com:pata@gmail.com
     const docId = this.buildDocId(friend);
-    
     console.log(docId);
     // FirebaseError: Function FieldValue.arrayUnion() called with invalid data. 
     // Unsupported field value: a custom Class object
@@ -125,7 +133,7 @@ class DashboardComponent extends React.Component {
         })
     }
   });
-  // this.checkForNewMessages(this.state.chats);
+  
   
 }}
 

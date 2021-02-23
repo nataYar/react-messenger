@@ -21,7 +21,6 @@
     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
 }
 
-
 .signOutButton {
     grid-area: 1 / 1 / 2 / 2;
     border-color: transparent;
@@ -39,13 +38,11 @@
     background-color:rgba(255, 255, 255, 0.6);
  
     font-family: 'Abel', sans-serif;
-
 }
 .signOutButton:hover,
 .newChatButton:hover {
     background-color: rgb(255, 255, 255, 0.8);
 }
-
 
 .newChatButton {
     grid-area: 1 / 2 / 2 / 2;
@@ -62,6 +59,7 @@
     cursor: pointer;
     font-family: 'Abel', sans-serif;
 }
+
 /* .chatBoard {
     font-size: 20em;
     background-color: rgb(90, 18, 156);
