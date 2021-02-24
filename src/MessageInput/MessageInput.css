@@ -19,24 +19,26 @@
     
 }
 
-.sendIcon {
-    margin: 0;
-    width: 7.5%;
-    height: 99%;
-    border-radius: 0.5rem;
-    background-size: 2rem 2rem;
-    background: url('send.png');
-    /* background-color: rgb(255, 255, 255, 0.2); */
-    background-position:center;
-    background-repeat:no-repeat;
-    border: none;
-    cursor: pointer;
-    transition-duration: 0.4s;
+.messSendBtn {
+  display: inline-block;
+  margin: 0;
+  width: 7.5%;
+  height: 99%;
+  border-radius: 0.5rem;
+  background-size: 2rem 2rem;
+  background-image: url('../icons/send.png');
+  /* background-color: rgb(255, 255, 255, 0.2); */
+  background-position:center;
+  background-repeat:no-repeat;
+  border: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
     /* cursor:hover: {
       color: 'gray'
     } */ 
 }
- .sendIcon:hover {
+
+ .messSendBtn:hover {
     background-color: rgb(255, 255, 255, 0.7);
     /* color: white; */
   }

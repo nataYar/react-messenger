@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Login from './Login.css';
+import Login from './style.css';
 const firebase = require("firebase");
 
 class LoginComponent extends React.Component {
@@ -48,24 +48,24 @@ class LoginComponent extends React.Component {
     
   render () {
     return (
-      <main className="mainContainerL">
-        <div className="registerContainerL">
-          <h1 className="headerL">Log In</h1>
-          <form onSubmit={(e) => this.submitLogin(e)}>
-              <input className="inputBoxL" placeholder="Email" type="text"  
+      <main className="backgroundContainer">
+        <div className="SLContainer">
+          <h1 className="header">Log In</h1>
+          <form className='flexItems' onSubmit={(e) => this.submitLogin(e)}>
+              <input className="inputBox" placeholder="Email" type="text"  
               value={this.state.email}
               onChange={(e) => this.handleInput('email', e)} required/>
 
-              <input className="inputBoxL" placeholder="Password" type="password"   minLength="4" 
+              <input className="inputBox" placeholder="Password" type="password"   minLength="4" 
               value={this.state.password}
               onChange={(e) => this.handleInput('password', e)} required/>
 
-              <button className="loginButton" type="submit">Log in</button>
+              <button className="SLButton" type="submit">Log in</button>
               {
                 this.state.errorLogin ? <h5>{this.state.errorLogin}</h5> : null
               }
-              <p>Not registered yet?</p>
-              <Link id="signupLink" style={{ marginLeft: '5%'}} to="/signup">Sign up</Link>
+              <p className='redirect'>Not registered yet?</p>
+              <Link className='redirect' id="signupLink" style={{ marginLeft: '5%'}} to="/signup">Sign up</Link>
           </form>
         </div>
       </main>

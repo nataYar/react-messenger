@@ -38,7 +38,8 @@ class DashboardComponent extends React.Component {
               New Chat
               </button>   
               
-            { this.state.newChatFormVisible ? <NewChatComponent>
+            { this.state.newChatFormVisible ? <NewChatComponent userEmail={this.state.email}
+            getDocKey={this.buildDocId}>
               </NewChatComponent> :  null
             }
               
@@ -56,7 +57,6 @@ class DashboardComponent extends React.Component {
               user={this.state.email}>
               </CurrentChatComponent> 
             
-
             <MessageInputComponent
               visibility={this.state.chatVisible}
               selected={this.state.selectedChat}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Signup from './Signup.css';
+import Signup from './style.css';
 const firebase = require("firebase");
 
 class SignupComponent extends React.Component {
@@ -93,10 +93,10 @@ class SignupComponent extends React.Component {
 
   render () {
     return (
-      <main className="mainContainer">
-        <div className="registerContainer">
+      <main className="backgroundContainer">
+        <div className="SLContainer">
           <h1 className="header">Sign up</h1>
-          <form onSubmit={(e) => this.submitSignUp(e)}>
+          <form className='flexItems' onSubmit={(e) => this.submitSignUp(e)}>
             <input className="inputBox" id="txt-input" placeholder="Email" type="text"  
             value={this.state.email}
             onChange={(e) => this.handleInput('email', e)} required/>
@@ -109,12 +109,13 @@ class SignupComponent extends React.Component {
             value={this.state.passConfirmation}  minLength="4"
             onChange={(e) => this.handleInput('passConfirmation', e)} required/>
 
-            <button className="signupButton" type="submit">Sign up</button>
+            <button className="SLButton" type="submit">Sign up</button>
             {
               this.state.errorSignup ? <h5>{this.state.errorSignup}</h5> : null
             }
-            <p id='redirect'>Registered user?</p>
-            <Link id='redirectlink' style={{ marginLeft: '3%'}} to="/login">Log in</Link>
+            <p className='redirect'>Registered user? </p>
+              <Link className='redirect'  to="/login">Log in</Link>
+            
             
           </form>
         </div>

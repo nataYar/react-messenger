@@ -28,14 +28,13 @@ class ChatListComponent extends React.Component {
                                             <h1 className='initials'>{_chat.users.find(friend => friend !== this.props.userEmail).split('')[0]}</h1>
                                         </div>
                                         
-                                        <div className='text'>
+                                        <div className='chatListItemText'>
                                             <p id='friendsEmail'>{_chat.users.filter(_user => _user !== this.props.userEmail)[0]}</p>
-                                            
                                             <p>"{_chat.messages[_chat.messages.length - 1].message.slice(0, 14)}..."</p>
                                         </div>
                                         {
                                             _chat.messages[_chat.messages.length - 1].sender !== this.props.userEmail && this.props.newMessages ?
-                                            <img src='newmessage.png' alt=''/> : null     
+                                            <img src='./icons/newmessage.png' alt=''/> : null     
                                         }
                                     </div>
                                 </div>

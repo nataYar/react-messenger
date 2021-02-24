@@ -45,15 +45,16 @@
     font-family: "Playfair", monospace;
     font-weight: bold;
 } 
-.text {
+.chatListItemText {
     position: relative;
     margin-left: 4%;
-    margin-right: 1%;
-    width: 55%;
-    line-height: 3%;
+    /* margin-right: 1%; */
+    width: 60%;
+    line-height: 80%;
     color: rgb(6, 91, 93); 
     overflow-wrap: break-word;
-    font-family: 'Abel', sans-serif 
+    font-family: 'Abel', sans-serif;
+    font-size: 1rem; 
 }
 #friendsEmail {
     font-weight: 600;
@@ -61,7 +62,7 @@
 
 img {
     position: relative;
-    background: url('newmessage.png') no-repeat;
+    /* background: url('/Users/nataliayarysheva/projects/react-messenger/src/icons/newmessage.png') no-repeat; */
     width: 15%;
     background-size:70%;
     border: none;

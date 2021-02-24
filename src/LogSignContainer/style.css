@@ -1,52 +1,57 @@
 @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
 
 
-.mainContainer {
+.backgroundContainer {
   display: flex;
   justify-content: center;
   height: 100vh;
-  flex-wrap: wrap;
   align-items: center;
   align-content: center; 
-}
 
-.registerContainer {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  background-color: rgb(210, 210, 210);
-  width: 400px;
   
-  min-height: 450px;
-  height: auto;
-  border-radius: 5px;
-  margin: 2% auto;
-  box-shadow: 0 9px 30px rgba(160, 160, 160, 0.2);
-  padding: 2%;
-
 }
 
+.SLContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+
+  background: linear-gradient(117.81089044264013deg, rgb(86, 187, 215) 6.472719522591646%,rgb(148, 245, 211) 70.87851662404091%);
+  width: auto;
+  height: auto;
+  padding: 5%;
+  border-radius: 5px;
+  box-shadow: 0 9px 30px rgba(172, 172, 172, 0.616);
+  
+
+}
 
 .header {
   margin-top: 2%;
-  text-align: center;
+  margin-bottom: 2%;
   letter-spacing: 0.05em;
-  font-size: 250%;
+  font-size: 2rem;
   font-family: 'Playfair Display', serif;
-  color: #3e403f;
+  color: #000000;
 }
 
-input.inputBox {
+.flexItems {
   display: flex;
-  width: 240px;
-  height: 45px;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+}
 
-  margin-top: 6%;
-  padding: 15px;
+
+.inputBox {
+  width: 15rem;
+  height: 2.8rem;
+
+  margin-top: 5%;
+  padding: 1rem;
   
-  font-size: 16px;
+  font-size: 1.1rem;
   font-family: 'Abel', sans-serif;
   color: #5E6472;
 
@@ -57,30 +62,24 @@ input.inputBox {
   
 }
 
-input:focus {
-    transform: translateX(-4px);
+.inputBox:focus {
+    transform: translateX(-5px);
     border-radius: 5px;
 }
 
-#redirect {
+.redirect {
   font-family: 'Abel', serif;
-  display: inline;
-}
-#redirectlink {
-  font-family: 'Playfair Display', serif;
-  display: inline;
-  
+  font-size: 1.2rem;
+  width: auto;
+  font-size: 1rem;
 }
 
 
-.signupButton {
-  display: flex;
-  align-items: center; 
-  justify-content: center;
+.SLButton {
   color: #252537;
-
-  width: 100px;
-  height: 35px;
+  font-size: 1.1rem;
+  width: 7rem;
+  height: 3rem;
   padding: 0 20px;
   background: #fff;
   border-radius: 5px;
@@ -90,11 +89,10 @@ input:focus {
   cursor: pointer;
   border: none;
   outline: none;
-
-  transition: all 0.2s linear;
+  font-family: 'Playfair Display', serif;
 }
 
-.submitButton:hover {
+.SLButton:hover {
   animation: fly 0.7s ease-in-out infinite;
 }
 @keyframes fly {
