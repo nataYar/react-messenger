@@ -23,6 +23,8 @@ class DashboardComponent extends React.Component {
     this.signOut = this.signOut.bind(this);
     this.addMsg = this.addMsg.bind(this);
     this.buildDocId = this.buildDocId.bind(this);
+    this.goToExistingChat = this.goToExistingChat.bind(this);
+    
   }
   
   render () {
@@ -39,7 +41,8 @@ class DashboardComponent extends React.Component {
               </button>   
               
             { this.state.newChatFormVisible ? <NewChatComponent userEmail={this.state.email}
-            getDocKey={this.buildDocId}>
+            getDocKey={this.buildDocId}
+            goToChat={this.goToExistingChat}>
               </NewChatComponent> :  null
             }
               
@@ -87,14 +90,36 @@ class DashboardComponent extends React.Component {
     });
   }
 
+  goToExistingChat = async (docKey, msg) => {  
+    //get your friend - returns string !!!
+    const friend = docKey.split(':')[1];
+    // find chat which includes your friend (from this.state.chats)
+    const chat = this.state.chats.find(chat => chat.users.includes(friend));
+    // find index of this chat
+    const index = this.state.chats.indexOf(chat)
+    // then addMsg(mess)
+    // then we chooseChat(index)
+    await this.chooseChat(index);
+    firebase
+      .firestore()
+      .collection('chats')
+      .doc(docKey)
+      .update({
+        messages: firebase.firestore.FieldValue.arrayUnion({
+          message: msg,
+          sender: this.state.email,
+          timestamp: Date.now()
+        })
+      });;
+  }
+
+
   buildDocId = (friend) => [this.state.email, friend].sort().join(':');
 
   //send msg to the chat & add msg to chat.messages array
   addMsg = (msg) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
-    //doc ID:   nata@gmail.com:pata@gmail.com
     const docId = this.buildDocId(friend);
-    console.log(docId);
     // FirebaseError: Function FieldValue.arrayUnion() called with invalid data. 
     // Unsupported field value: a custom Class object
     firebase

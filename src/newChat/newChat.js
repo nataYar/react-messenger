@@ -1,28 +1,28 @@
-import { Chat } from "@material-ui/icons";
 import React from "react";
 import NewChat from './NewChat.css';
 const firebase = require('firebase');
 
 class NewChatComponent extends React.Component {
   constructor(){
+    super();
     this.state={
       friendsEmail: null,
       mess: null
     }
     this.userTyping=this.userTyping.bind(this);
     this.submitNewChat=this.submitNewChat.bind(this);
+    this.docKey=this.docKey.bind(this);
+    this.chatExists=this.chatExists.bind(this);
+    this.goToChat=this.goToChat.bind(this); 
+    
     }
-
-    submitNewChat = e => {
-      const friend = this.state.friendsEmail;
-      const userEmail = this.props.email;
-      const chat = this.props.getDocKey(friend)
-    }
+    
+    
     userTyping = (type, e) => {
       switch(type) {
         case('friendsEmail'): 
         this.setState({
-          email: e.target.value
+          friendsEmail: e.target.value
         });
         break;
         case('mess'):
@@ -34,6 +34,46 @@ class NewChatComponent extends React.Component {
           break;
       }
     }
+    
+    docKey = () => {
+      const friend = this.state.friendsEmail;
+      const chat = this.props.getDocKey(friend);
+      return chat;
+    }
+
+    goToChat = async () => {
+      const docKey = this.docKey();
+      const mess = this.state.mess;
+      console.log("go to chat");
+      await this.props.goToChat(docKey, mess);
+    }
+    submitNewChat = (e) => {
+      //pata@gmail.com
+      const chat = this.docKey();
+      console.log(chat)
+      this.chatExists() ? this.goToChat() /*console.log("chat")*/ : console.log("no such chat");
+      e.preventDefault();
+    }
+
+    chatExists = async () => {
+      const docKey = this.docKey();
+      const chat = await firebase
+      .firestore()
+      .collection('chats')
+      .doc(docKey)
+      .get();
+      console.log(chat)
+      if (chat.exists) {
+        return chat;
+      } 
+    }
+
+    
+
+    
+      // db.collectionGroup('Songs')
+      // .where('songName', '==', 'X')
+      // .get()
     render() {
       return (
           <div className='newChatContainer'>
