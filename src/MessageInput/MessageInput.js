@@ -10,7 +10,7 @@ class MessageInputComponent extends React.Component {
         this.onType = this.onType.bind(this);
         this.sendMsg = this.sendMsg.bind(this);
         this.textValidFn = this.textValidFn.bind(this);
-        this.userClickedInput = this.userClickedInput.bind(this);
+        // this.userClickedInput = this.userClickedInput.bind(this);
     }
 
     render () {
@@ -34,7 +34,7 @@ class MessageInputComponent extends React.Component {
     // we set up message text to an input
     onType = (e) => e.keyCode === 13? this.sendMsg() : this.setState({msgText: e.target.value});
 
-    userClickedInput = () => console.log('User clicked input'); 
+    // userClickedInput = () => console.log('User clicked input'); 
 
     textValidFn = (msg) => msg && msg.trim().length;
 

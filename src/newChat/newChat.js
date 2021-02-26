@@ -10,11 +10,9 @@ class NewChatComponent extends React.Component {
       mess: null
     }
     this.userTyping=this.userTyping.bind(this);
-    this.submitNewChat=this.submitNewChat.bind(this);
+    this.submitForm=this.submitForm.bind(this);
     this.docKey=this.docKey.bind(this);
     this.chatExists=this.chatExists.bind(this);
-    this.goToChat=this.goToChat.bind(this); 
-    
     }
     
     
@@ -34,50 +32,36 @@ class NewChatComponent extends React.Component {
           break;
       }
     }
-    
-    docKey = () => {
-      const friend = this.state.friendsEmail;
-      const chat = this.props.getDocKey(friend);
-      return chat;
-    }
-
-    goToChat = async () => {
+    submitForm = async (e) => {
+      e.preventDefault();
       const docKey = this.docKey();
       const mess = this.state.mess;
-      console.log("go to chat");
-      await this.props.goToChat(docKey, mess);
+      const chatExists = await this.chatExists();
+      chatExists ? this.props.goToExistChat(docKey, mess) : this.props.createChat(docKey, mess);
     }
-    submitNewChat = (e) => {
-      //pata@gmail.com
-      const chat = this.docKey();
-      console.log(chat)
-      this.chatExists() ? this.goToChat() /*console.log("chat")*/ : console.log("no such chat");
-      e.preventDefault();
+    
+    docKey = () => {
+      const docID = [this.props.email, this.state.friendsEmail].sort().join(':');
+      console.log(`doc id : ` + docID)
+      return docID;
     }
 
     chatExists = async () => {
       const docKey = this.docKey();
       const chat = await firebase
-      .firestore()
-      .collection('chats')
-      .doc(docKey)
-      .get();
-      console.log(chat)
-      if (chat.exists) {
-        return chat;
-      } 
+        .firestore()
+        .collection('chats')
+        .doc(docKey)
+        .get();
+        console.log(chat)
+    
+      return chat.exists;
     }
 
-    
-
-    
-      // db.collectionGroup('Songs')
-      // .where('songName', '==', 'X')
-      // .get()
     render() {
       return (
           <div className='newChatContainer'>
-            <form className='submitForm' onSubmit={(e) => this.submitNewChat(e)}>
+            <form className='submitForm' onSubmit={(e) => this.submitForm(e)}>
                 <input className='userInput' type='text' 
                 placeholder="Enter friend's email"
                 onChange={e => this.userTyping('friendsEmail', e)}></input>

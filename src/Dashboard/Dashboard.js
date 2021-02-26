@@ -24,7 +24,7 @@ class DashboardComponent extends React.Component {
     this.addMsg = this.addMsg.bind(this);
     this.buildDocId = this.buildDocId.bind(this);
     this.goToExistingChat = this.goToExistingChat.bind(this);
-    
+    this.newChatFn = this.newChatFn.bind(this);
   }
   
   render () {
@@ -40,9 +40,9 @@ class DashboardComponent extends React.Component {
               New Chat
               </button>   
               
-            { this.state.newChatFormVisible ? <NewChatComponent userEmail={this.state.email}
-            getDocKey={this.buildDocId}
-            goToChat={this.goToExistingChat}>
+            { this.state.newChatFormVisible ? <NewChatComponent email={this.state.email}
+            goToExistChat={this.goToExistingChat}
+            createChat={this.newChatFn}>
               </NewChatComponent> :  null
             }
               
@@ -74,7 +74,6 @@ class DashboardComponent extends React.Component {
   signOut = () => firebase.auth().signOut();
 
   showNewChatForm = () => {
-    console.log('New chat btn clicked');
     this.setState({
       newChatFormVisible: true,
       selectedChat: null
@@ -89,39 +88,49 @@ class DashboardComponent extends React.Component {
       newChatFormVisible: false
     });
   }
-
-  goToExistingChat = async (docKey, msg) => {  
-    //get your friend - returns string !!!
-    const friend = docKey.split(':')[1];
-    // find chat which includes your friend (from this.state.chats)
-    const chat = this.state.chats.find(chat => chat.users.includes(friend));
-    // find index of this chat
-    const index = this.state.chats.indexOf(chat)
-    // then addMsg(mess)
-    // then we chooseChat(index)
-    await this.chooseChat(index);
+  
+  newChatFn = (docKey, msg) => {
+    console.log(docKey, msg);
+    const users = docKey.split(':');
+    console.log('newChatFn users: ' + users)
     firebase
-      .firestore()
+    .firestore()
       .collection('chats')
       .doc(docKey)
-      .update({
+      .set({
         messages: firebase.firestore.FieldValue.arrayUnion({
           message: msg,
           sender: this.state.email,
           timestamp: Date.now()
-        })
-      });;
+        }),
+        users: users
+      });
+    this.setState({
+      newChatFormVisible: false
+    })
   }
 
+
+  goToExistingChat = async (docKey, msg) => {  
+    //get your friend - returns string !!!
+    const users = docKey.split(':');
+    // find chat which includes your friend (from this.state.chats)
+    const chat = this.state.chats.find(chat => chat.users.map(user => user.includes(users)));
+    // find index of this chat
+    const index = this.state.chats.indexOf(chat);
+    // then addMsg(mess)
+    // then we chooseChat(index)
+    await this.chooseChat(index);
+    this.addMsg(msg);
+  }
 
   buildDocId = (friend) => [this.state.email, friend].sort().join(':');
 
   //send msg to the chat & add msg to chat.messages array
   addMsg = (msg) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
+    console.log(friend)
     const docId = this.buildDocId(friend);
-    // FirebaseError: Function FieldValue.arrayUnion() called with invalid data. 
-    // Unsupported field value: a custom Class object
     firebase
       .firestore()
       .collection('chats')
