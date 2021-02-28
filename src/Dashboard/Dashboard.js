@@ -51,7 +51,7 @@ class DashboardComponent extends React.Component {
               chats={this.state.chats} 
               userEmail={this.state.email}
               newMessages={this.state.newMessages}
-              selectedChatIndex={this.state.selectedChat}
+              selectedChat={this.state.selectedChat}
               select={this.chooseChat}>
               </ChatListComponent>
 

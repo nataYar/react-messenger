@@ -60,16 +60,22 @@
     font-weight: 600;
 }
 
-img {
-    position: relative;
-    /* background: url('/Users/nataliayarysheva/projects/react-messenger/src/icons/newmessage.png') no-repeat; */
-    width: 15%;
-    background-size:70%;
-    border: none;
-    animation: blink 2s ease-in-out infinite;
-}
 
 @keyframes blink {
   from, to { opacity: 1 }
   50% { opacity: 0 }
+}
+
+.unread {
+    /* background-color: brown; */
+    background-image: url('../icons/newmessage.png');
+    position: relative;
+    /* background: url('/Users/nataliayarysheva/projects/react-messenger/src/icons/newmessage.png') no-repeat; */
+    /* width: %; */
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:80%;
+    border: none;
+    color: transparent;
+    animation: blink 2s ease-in-out infinite;
 }
