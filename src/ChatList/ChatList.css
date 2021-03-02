@@ -14,7 +14,7 @@
 
 .chatListItem { 
     display: flex;
-    flex-flow: row wrap; 
+    flex-flow: column wrap; 
     margin: 0.5rem 0; 
     /* vertical-align: baseline; */
     height: 4.5rem;
@@ -29,7 +29,7 @@
 }
 
 .avatar-circle {
-    width: 21%;
+    width: 20%;
     height: 70%;
     background-color: rgb(0, 110, 125);
     text-align: center;
@@ -37,6 +37,11 @@
     margin-top: 5%;
     margin-left: 3%;
 }
+
+.unread {
+    background-color: rgb(174, 21, 105);
+}
+
 .initials {
     position: relative;
     font-size: 30px; 
@@ -47,9 +52,9 @@
 } 
 .chatListItemText {
     position: relative;
-    margin-left: 4%;
+    margin-left: 2%;
     /* margin-right: 1%; */
-    width: 60%;
+    width: 70%;
     line-height: 80%;
     color: rgb(6, 91, 93); 
     overflow-wrap: break-word;
@@ -58,24 +63,4 @@
 }
 #friendsEmail {
     font-weight: 600;
-}
-
-
-@keyframes blink {
-  from, to { opacity: 1 }
-  50% { opacity: 0 }
-}
-
-.unread {
-    /* background-color: brown; */
-    background-image: url('../icons/newmessage.png');
-    position: relative;
-    /* background: url('/Users/nataliayarysheva/projects/react-messenger/src/icons/newmessage.png') no-repeat; */
-    /* width: %; */
-    background-position:center;
-    background-repeat:no-repeat;
-    background-size:80%;
-    border: none;
-    color: transparent;
-    animation: blink 2s ease-in-out infinite;
 }

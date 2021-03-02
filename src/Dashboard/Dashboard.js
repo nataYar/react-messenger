@@ -15,7 +15,6 @@ class DashboardComponent extends React.Component {
       email: null,
       selectedChat: null,
       chatVisible: false,
-      newMessages: true,
       newChatFormVisible: false
     }
     this.showNewChatForm = this.showNewChatForm.bind(this);
@@ -25,6 +24,7 @@ class DashboardComponent extends React.Component {
     this.buildDocId = this.buildDocId.bind(this);
     this.goToExistingChat = this.goToExistingChat.bind(this);
     this.newChatFn = this.newChatFn.bind(this);
+    this.messageWasRead = this.messageWasRead.bind(this);  
   }
   
   render () {
@@ -50,7 +50,6 @@ class DashboardComponent extends React.Component {
               history={this.props.history}
               chats={this.state.chats} 
               userEmail={this.state.email}
-              newMessages={this.state.newMessages}
               selectedChat={this.state.selectedChat}
               select={this.chooseChat}>
               </ChatListComponent>
@@ -78,16 +77,37 @@ class DashboardComponent extends React.Component {
       newChatFormVisible: true,
       selectedChat: null
     });
+
   }
 
   chooseChat = async(index) => {
     await this.setState({
       selectedChat: index,
       chatVisible: true,
-      newMessages: false,
       newChatFormVisible: false
     });
+    this.messageWasRead();
   }
+
+   
+   //update the db so that it was set to true
+   messageWasRead = () => {
+    const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
+    const docId = this.buildDocId(friend);
+    //if the sender is NOT a current user
+    if (this.state.chats[this.state.selectedChat].messages[this.state.chats[this.state.selectedChat].messages.length - 1].sender !== 
+      this.state.email) {
+      console.log('messageWasRead should be true')
+      firebase
+      .firestore()
+      .collection('chats')
+      .doc(docId)
+      .update({ messageWasRead: true })
+    } else {
+      console.log('Clicked message where the user was the sender');
+    } 
+  }
+ 
   
   newChatFn = (docKey, msg) => {
     console.log(docKey, msg);
@@ -103,11 +123,13 @@ class DashboardComponent extends React.Component {
           sender: this.state.email,
           timestamp: Date.now()
         }),
-        users: users
+        users: users,
+        messageWasRead: false
       });
     this.setState({
       newChatFormVisible: false
-    })
+    });
+    this.selectChat(this.state.chats.length - 1);
   }
 
 
@@ -124,12 +146,13 @@ class DashboardComponent extends React.Component {
     this.addMsg(msg);
   }
 
+
   buildDocId = (friend) => [this.state.email, friend].sort().join(':');
 
   //send msg to the chat & add msg to chat.messages array
   addMsg = (msg) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
-    console.log(friend)
+    console.log(friend);
     const docId = this.buildDocId(friend);
     firebase
       .firestore()
@@ -140,8 +163,9 @@ class DashboardComponent extends React.Component {
           message: msg,
           sender: this.state.email,
           timestamp: Date.now()
-        })
-      });
+        }),
+        messageWasRead: false
+      })
   }
   
   //to get the current user by setting an observer on the Auth object:

@@ -23,8 +23,9 @@ class ChatListComponent extends React.Component {
                                     <div className='chatListItem' 
                                     onClick={() => this.select(index)}
                                     selected={this.props.selectedChat === index}>
-                                        
-                                        <div className='avatar-circle'>
+                          
+                                        <div className= { chat.messageWasRead == false && chat.messages[chat.messages.length - 1].sender !== this.props.userEmail  ? 
+                                            'avatar-circle unread' : 'avatar-circle'}>
                                             <h1 className='initials'>{chat.users.find(friend => friend !== this.props.userEmail).split('')[0]}</h1>
                                         </div>
                                         
@@ -32,14 +33,6 @@ class ChatListComponent extends React.Component {
                                             <p id='friendsEmail'>{chat.users.filter(user => user !== this.props.userEmail)[0]}</p>
                                             <p>"{chat.messages[chat.messages.length - 1].message.slice(0, 14)}..."</p>
                                         </div>
-                                        {
-                                            this.props.newMessages ?
-                                            <p className="unread">new</p> : null   
-
-                                            // chat.messages[chat.messages.length - 1].sender !== this.props.userEmail /*&& this.props.newMessages*/ ?
-                                            // <img src='./icons/newmessage.png' alt=''/> : null   
-                                            // <p className="unread">bell</p>
-                                            }
                                     </div>
                                 </div>
                             )
