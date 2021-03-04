@@ -20,9 +20,8 @@ class ChatListComponent extends React.Component {
                         this.props.chats.map((chat, index) => {
                             return (
                                 <div key={index}>
-                                    <div className='chatListItem' 
-                                    onClick={() => this.select(index)}
-                                    selected={this.props.selectedChat === index}>
+                                    <div className={this.props.selectedChat === index ? 'chatListItem selected' : 'chatListItem'}
+                                    onClick={() => this.select(index)}>
                           
                                         <div className= { chat.messageWasRead == false && chat.messages[chat.messages.length - 1].sender !== this.props.userEmail  ? 
                                             'avatar-circle unread' : 'avatar-circle'}>
