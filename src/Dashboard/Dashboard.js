@@ -6,6 +6,10 @@ import CurrentChatComponent from '../CurrentChat/CurrentChat';
 import MessageInputComponent from '../MessageInput/MessageInput';
 import NewChatComponent from '../NewChat/NewChat';
 const firebase = require('firebase');
+// Get a reference to the storage service, which is used to create references in your storage bucket
+const storage = firebase.storage();
+// Create a storage reference from our storage service
+var storageRef = storage.ref();
 
 class DashboardComponent extends React.Component {
   constructor() {
