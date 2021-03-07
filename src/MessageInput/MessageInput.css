@@ -1,44 +1,58 @@
 .txtInputContainer {
-    grid-area: 3 / 3 / 4 / 4;
-    display: inline-flex;
-    background-color: rgb(255, 255, 255, 0.2);
-    border-radius: 7px;
-    border: none;
-    outline: none;
+  grid-area: 3 / 3 / 4 / 4;
+  /* background-color: rgba(221, 53, 53, 0.712); */
+  background-color: rgb(255, 255, 255, 0.2);
+  border-radius: 7px;
+  border: none;
+  outline: none;
+}
+.txtInputContainerFlex {
+  display: flex;
+  /* flex-flow: column wrap; */
+  /* justify-content: space-between; */
+  /* align-items: flex-start; */
+  width: 100%;
+  height: 100%;
 }
 
 #txtInput {
-    width: 91%;
-    height: 87%;
-    border: none;
-    outline: none;
-    padding: 5px;
-    color: rgb(0, 0, 0);
-    background-color: rgba(255, 255, 255, 0);
-    font-size: 1rem;
-    
+  width: 86%;
+  height: 80%;
+  border: none;
+  outline: none;
+  padding: 1%;
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 1rem;
 }
 
 .messSendBtn {
-  display: inline-block;
-  margin: 0;
-  width: 7.5%;
-  height: 99%;
+  width: 6%;
+  /* height: 50%; */
   border-radius: 0.5rem;
   background-size: 2rem 2rem;
-  background-image: url('../icons/send.png');
-  /* background-color: rgb(255, 255, 255, 0.2); */
-  background-position:center;
-  background-repeat:no-repeat;
+  background-image: url('../icons/sendIcon.png');
+  background-position: center;
+  background-repeat: no-repeat;
   border: none;
   cursor: pointer;
-  transition-duration: 0.4s;
-    /* cursor:hover: {
-      color: 'gray'
-    } */ 
+  transition-duration: 0.3s;
 }
 
- .messSendBtn:hover {
-    background-color: rgb(255, 255, 255, 0.7);
-    /* color: white; */
-  }
+.attachBtn {
+  width: 6%;
+  /* height: 99%; */
+  border-radius: 0.5rem;
+  background-size: 2rem 2rem;
+  background-image: url('../icons/imageIcon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.messSendBtn:hover, 
+.attachBtn:hover {
+ background-color: rgb(247, 207, 205);
+}

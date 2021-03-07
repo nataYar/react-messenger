@@ -24,7 +24,9 @@
     cursor: pointer;
 } 
 .selected {
-    background-color: rgba(165, 97, 242, 0.413);
+    
+    /* background-color: #f594b6; */
+    background-color:rgb(255, 255, 255, 0.8);
 }
 
 .chatListItem:hover {

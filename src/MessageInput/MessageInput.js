@@ -10,6 +10,7 @@ class MessageInputComponent extends React.Component {
         this.onType = this.onType.bind(this);
         this.sendMsg = this.sendMsg.bind(this);
         this.textValidFn = this.textValidFn.bind(this);
+        this.attachDoc = this.attachDoc.bind(this);
         // this.userClickedInput = this.userClickedInput.bind(this);
     }
 
@@ -17,12 +18,17 @@ class MessageInputComponent extends React.Component {
         if (this.props.visibility && this.props.selected != null ) {
             return (
                 <main className='txtInputContainer'>
-                    <textarea id='txtInput' placeholder="Write a message..." type="text" 
-                    onKeyUp={e => this.onType(e)} 
-                    onFocus={this.userClickedInput}>
-                    </textarea> 
-                    <button className='messSendBtn' 
-                    onClick={this.sendMsg}></button>
+                    <div className='txtInputContainerFlex'>
+                        <textarea id='txtInput' placeholder="Write a message..." type="text" 
+                        onKeyUp={e => this.onType(e)} 
+                        onFocus={this.userClickedInput}>
+                        </textarea> 
+                        <button className='messSendBtn' 
+                        onClick={this.sendMsg}></button>
+                        <button className='attachBtn' 
+                        onClick={this.attachDoc}></button>
+                        
+                    </div>
                 </main>
             )
         } else {
@@ -38,8 +44,12 @@ class MessageInputComponent extends React.Component {
 
     textValidFn = (msg) => msg && msg.trim().length;
 
+    attachDoc = () => {
+        console.log('attach clicked');
+    }
+
     sendMsg = () => {
-        console.log('clicked send')
+        console.log('clicked send');
         //checking if the message id valid
         if (this.textValidFn(this.state.msgText)) {
             //here should submit function from its parent(Dashboard)
@@ -47,6 +57,7 @@ class MessageInputComponent extends React.Component {
             //clear the input area
             document.getElementById('txtInput').value = '';
         };
+
     };
     } 
 

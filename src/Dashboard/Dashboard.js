@@ -7,9 +7,9 @@ import MessageInputComponent from '../MessageInput/MessageInput';
 import NewChatComponent from '../NewChat/NewChat';
 const firebase = require('firebase');
 // Get a reference to the storage service, which is used to create references in your storage bucket
-const storage = firebase.storage();
+// const storage = firebase.storage();
 // Create a storage reference from our storage service
-var storageRef = storage.ref();
+// var storageRef = storage.ref();
 
 class DashboardComponent extends React.Component {
   constructor() {
@@ -101,7 +101,7 @@ class DashboardComponent extends React.Component {
     //if the sender is NOT a current user
     if (this.state.chats[this.state.selectedChat].messages[this.state.chats[this.state.selectedChat].messages.length - 1].sender !== 
       this.state.email) {
-      console.log('messageWasRead should be true')
+      console.log('messageWasRead should be true');
       firebase
       .firestore()
       .collection('chats')

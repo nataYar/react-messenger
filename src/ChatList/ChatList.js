@@ -15,7 +15,7 @@ class ChatListComponent extends React.Component {
     if(this.props.chats.length > 0) {
         return (
             <div className='listOfChats'>
-                <div className='chatsContainer'>
+                {/* <div className='chatsContainer'> */}
                     {
                         this.props.chats.map((chat, index) => {
                             return (
@@ -23,7 +23,7 @@ class ChatListComponent extends React.Component {
                                     <div className={this.props.selectedChat === index ? 'chatListItem selected' : 'chatListItem'}
                                     onClick={() => this.select(index)}>
                           
-                                        <div className= { chat.messageWasRead == false && chat.messages[chat.messages.length - 1].sender !== this.props.userEmail  ? 
+                                        <div className= { chat.messageWasRead === false && chat.messages[chat.messages.length - 1].sender !== this.props.userEmail  ? 
                                             'avatar-circle unread' : 'avatar-circle'}>
                                             <h1 className='initials'>{chat.users.find(friend => friend !== this.props.userEmail).split('')[0]}</h1>
                                         </div>
@@ -37,7 +37,7 @@ class ChatListComponent extends React.Component {
                             )
                         })
                     } 
-            </div>
+            {/* </div> */}
             </div>
                  
         );      

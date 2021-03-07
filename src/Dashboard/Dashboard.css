@@ -1,7 +1,7 @@
 .dashboard-cont {
     display: flex;
     /* margin-top: 0; */
-    background: linear-gradient(117.81089044264013deg, rgb(86, 187, 215) 6.472719522591646%,rgb(148, 245, 211) 94.87851662404091%);
+    background: linear-gradient(117.81089044264013deg, #56bbd7 6.472719522591646%,#94f5d3 94.87851662404091%);
     justify-content: center;
     align-items: center;
     height: 100vh;
