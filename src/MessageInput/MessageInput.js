@@ -28,7 +28,6 @@ class MessageInputComponent extends React.Component {
                         <button className='messSendBtn' 
                         onClick={this.sendMsg}></button>
                         
-                        
                     </div>
                 </main>
             )

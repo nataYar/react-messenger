@@ -181,7 +181,7 @@ class DashboardComponent extends React.Component {
     console.log('clicked add fn from dash');
     const file = e.target.files[0];
     // gs://auth-81336.appspot.com/images
-    gs://auth-81336.appspot.com/images
+    // gs://auth-81336.appspot.com/images
   
     const fileRef = firebase.storage().ref('images').child(file.name);
     fileRef.put(file).then(() => {

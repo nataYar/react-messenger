@@ -1,6 +1,5 @@
 .dashboard-cont {
     display: flex;
-    /* margin-top: 0; */
     background: linear-gradient(117.81089044264013deg, #56bbd7 6.472719522591646%,#94f5d3 94.87851662404091%);
     justify-content: center;
     align-items: center;
@@ -17,7 +16,6 @@
     grid-column-gap: 0.3rem;
     width: 1100px;
     height: 680px;
-
     background: rgba(255, 255, 255, 0.123);
     border-radius: 7px;
     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
@@ -59,13 +57,6 @@
     cursor: pointer;
 }
 
-/* .chatBoard {
-    font-size: 20em;
-    background-color: rgb(90, 18, 156);
-    width: 400em;
-    height: 30em;
-    overflow: scroll;
-}  */
 
 
 
