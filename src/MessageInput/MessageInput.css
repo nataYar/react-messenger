@@ -40,6 +40,9 @@
 }
 
 .attachBtn {
+  /* display: none; */
+  outline: none;
+  text-decoration: none;
   width: 6%;
   /* height: 99%; */
   border-radius: 0.5rem;

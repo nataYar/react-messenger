@@ -1,6 +1,6 @@
 import React from "react";
 import NewChat from './NewChat.css';
-const firebase = require('firebase');
+const firebase = require('firebase/app');
 
 class NewChatComponent extends React.Component {
   constructor(){

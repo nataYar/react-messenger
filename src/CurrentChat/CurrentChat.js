@@ -1,19 +1,22 @@
 import React from "react";
 import CurrentChat from './CurrentChat.css';
-const firebase = require("firebase");
+const firebase = require('firebase');
 
 class CurrentChatComponent extends React.Component {
     constructor(props) {
         super(props);
         this.scrollToBottom = this.scrollToBottom.bind(this);
-      }
+      };
+   
     render () {
+        
         if(this.props.chat === undefined) {
             return( <div></div>)
         } else {
             return (
                 <main className='chatBoard'>
                     {
+                    
                         this.props.chat.messages.map((mess, index) => {
                             return(
                             <div key={index} className={ this.props.user === mess.sender ? 
@@ -23,6 +26,7 @@ class CurrentChatComponent extends React.Component {
                             )
                         })
                     }
+                    {/* <img src={}/> */}
                     <div style={{ float:"left", clear: "both" }}
                         ref={(el) => { this.messagesEnd = el }}>
                     </div>
@@ -30,8 +34,11 @@ class CurrentChatComponent extends React.Component {
             )
         }
     }
+
+
     scrollToBottom = () => {
         this.messagesEnd && this.messagesEnd.scrollIntoView({behavior: 'smooth'});
+        
       }
       
     componentDidMount() {

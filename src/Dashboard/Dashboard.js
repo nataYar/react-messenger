@@ -5,6 +5,7 @@ import ChatListComponent from '../ChatList/ChatList';
 import CurrentChatComponent from '../CurrentChat/CurrentChat';
 import MessageInputComponent from '../MessageInput/MessageInput';
 import NewChatComponent from '../NewChat/NewChat';
+// import firebase from 'firebase/app';
 const firebase = require('firebase');
 // Get a reference to the storage service, which is used to create references in your storage bucket
 // const storage = firebase.storage();
@@ -25,6 +26,7 @@ class DashboardComponent extends React.Component {
     this.chooseChat = this.chooseChat.bind(this);
     this.signOut = this.signOut.bind(this);
     this.addMsg = this.addMsg.bind(this);
+    this.addDoc = this.addDoc.bind(this);
     this.buildDocId = this.buildDocId.bind(this);
     this.goToExistingChat = this.goToExistingChat.bind(this);
     this.newChatFn = this.newChatFn.bind(this);
@@ -66,8 +68,10 @@ class DashboardComponent extends React.Component {
             <MessageInputComponent
               visibility={this.state.chatVisible}
               selected={this.state.selectedChat}
-              addMsgFn={this.addMsg}>
+              addMsgFn={this.addMsg}
+              addDocFn={this.addDoc}>
               </MessageInputComponent>
+             
           </div>
         </div>
 
@@ -158,6 +162,7 @@ class DashboardComponent extends React.Component {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
     console.log(friend);
     const docId = this.buildDocId(friend);
+    
     firebase
       .firestore()
       .collection('chats')
@@ -166,12 +171,23 @@ class DashboardComponent extends React.Component {
         messages: firebase.firestore.FieldValue.arrayUnion({
           message: msg,
           sender: this.state.email,
-          timestamp: Date.now()
+          timestamp: Date.now(),
         }),
         messageWasRead: false
       })
   }
+
+  addDoc = (e) => {
+    console.log('clicked add fn from dash');
+    const file = e.target.files[0];
+    // gs://auth-81336.appspot.com/images
   
+    const fileRef = firebase.storage().ref('images').child(file.name);
+    fileRef.put(file).then(() => {
+      console.log(fileRef)
+    })
+  }
+
   //to get the current user by setting an observer on the Auth object:
   componentDidMount = () => {
   firebase

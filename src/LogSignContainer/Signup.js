@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Signup from './style.css';
-const firebase = require("firebase");
+const firebase = require("firebase/app");
 
 class SignupComponent extends React.Component {
   constructor(props) {

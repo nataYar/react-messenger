@@ -5,13 +5,13 @@ class MessageInputComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            msgText: ''
+            msgText: '',
+            file: null
         }
         this.onType = this.onType.bind(this);
         this.sendMsg = this.sendMsg.bind(this);
         this.textValidFn = this.textValidFn.bind(this);
-        this.attachDoc = this.attachDoc.bind(this);
-        // this.userClickedInput = this.userClickedInput.bind(this);
+        this.addDocFn = this.addDocFn.bind(this);
     }
 
     render () {
@@ -22,11 +22,12 @@ class MessageInputComponent extends React.Component {
                         <textarea id='txtInput' placeholder="Write a message..." type="text" 
                         onKeyUp={e => this.onType(e)} 
                         onFocus={this.userClickedInput}>
-                        </textarea> 
+                        </textarea>
+                        <input type='file' className='attachBtn' 
+                        onChange={e => this.addDocFn(e)}/> 
                         <button className='messSendBtn' 
                         onClick={this.sendMsg}></button>
-                        <button className='attachBtn' 
-                        onClick={this.attachDoc}></button>
+                        
                         
                     </div>
                 </main>
@@ -38,14 +39,12 @@ class MessageInputComponent extends React.Component {
         }
     }
     // we set up message text to an input
-    onType = (e) => e.keyCode === 13? this.sendMsg() : this.setState({msgText: e.target.value});
-
-    // userClickedInput = () => console.log('User clicked input'); 
+    onType = (e) => e.keyCode === 13? this.sendMsg() : this.setState({msgText: e.target.value}); 
 
     textValidFn = (msg) => msg && msg.trim().length;
 
-    attachDoc = () => {
-        console.log('attach clicked');
+    addDocFn = (e) => {
+        this.props.addDocFn(e)
     }
 
     sendMsg = () => {
@@ -57,7 +56,6 @@ class MessageInputComponent extends React.Component {
             //clear the input area
             document.getElementById('txtInput').value = '';
         };
-
     };
     } 
 
