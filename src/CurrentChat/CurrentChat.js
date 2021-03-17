@@ -16,15 +16,15 @@ class CurrentChatComponent extends React.Component {
             return (
                 <main className='chatBoard'>
                     {
-                    
-                        this.props.chat.messages.map((mess, index) => {
-                            return(
-                            <div key={index} className={ this.props.user === mess.sender ? 
-                                'userMess' : 'friendMess'} id='font'>
-                                {mess.message}
-                            </div>
-                            )
-                        })
+                    this.props.chat.messages.map((mess, index) => {
+                        return(
+                        <div key={index} className={ this.props.user === mess.sender ? 
+                            'userMess' : 'friendMess'} id='font'>
+        {/* here we can try switch statement for mess.message and mess.img*/}
+                            {mess.message}
+                        </div>
+                        )
+                    })
                     }
                     {/* <img src={}/> */}
                     <div style={{ float:"left", clear: "both" }}

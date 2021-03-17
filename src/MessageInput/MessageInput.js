@@ -5,8 +5,7 @@ class MessageInputComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            msgText: '',
-            file: null
+            msgText: ''
         }
         this.onType = this.onType.bind(this);
         this.sendMsg = this.sendMsg.bind(this);

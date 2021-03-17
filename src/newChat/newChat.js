@@ -37,12 +37,11 @@ class NewChatComponent extends React.Component {
       const docKey = this.docKey();
       const mess = this.state.mess;
       const chatExists = await this.chatExists();
-      chatExists ? this.props.goToExistChat(docKey, mess) : this.props.createChat(docKey, mess);
+      chatExists ? this.props.goToExistingChat(docKey, mess) : this.props.createChat(docKey, mess);
     }
     
     docKey = () => {
       const docID = [this.props.email, this.state.friendsEmail].sort().join(':');
-      console.log(`doc id : ` + docID)
       return docID;
     }
 
@@ -53,8 +52,6 @@ class NewChatComponent extends React.Component {
         .collection('chats')
         .doc(docKey)
         .get();
-        console.log(chat)
-    
       return chat.exists;
     }
 
