@@ -1,13 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Dashboard from './Dashboard.css';
 import ChatListComponent from '../ChatList/ChatList';
 import CurrentChatComponent from '../CurrentChat/CurrentChat';
 import MessageInputComponent from '../MessageInput/MessageInput';
 import NewChatComponent from '../NewChat/NewChat';
-// import firebase from 'firebase/app';
 const firebase = require('firebase');
-// const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+
 const timestamp = () => {
   let today = new Date();
   let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'/'+today.getHours()+':'+today.getMinutes();
@@ -33,11 +31,13 @@ class DashboardComponent extends React.Component {
     this.chooseChat = this.chooseChat.bind(this);
     this.signOut = this.signOut.bind(this);
     this.addMsg = this.addMsg.bind(this);
-    this.addDoc = this.addDoc.bind(this);
+    this.uploadTask = this.uploadTask.bind(this);
     this.buildDocId = this.buildDocId.bind(this);
     this.goToExistingChat = this.goToExistingChat.bind(this);
     this.newChatFn = this.newChatFn.bind(this);
     this.messageWasRead = this.messageWasRead.bind(this); 
+    // this.getUrl = this.getUrl.bind(this); 
+    
   }
   
   render () {
@@ -75,9 +75,8 @@ class DashboardComponent extends React.Component {
               visibility={this.state.chatVisible}
               selected={this.state.selectedChat}
               addMsgFn={this.addMsg}
-              addDocFn={this.addDoc}>
+              addDocFn={this.uploadTask}>
               </MessageInputComponent>
-             
           </div>
         </div>
 
@@ -179,27 +178,42 @@ class DashboardComponent extends React.Component {
       })
   }
 
-  addDoc = async (e) => {
-    const file = e.target.files[0];
-    const fileRef = firebase.storage().ref('images').child(file.name);
-    fileRef.put(file); //add doc to cloud storage with images
-    const docUrl = await fileRef.getDownloadURL(); //get url
-    //func to upload image to database
+  uploadTask = (e) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
     const docId = this.buildDocId(friend);
-  
-    firebase
-      .firestore()
-      .collection('chats')
-      .doc(docId)
-      .update({
-        messages: firebase.firestore.FieldValue.arrayUnion({
-          url: docUrl,
-          sender: this.state.email,
-          timestamp: timestamp(),
-        }),
-        messageWasRead: false
+    
+    const file = e.target.files[0];
+    const fileRef = firebase.storage().ref('images').child(file.name);
+    fileRef.put(file)
+    .then(data => {
+      data.ref.getDownloadURL()
+      .then((docurl) => {
+        firebase //add URL to Database
+        .firestore()
+        .collection('chats')
+        .doc(docId)
+        .update({
+          messages: firebase.firestore.FieldValue.arrayUnion({
+            img: docurl,
+            sender: this.state.email,
+            timestamp: timestamp(),
+          }),
+          messageWasRead: false
+        })
       })
+      
+    });
+ 
+    
+
+    
+    
+    
+    // const url = fileRef.getDownloadURL().then((url) => {
+    //   return url})
+    
+    
+    
   }
 
   //to get the current user by setting an observer on the Auth object:

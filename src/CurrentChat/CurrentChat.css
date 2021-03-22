@@ -12,31 +12,38 @@
 } 
 
 .userMess {
-    flex: 1 1px;
+    /* flex: 1 1px; */
     align-self: flex-end;    
     position: relative;
     float: right;
-    max-width: 40%;    
+    max-width: 50%;
     flex-basis: min-content;
     background-color: rgb(255, 255, 255);
     padding: 0.5em 0.8em;
     margin: 0.5em;
     border-radius: 0.5em;
     font-size: 1.2rem;
-    /* position: relative;
-    float: right; */
-    /* clear: both; */
 }
+
 .friendMess {
     background-color: #F6D3D1;
-    padding: 0.5em 0.8em;
+    padding: 0.5em 0.5em;
     margin: 0.5em;
     border-radius: 0.5em;
     float: left;
     flex: 1 1px;
     align-self: flex-start;    
-    max-width: 40%;
+    max-width: 50%;
     font-size: 1.2rem;
 
+}
+
+.picContainer {
+ /* max-height: 20em; */
+}
+.chatImg {
+    max-height: 20em;
+    max-width: 20em;
+    /* width: 30%; */
 }
 

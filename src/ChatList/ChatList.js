@@ -30,7 +30,11 @@ class ChatListComponent extends React.Component {
                                         
                                         <div className='chatListItemText'>
                                             <p id='friendsEmail'>{chat.users.filter(user => user !== this.props.userEmail)[0]}</p>
-                                            <p>"{chat.messages[chat.messages.length - 1].message.slice(0, 14)}..."</p>
+                                            {/* {
+                                                if
+                                            } */}
+                                            {/* <p>"{chat.messages[chat.messages.length - 1].message.slice(0, 14)}..."</p> */}
+                                             {/* if chat.messages[chat.messages.length - 1].[0] === message.slice(0, 14)}..." */}
                                         </div>
                                     </div>
                                 </div>

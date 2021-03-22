@@ -20,13 +20,12 @@ class CurrentChatComponent extends React.Component {
                         return(
                         <div key={index} className={ this.props.user === mess.sender ? 
                             'userMess' : 'friendMess'} id='font'>
-        {/* here we can try switch statement for mess.message and mess.img*/}
-                            {mess.message}
+                            {mess.message ? mess.message : <div className='picContainer'><img className='chatImg' src={`${mess.img}`}/></div>}
+                            
                         </div>
                         )
                     })
                     }
-                    {/* <img src={}/> */}
                     <div style={{ float:"left", clear: "both" }}
                         ref={(el) => { this.messagesEnd = el }}>
                     </div>
@@ -34,7 +33,19 @@ class CurrentChatComponent extends React.Component {
             )
         }
     }
-
+//TO DOWNLOAD
+//get URL
+// fileRef.getDownloadURL() 
+// .then((url) => {
+    
+  
+//     // Or inserted into an <img> element
+//     const img = document.getElementById('addImg');
+//     img.setAttribute('src', url);
+//   })
+//   .catch((error) => {
+//     // Handle any errors
+//   });
 
     scrollToBottom = () => {
         this.messagesEnd && this.messagesEnd.scrollIntoView({behavior: 'smooth'});
