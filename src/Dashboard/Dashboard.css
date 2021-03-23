@@ -24,22 +24,22 @@
 .signOutButton {
     grid-area: 1 / 1 / 2 / 2;
     border-color: transparent;
-    text-align: center;
     width: 100%;
     height: 100%; 
-    cursor: pointer;
-    font-weight: 400;
-    font-size: 0.9em;
-    border-radius: 7px;
+    background-color:rgba(255, 255, 255, 0.6); 
+    border-radius: 0.5rem;
+    background-size: 2rem 2rem;
+    background-image: url('../icons/home_32.png');
+    background-position: center;
+    background-repeat: no-repeat;
     border: none;
-    outline: none;
-    color: rgb(38, 38, 38);
-    background-color:rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition-duration: 0.3s;
 }
 
 .signOutButton:hover,
 .newChatButton:hover {
-    background-color: rgb(255, 255, 255, 0.8);
+    background-color: rgb(249, 191, 187);
 }
 
 .newChatButton {

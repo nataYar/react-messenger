@@ -45,8 +45,7 @@ class DashboardComponent extends React.Component {
         <div className='dashboard-cont'>
           <div className='dashboard'>
             <button className='signOutButton'
-              onClick={this.signOut}> Sign Out
-              </button>
+              onClick={this.signOut}></button>
 
             <button className='newChatButton'
               onClick={this.showNewChatForm}>
@@ -195,7 +194,7 @@ class DashboardComponent extends React.Component {
         .doc(docId)
         .update({
           messages: firebase.firestore.FieldValue.arrayUnion({
-            doc: docurl,
+            url: docurl,
             sender: this.state.email,
             timestamp: timestamp(),
           }),

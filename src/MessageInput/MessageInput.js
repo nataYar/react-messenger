@@ -20,11 +20,13 @@ class MessageInputComponent extends React.Component {
                     <div className='txtInputContainerFlex'>
                         <textarea id='txtInput' placeholder="Write a message..." type="text" 
                         onKeyUp={e => this.onType(e)} 
-                        onFocus={this.userClickedInput}>
+                        /* onFocus={this.userClickedInput}*/>
                         </textarea>
-                        <input type='file' className='attachBtn' 
+                        <input type='file' className='icon attDoc' 
                         onChange={e => this.addDocFn(e)}/> 
-                        <button className='messSendBtn' 
+                        <input type='file' className='icon attImg' 
+                        onChange={e => this.addDocFn(e)}/> 
+                        <button className=' icon messSendBtn' 
                         onClick={this.sendMsg}></button>
                         
                     </div>
