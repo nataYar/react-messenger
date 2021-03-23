@@ -20,8 +20,8 @@ class CurrentChatComponent extends React.Component {
                         return(
                         <div key={index} className={ this.props.user === mess.sender ? 
                             'userMess' : 'friendMess'} id='font'>
-                            {mess.message ? mess.message : <div className='picContainer'><img className='chatImg' src={`${mess.img}`}/></div>}
-                            
+                            {mess.message ? mess.message : <div className='picContainer'>
+                                <img className='chatImg' src={`${mess.doc}`}/> </div>} 
                         </div>
                         )
                     })

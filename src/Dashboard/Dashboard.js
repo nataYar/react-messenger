@@ -181,20 +181,21 @@ class DashboardComponent extends React.Component {
   uploadTask = (e) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
     const docId = this.buildDocId(friend);
-    
+
     const file = e.target.files[0];
     const fileRef = firebase.storage().ref('images').child(file.name);
     fileRef.put(file)
     .then(data => {
       data.ref.getDownloadURL()
       .then((docurl) => {
+        console.log('docurl: ' + docurl)
         firebase //add URL to Database
         .firestore()
         .collection('chats')
         .doc(docId)
         .update({
           messages: firebase.firestore.FieldValue.arrayUnion({
-            img: docurl,
+            doc: docurl,
             sender: this.state.email,
             timestamp: timestamp(),
           }),

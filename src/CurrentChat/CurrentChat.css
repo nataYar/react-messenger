@@ -39,11 +39,10 @@
 }
 
 .picContainer {
- /* max-height: 20em; */
-}
+ /* max-height: 20em;  */
+} 
 .chatImg {
     max-height: 20em;
     max-width: 20em;
-    /* width: 30%; */
-}
+} 
 
