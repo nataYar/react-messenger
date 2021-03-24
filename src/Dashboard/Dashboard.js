@@ -31,13 +31,11 @@ class DashboardComponent extends React.Component {
     this.chooseChat = this.chooseChat.bind(this);
     this.signOut = this.signOut.bind(this);
     this.addMsg = this.addMsg.bind(this);
-    this.uploadTask = this.uploadTask.bind(this);
+    this.uploadDoc = this.uploadDoc.bind(this);
     this.buildDocId = this.buildDocId.bind(this);
     this.goToExistingChat = this.goToExistingChat.bind(this);
     this.newChatFn = this.newChatFn.bind(this);
     this.messageWasRead = this.messageWasRead.bind(this); 
-    // this.getUrl = this.getUrl.bind(this); 
-    
   }
   
   render () {
@@ -49,8 +47,7 @@ class DashboardComponent extends React.Component {
 
             <button className='newChatButton'
               onClick={this.showNewChatForm}>
-              New Chat
-              </button>   
+              New Chat</button>   
               
             { this.state.newChatFormVisible ? <NewChatComponent email={this.state.email}
             goToExistingChat={this.goToExistingChat}
@@ -73,12 +70,11 @@ class DashboardComponent extends React.Component {
             <MessageInputComponent
               visibility={this.state.chatVisible}
               selected={this.state.selectedChat}
-              addMsgFn={this.addMsg}
-              addDocFn={this.uploadTask}>
+              // addMsgFn={this.addMsg}
+              addDocFn={this.uploadDoc}>
               </MessageInputComponent>
           </div>
         </div>
-
     )
   }
 
@@ -90,31 +86,10 @@ class DashboardComponent extends React.Component {
       selectedChat: null
     })
   }
-   
-   //update the db so that it was set to true
-   messageWasRead = () => {
-    const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
-    const docId = this.buildDocId(friend);
-    //if the sender is NOT a current user
-    if (this.state.chats[this.state.selectedChat].messages[this.state.chats[this.state.selectedChat].messages.length - 1].sender !== 
-      this.state.email) {
-      console.log('messageWasRead should be true');
-      firebase
-      .firestore()
-      .collection('chats')
-      .doc(docId)
-      .update({ messageWasRead: true })
-    } else {
-      console.log('Clicked message where the user was the sender');
-    } 
-  }
- 
-  
-  newChatFn = (docKey, msg) => {
-    // console.log(docKey, msg);
+
+  newChatFn = async (docKey, msg) => {
     const users = docKey.split(':');
-    // console.log('newChatFn users: ' + users)
-    firebase
+    await firebase
     .firestore()
       .collection('chats')
       .doc(docKey)
@@ -127,11 +102,7 @@ class DashboardComponent extends React.Component {
         users: users,
         messageWasRead: false
       });
-    this.setState({
-      newChatFormVisible: false
-    });
     const chat = this.state.chats.find(chat => users.every(usr => chat.users.includes(usr)));
-    console.log(chat);
     const index = this.state.chats.indexOf(chat);
     this.chooseChat(index);
   }
@@ -142,7 +113,22 @@ class DashboardComponent extends React.Component {
       chatVisible: true,
       newChatFormVisible: false
     });
-    this.messageWasRead();
+  }
+
+  messageWasRead = () => {
+    //if sender is NOT a current user
+    if (this.state.chats[this.state.selectedChat].messages[this.state.chats[this.state.selectedChat].messages.length - 1].sender !== this.state.email) {
+      const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
+      const docId = this.buildDocId(friend);
+      console.log('messageWasRead should be true');
+      firebase
+      .firestore()
+      .collection('chats')
+      .doc(docId)
+      .update({ messageWasRead: true })
+    } else {
+      console.log('Clicked message where the user was the sender');
+    } 
   }
 
   goToExistingChat = async (docKey, msg) => {  
@@ -177,43 +163,59 @@ class DashboardComponent extends React.Component {
       })
   }
 
-  uploadTask = (e) => {
+  uploadDoc = (inputType, e) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
     const docId = this.buildDocId(friend);
 
     const file = e.target.files[0];
     const fileRef = firebase.storage().ref('images').child(file.name);
-    fileRef.put(file)
-    .then(data => {
-      data.ref.getDownloadURL()
-      .then((docurl) => {
-        console.log('docurl: ' + docurl)
-        firebase //add URL to Database
-        .firestore()
-        .collection('chats')
-        .doc(docId)
-        .update({
-          messages: firebase.firestore.FieldValue.arrayUnion({
-            url: docurl,
-            sender: this.state.email,
-            timestamp: timestamp(),
-          }),
-          messageWasRead: false
-        })
-      })
-      
-    });
- 
-    
-
-    
-    
-    
-    // const url = fileRef.getDownloadURL().then((url) => {
-    //   return url})
-    
-    
-    
+    switch (inputType) {
+      case 'doc':
+        fileRef.put(file)
+        .then(data => {
+          data.ref.getDownloadURL()
+          .then((url) => {
+            console.log('docurl: ' + url)
+            firebase //add URL to Database
+            .firestore()
+            .collection('chats')
+            .doc(docId)
+            .update({
+              messages: firebase.firestore.FieldValue.arrayUnion({
+                docUrl: url,
+                docName: file.name,
+                sender: this.state.email,
+                timestamp: timestamp(),
+              }),
+              messageWasRead: false
+            })
+          })
+        });
+        break;
+      case 'img':
+        fileRef.put(file)
+        .then(data => {
+          data.ref.getDownloadURL()
+          .then((url) => {
+            console.log('docurl: ' + url)
+            firebase //add URL to Database
+            .firestore()
+            .collection('chats')
+            .doc(docId)
+            .update({
+              messages: firebase.firestore.FieldValue.arrayUnion({
+                imgUrl: url,
+                sender: this.state.email,
+                timestamp: timestamp(),
+              }),
+              messageWasRead: false
+            })
+          })
+        });
+        break;
+        default:
+          break;
+    }
   }
 
   //to get the current user by setting an observer on the Auth object:
@@ -225,18 +227,18 @@ class DashboardComponent extends React.Component {
         this.props.history.push('/signup')
       } else {
         //we checked if the user exists, then we should grab his info from db
-        await firebase
-          .firestore()
-          .collection('chats')
-          .where('users', 'array-contains', currUser.email)
-          //perform realtime db changes
-          .onSnapshot(async resp =>{
-            const chats = resp.docs.map(doc => doc.data());
-            await this.setState({
-              email: currUser.email,
-              chats: chats,
-            })
+        firebase
+        .firestore()
+        .collection('chats')
+        .where('users', 'array-contains', currUser.email)
+        //perform realtime db changes
+        .onSnapshot(async resp =>{
+          const chats = resp.docs.map(doc => doc.data());
+          await this.setState({
+            email: currUser.email,
+            chats: chats,
           })
+        })
       }
   });
   

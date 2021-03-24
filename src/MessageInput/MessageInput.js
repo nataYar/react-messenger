@@ -10,6 +10,7 @@ class MessageInputComponent extends React.Component {
         this.onType = this.onType.bind(this);
         this.sendMsg = this.sendMsg.bind(this);
         this.textValidFn = this.textValidFn.bind(this);
+        // this.addImgFn = this.addImgFn.bind(this);
         this.addDocFn = this.addDocFn.bind(this);
     }
 
@@ -22,10 +23,13 @@ class MessageInputComponent extends React.Component {
                         onKeyUp={e => this.onType(e)} 
                         /* onFocus={this.userClickedInput}*/>
                         </textarea>
+
                         <input type='file' className='icon attDoc' 
-                        onChange={e => this.addDocFn(e)}/> 
+                        onChange={e => this.addDocFn('doc', e)}/> 
+
                         <input type='file' className='icon attImg' 
-                        onChange={e => this.addDocFn(e)}/> 
+                        onChange={e => this.addDocFn('img', e)}/> 
+                        
                         <button className=' icon messSendBtn' 
                         onClick={this.sendMsg}></button>
                         
@@ -43,8 +47,8 @@ class MessageInputComponent extends React.Component {
 
     textValidFn = (msg) => msg && msg.trim().length;
 
-    addDocFn = (e) => {
-        this.props.addDocFn(e)
+    addDocFn = (inputType, e) => {
+        this.props.addDocFn(inputType, e)
     }
 
     sendMsg = () => {

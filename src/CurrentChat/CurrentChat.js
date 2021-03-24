@@ -9,7 +9,6 @@ class CurrentChatComponent extends React.Component {
       };
    
     render () {
-        
         if(this.props.chat === undefined) {
             return( <div></div>)
         } else {
@@ -20,17 +19,13 @@ class CurrentChatComponent extends React.Component {
                         return(
                         <div key={index} className={ this.props.user === mess.sender ? 
                             'userMess' : 'friendMess'} id='font'>
-                            {mess.message ? mess.message : //doctype ? 
-                            <iframe id='my_iframe' name='my_iframe' src={`${mess.doc}`}></iframe>}
-                            {/* <div className='picContainer'>
-                                <img className='chatImg' src={`${mess.doc}`}/> </div>} */}
+                            {mess.message ? mess.message : mess.imgUrl ? 
+                            <img className='chatImg' src={`${mess.imgUrl}`}/> : 
+                            <p><a href={`${mess.docUrl}`} target='_blank'>{mess.docName}</a></p>
+                            }
                         </div>
                         )})
                     }
-
-
-
-
                     <div style={{ float:"left", clear: "both" }}
                         ref={(el) => { this.messagesEnd = el }}>
                     </div>
