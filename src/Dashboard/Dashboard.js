@@ -4,7 +4,11 @@ import ChatListComponent from '../ChatList/ChatList';
 import CurrentChatComponent from '../CurrentChat/CurrentChat';
 import MessageInputComponent from '../MessageInput/MessageInput';
 import NewChatComponent from '../NewChat/NewChat';
+
+
+
 const firebase = require('firebase');
+
 
 const timestamp = () => {
   let today = new Date();
@@ -70,8 +74,9 @@ class DashboardComponent extends React.Component {
             <MessageInputComponent
               visibility={this.state.chatVisible}
               selected={this.state.selectedChat}
-              // addMsgFn={this.addMsg}
+              addMsgFn={this.addMsg}
               addDocFn={this.uploadDoc}>
+              
               </MessageInputComponent>
           </div>
         </div>

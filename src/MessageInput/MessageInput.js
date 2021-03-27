@@ -1,5 +1,8 @@
 import React from "react";
 import MessageInput from './MessageInput.css';
+import 'tinymce/tinymce';
+
+import { Editor } from '@tinymce/tinymce-react';
 
 class MessageInputComponent extends React.Component {
     constructor(props) {
@@ -10,19 +13,32 @@ class MessageInputComponent extends React.Component {
         this.onType = this.onType.bind(this);
         this.sendMsg = this.sendMsg.bind(this);
         this.textValidFn = this.textValidFn.bind(this);
-        // this.addImgFn = this.addImgFn.bind(this);
         this.addDocFn = this.addDocFn.bind(this);
     }
-
+   
     render () {
         if (this.props.visibility && this.props.selected != null ) {
             return (
                 <main className='txtInputContainer'>
+                    
                     <div className='txtInputContainerFlex'>
-                        <textarea id='txtInput' placeholder="Write a message..." type="text" 
-                        onKeyUp={e => this.onType(e)} 
-                        /* onFocus={this.userClickedInput}*/>
-                        </textarea>
+                        
+                        <textarea id='txtInput' placeholder="Write a message..." type="text"></textarea>
+                        <Editor  
+                        apiKey="rlih7as5ochef82j5pprn4nrsqdu9egw9z3niba0uzuafqp0"
+                        onKeyUp={e => this.onType(e)}
+                        init={{
+                            height: 200,
+                            width: 200,
+                            menubar: false,
+                            plugins: "emoticons",
+                            toolbar: "emoticons",
+                            toolbar_location: "left",
+                            statusbar: false,
+                            selector: '#txtInput',
+                            
+                        }}/>
+ 
 
                         <input type='file' className='icon attDoc' 
                         onChange={e => this.addDocFn('doc', e)}/> 
@@ -42,6 +58,11 @@ class MessageInputComponent extends React.Component {
             )
         }
     }
+
+    // tinymce.init({
+        
+    // })
+
     // we set up message text to an input
     onType = (e) => e.keyCode === 13? this.sendMsg() : this.setState({msgText: e.target.value}); 
 

@@ -33,19 +33,6 @@ class CurrentChatComponent extends React.Component {
             )
         }
     }
-//TO DOWNLOAD
-//get URL
-// fileRef.getDownloadURL() 
-// .then((url) => {
-    
-  
-//     // Or inserted into an <img> element
-//     const img = document.getElementById('addImg');
-//     img.setAttribute('src', url);
-//   })
-//   .catch((error) => {
-//     // Handle any errors
-//   });
 
     scrollToBottom = () => {
         this.messagesEnd && this.messagesEnd.scrollIntoView({behavior: 'smooth'});
