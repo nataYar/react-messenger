@@ -87,11 +87,12 @@ class MessageInputComponent extends React.Component {
         //fromCodePointFrom - decimal code point to string; parseInt  - grom hexadecimal to decimal code point
         let emog = String.fromCodePoint(parseInt (emojiPic, 16));
         console.log(emog);
-        this.setState({
-            msgText: this.state.msgText + `${emog}`
-        })
-        document.getElementById('txtInput').value = this.state.msgText;
-        console.log(this.state.msgText);
+        let text = this.state.msgText + `${emog}`
+        // this.setState({
+        //     msgText: this.state.msgText + `${emog}`
+        // })
+        document.getElementById('txtInput').value = text
+        console.log(text);
     };
 
     // we set up message text to an input

@@ -29,7 +29,8 @@ class DashboardComponent extends React.Component {
       email: null,
       selectedChat: null,
       chatVisible: false,
-      newChatFormVisible: false
+      newChatFormVisible: false,
+
     }
     this.showNewChatForm = this.showNewChatForm.bind(this);
     this.chooseChat = this.chooseChat.bind(this);
@@ -116,8 +117,9 @@ class DashboardComponent extends React.Component {
     await this.setState({
       selectedChat: index,
       chatVisible: true,
-      newChatFormVisible: false
+      newChatFormVisible: false,
     });
+    this.messageWasRead();
   }
 
   messageWasRead = () => {
@@ -166,6 +168,7 @@ class DashboardComponent extends React.Component {
         }),
         messageWasRead: false
       })
+
   }
 
   uploadDoc = (inputType, e) => {
@@ -194,8 +197,10 @@ class DashboardComponent extends React.Component {
               }),
               messageWasRead: false
             })
+            
           })
         });
+        
         break;
       case 'img':
         fileRef.put(file)
