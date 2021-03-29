@@ -1,6 +1,8 @@
 import React from "react";
 import MessageInput from './MessageInput.css';
 import EmojiPicker from 'emoji-picker-react';
+import 'emoji-picker-element';
+import { isAbsolute, relative } from "path";
 
 // import 'tinymce/tinymce';
 // import { Editor } from '@tinymce/tinymce-react';
@@ -20,11 +22,8 @@ class MessageInputComponent extends React.Component {
         this.addEmoji = this.addEmoji.bind(this);
         this.toggleEmojiPicker = this.toggleEmojiPicker.bind(this);
     }
-    
+    //height: 300
     render () {
-        // const style = {
-        //     height: 
-        // }
 
         if (this.props.visibility && this.props.selected != null ) {
             return (
@@ -35,9 +34,12 @@ class MessageInputComponent extends React.Component {
                         onClick={this.toggleEmojiPicker}>
                         
                         </button>
-                        {this.state.showEmojiPicker ? <EmojiPicker id='emojiPicker' onEmojiClick={ this.addEmoji }
+                        {this.state.showEmojiPicker ? <EmojiPicker pickerStyle={{ position:'absolute', width:'20rem', height:'20rem', bottom:'6rem', boxShadow: 'none'}} 
+                        id='emojiPicker' onEmojiClick={ this.addEmoji }
                         groupVisibility={{flags: false,symbols: false, objects: false }}
                          /> : null}
+                        {/* {this.state.showEmojiPicker ? <emoji-picker onEmojiClick={ this.addEmoji }></emoji-picker>
+                         : null} */}
                         
                         <textarea id='txtInput' placeholder="Write a message..." type="text"
                         onKeyUp={e => this.onType(e)} ></textarea>

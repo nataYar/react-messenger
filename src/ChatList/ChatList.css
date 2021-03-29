@@ -3,6 +3,7 @@
 
 .listOfChats {
     grid-area: 2 / 1 / 4 / 3; 
+    overflow-y: scroll; 
     /* background-color: rgb(255, 255, 255, 0.2); */
     margin-top: 0;
     border-top-left-radius: 7px;
@@ -12,7 +13,6 @@
     display: flex;
     flex-flow: column wrap; 
     margin: 0.5rem 0; 
-    /* vertical-align: baseline; */
     height: 4.5rem;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.2);

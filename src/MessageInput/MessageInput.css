@@ -12,17 +12,23 @@
   height: 100%;
 }
 
-/* #emojiPicker {
+EmojiPicker {
+  background-color: blue;
+  width: 4000px;
+  height: 3000px;
+}
+
+#emojiPicker {
   grid-area: 2 / 3 / 3 / 4 !important;
   
   position: absolute;
   
   width: 4rem;
   height: 4rem;
-} */
+}
 
 #txtInput {
-  width: 40%;
+  width: 70%;
   height: 80%;
   border: none;
   outline: none;
