@@ -12,8 +12,17 @@
   height: 100%;
 }
 
+/* #emojiPicker {
+  grid-area: 2 / 3 / 3 / 4 !important;
+  
+  position: absolute;
+  
+  width: 4rem;
+  height: 4rem;
+} */
+
 #txtInput {
-  width: 86%;
+  width: 40%;
   height: 80%;
   border: none;
   outline: none;
@@ -30,12 +39,20 @@
   width: 6%;
   border-radius: 0.5rem;
   background-size: 2rem 2rem;
-  background-color: none;
+  background-color: rgb(255, 255, 255, 0.2);
   background-position: center;
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
   transition-duration: 0.2s;
+}
+.toggle-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../icons/emoji_48.png');
+  /* background-color:rgba(216, 216, 216, 0.6); */
+  /* opacity: 100%; */
 }
 .attImg {
   background-image: url('../icons/imageIcon.png');
@@ -45,8 +62,6 @@
 }
 .messSendBtn {
   background-image: url('../icons/sendIcon.png');
-  opacity: 100%;
-  background-color: rgb(0, 0, 0, 0);
 }
 
 .icon:hover {

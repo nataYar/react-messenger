@@ -1,15 +1,6 @@
 import React from "react";
 import MessageInput from './MessageInput.css';
-import Picker from 'emoji-picker-react';
 import EmojiPicker from 'emoji-picker-react';
-
-import JSEMOJI from 'emoji-js';
-import { EMSGSIZE, ENGINE_METHOD_DIGESTS } from "constants";
-import { createEmitAndSemanticDiagnosticsBuilderProgram } from "typescript";
-// you can import it with a script tag instead
-
-// new instance
-const jsemoji = new JSEMOJI();
 
 // import 'tinymce/tinymce';
 // import { Editor } from '@tinymce/tinymce-react';
@@ -20,28 +11,37 @@ class MessageInputComponent extends React.Component {
         this.state = {
             msgText: '',
             chosenEmoji: '',
-            showEmojis: false
+            showEmojiPicker: false,
         }
         this.onType = this.onType.bind(this);
         this.sendMsg = this.sendMsg.bind(this);
         this.textValidFn = this.textValidFn.bind(this);
         this.addDocFn = this.addDocFn.bind(this);
         this.addEmoji = this.addEmoji.bind(this);
-        
+        this.toggleEmojiPicker = this.toggleEmojiPicker.bind(this);
     }
-
+    
     render () {
+        // const style = {
+        //     height: 
+        // }
+
         if (this.props.visibility && this.props.selected != null ) {
             return (
                 <main className='txtInputContainer'>
                     
                     <div className='txtInputContainerFlex'>
+                        <button type='button' className='icon toggle-emoji'
+                        onClick={this.toggleEmojiPicker}>
+                        
+                        </button>
+                        {this.state.showEmojiPicker ? <EmojiPicker id='emojiPicker' onEmojiClick={ this.addEmoji }
+                        groupVisibility={{flags: false,symbols: false, objects: false }}
+                         /> : null}
                         
                         <textarea id='txtInput' placeholder="Write a message..." type="text"
-                        onKeyUp={e => this.onType(e)} >
-                        {/* onChange={e => this.addEmoji(e)} */}
-                        </textarea>
-                        <EmojiPicker onEmojiClick={this.addEmoji}/>
+                        onKeyUp={e => this.onType(e)} ></textarea>
+                        
                         {/* <Picker onEmojiClick={this.addEmoji} /> */}
 
                         {/* <Editor  
@@ -56,10 +56,7 @@ class MessageInputComponent extends React.Component {
                             toolbar_location: "left",
                             statusbar: false,
                             selector: '#txtInput',
-                            
                         }}/> */}
- 
-
                         <input type='file' className='icon attDoc' 
                         onChange={e => this.addDocFn('doc', e)}/> 
 
@@ -78,7 +75,12 @@ class MessageInputComponent extends React.Component {
             )
         }
     }
-
+    
+    toggleEmojiPicker = () => {
+        this.setState({
+          showEmojiPicker: !this.state.showEmojiPicker,
+        });
+      }
     
     addEmoji = (code, emoji) => {
         console.log(emoji.unified);
@@ -88,9 +90,10 @@ class MessageInputComponent extends React.Component {
         let emog = String.fromCodePoint(parseInt (emojiPic, 16));
         console.log(emog);
         let text = this.state.msgText + `${emog}`
-        // this.setState({
-        //     msgText: this.state.msgText + `${emog}`
-        // })
+        this.setState({
+            msgText: text,
+            showEmojiPicker: false,
+        })
         document.getElementById('txtInput').value = text
         console.log(text);
     };
@@ -112,7 +115,8 @@ class MessageInputComponent extends React.Component {
             //clear the input area
             document.getElementById('txtInput').value = '';
             this.setState({
-                msgText: ''
+                msgText: '',
+                
             })
         };
     };
