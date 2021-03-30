@@ -2,7 +2,6 @@ import React from "react";
 import MessageInput from './MessageInput.css';
 import EmojiPicker from 'emoji-picker-react';
 import 'emoji-picker-element';
-import { isAbsolute, relative } from "path";
 
 // import 'tinymce/tinymce';
 // import { Editor } from '@tinymce/tinymce-react';
@@ -41,7 +40,7 @@ class MessageInputComponent extends React.Component {
                         {/* {this.state.showEmojiPicker ? <emoji-picker onEmojiClick={ this.addEmoji }></emoji-picker>
                          : null} */}
                         
-                        <textarea autofocus='true' id='txtInput' placeholder="Write a message..." type="text"
+                        <textarea autoFocus={true} id='txtInput' placeholder="Write a message..." type="text"
                         onKeyUp={e => this.onType(e)} ></textarea>
                         
                         {/* <Picker onEmojiClick={this.addEmoji} /> */}
@@ -60,10 +59,10 @@ class MessageInputComponent extends React.Component {
                             selector: '#txtInput',
                         }}/> */}
                         <input type='file' className='icon attDoc' 
-                        onChange={e => this.addDocFn('doc', e)}/> 
+                        onChange={e => this.addDocFn(e)}/> 
 
-                        <input type='file' className='icon attImg' 
-                        onChange={e => this.addDocFn('img', e)}/> 
+                        {/* <input type='file' className='icon attImg' 
+                        onChange={e => this.addDocFn(e)}/>  */}
                         
                         <button className=' icon messSendBtn' 
                         onClick={this.sendMsg}></button>
@@ -106,8 +105,8 @@ class MessageInputComponent extends React.Component {
 
     textValidFn = (msg) => msg && msg.trim().length;
 
-    addDocFn = (inputType, e) => {
-        this.props.addDocFn(inputType, e)
+    addDocFn = (e) => {
+        this.props.addDocFn(e)
     }
 
     sendMsg = () => {
@@ -118,8 +117,7 @@ class MessageInputComponent extends React.Component {
             //clear the input area
             document.getElementById('txtInput').value = '';
             this.setState({
-                msgText: '',
-                
+                msgText: ''
             })
         };
     };

@@ -107,7 +107,10 @@ class DashboardComponent extends React.Component {
         }),
         users: users,
         messageWasRead: false
-      });
+      })
+      .catch(error => {
+        console.error(error.message);
+      });;
     const chat = this.state.chats.find(chat => users.every(usr => chat.users.includes(usr)));
     const index = this.state.chats.indexOf(chat);
     this.chooseChat(index);
@@ -118,7 +121,10 @@ class DashboardComponent extends React.Component {
       selectedChat: index,
       chatVisible: true,
       newChatFormVisible: false,
-    });
+    })
+    .catch(error => {
+      console.error(error.message);
+    });;
     this.messageWasRead();
   }
 
@@ -145,7 +151,10 @@ class DashboardComponent extends React.Component {
     const chat = this.state.chats.find(chat => users.every(usr => chat.users.includes(usr)));
     // find index of this chat
     const index = this.state.chats.indexOf(chat);
-    await this.chooseChat(index);
+    await this.chooseChat(index)
+    .catch(error => {
+      console.error(error.message);
+    });;
     this.addMsg(msg);
   }
 
@@ -171,15 +180,41 @@ class DashboardComponent extends React.Component {
 
   }
 
-  uploadDoc = (inputType, e) => {
+  uploadDoc = (e) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
     const docId = this.buildDocId(friend);
 
     const file = e.target.files[0];
+    console.log(file);
+    console.log(file.type);
     const fileRef = firebase.storage().ref('images').child(file.name);
-    switch (inputType) {
-      case 'doc':
-        fileRef.put(file)
+
+    if (file.type.includes('image')) {
+      fileRef.put(file)
+        .then(data => {
+          data.ref.getDownloadURL()
+          .then((url) => {
+            console.log('docurl: ' + url)
+            firebase //add URL to Database
+            .firestore()
+            .collection('chats')
+            .doc(docId)
+            .update({
+              messages: firebase.firestore.FieldValue.arrayUnion({
+                imgUrl: url,
+                docName: file.name,
+                sender: this.state.email,
+                timestamp: timestamp(),
+              }),
+              messageWasRead: false
+            })
+            .catch(error => {
+              console.error(error.message);
+            })
+          })
+        });
+    } else {
+      fileRef.put(file)
         .then(data => {
           data.ref.getDownloadURL()
           .then((url) => {
@@ -197,34 +232,11 @@ class DashboardComponent extends React.Component {
               }),
               messageWasRead: false
             })
-            
+            .catch(error => {
+              console.error(error.message);
+            });
           })
-        });
-        
-        break;
-      case 'img':
-        fileRef.put(file)
-        .then(data => {
-          data.ref.getDownloadURL()
-          .then((url) => {
-            console.log('docurl: ' + url)
-            firebase //add URL to Database
-            .firestore()
-            .collection('chats')
-            .doc(docId)
-            .update({
-              messages: firebase.firestore.FieldValue.arrayUnion({
-                imgUrl: url,
-                sender: this.state.email,
-                timestamp: timestamp(),
-              }),
-              messageWasRead: false
-            })
-          })
-        });
-        break;
-        default:
-          break;
+        })
     }
   }
 
@@ -249,10 +261,11 @@ class DashboardComponent extends React.Component {
             chats: chats,
           })
         })
+        .catch(error => {
+          console.error(error.message);
+        });
       }
-  });
-  
-  
+  })
 }}
 
 

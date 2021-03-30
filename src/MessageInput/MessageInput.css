@@ -29,6 +29,22 @@ EmojiPicker {
   font-size: 1rem;
 }
 
+#txtInpit::-webkit-input-placeholder {
+  font-family: 'Abel', sans-serif;
+}
+
+#txtInpit:-ms-input-placeholder {
+  font-family: 'Abel', sans-serif;
+}
+
+#txtInpit:-moz-placeholder {
+  font-family: 'Abel', sans-serif;
+}
+
+#txtInpit::-moz-placeholder {
+  font-family: 'Abel', sans-serif;
+}
+
 .icon::-webkit-file-upload-button {
   visibility: hidden;
 }

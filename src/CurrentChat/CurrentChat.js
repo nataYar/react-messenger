@@ -6,6 +6,8 @@ class CurrentChatComponent extends React.Component {
     constructor(props) {
         super(props);
         this.scrollToBottom = this.scrollToBottom.bind(this);
+        this.displayImg = this.displayImg.bind(this);
+        
       };
    
     render () {
@@ -20,7 +22,8 @@ class CurrentChatComponent extends React.Component {
                         <div key={index} className={ this.props.user === mess.sender ? 
                             'userMess' : 'friendMess'} id='font'>
                             {mess.message ? mess.message : mess.imgUrl ? 
-                            <img className='chatImg' src={`${mess.imgUrl}`}/> : 
+                            <a onClick={this.displayImg} target='_blank' href={`${mess.imgUrl}`} ><img  className='chatImg' src={`${mess.imgUrl}`} 
+                            /></a>: 
                             <p><a href={`${mess.docUrl}`} target='_blank'>{mess.docName}</a></p>
                             }
                         </div>
@@ -32,6 +35,10 @@ class CurrentChatComponent extends React.Component {
                 </main>
             )
         }
+    }
+
+    displayImg = () => {
+        console.log('hi from display img')
     }
 
     scrollToBottom = () => {
