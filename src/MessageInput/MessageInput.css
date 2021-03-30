@@ -1,7 +1,7 @@
 .txtInputContainer {
   grid-area: 3 / 3 / 4 / 4;
   /* background-color: rgba(221, 53, 53, 0.712); */
-  background-color: rgb(255, 255, 255, 0.2);
+  background-color: rgb(255, 255, 255, 0.4);
   border-radius: 7px;
   border: none;
   outline: none;
@@ -18,17 +18,8 @@ EmojiPicker {
   height: 3000px;
 }
 
-#emojiPicker {
-  grid-area: 2 / 3 / 3 / 4 !important;
-  
-  position: absolute;
-  
-  width: 4rem;
-  height: 4rem;
-}
-
 #txtInput {
-  width: 70%;
+  width: 80%;
   height: 80%;
   border: none;
   outline: none;
@@ -45,7 +36,7 @@ EmojiPicker {
   width: 6%;
   border-radius: 0.5rem;
   background-size: 2rem 2rem;
-  background-color: rgb(255, 255, 255, 0.2);
+  background-color: rgb(255, 255, 255, 0.7);
   background-position: center;
   background-repeat: no-repeat;
   border: none;
@@ -71,5 +62,5 @@ EmojiPicker {
 }
 
 .icon:hover {
- background-color: rgb(249, 191, 187);
+ background-color: rgb(249, 178, 173);
 }

@@ -45,7 +45,7 @@ class DashboardComponent extends React.Component {
   
   render () {
     return (
-        <div className='dashboard-cont'>
+        <div className='dashboard-cont gradient'>
           <div className='dashboard'>
             <button className='signOutButton'
               onClick={this.signOut}></button>

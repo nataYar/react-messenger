@@ -41,7 +41,7 @@ class MessageInputComponent extends React.Component {
                         {/* {this.state.showEmojiPicker ? <emoji-picker onEmojiClick={ this.addEmoji }></emoji-picker>
                          : null} */}
                         
-                        <textarea id='txtInput' placeholder="Write a message..." type="text"
+                        <textarea autofocus='true' id='txtInput' placeholder="Write a message..." type="text"
                         onKeyUp={e => this.onType(e)} ></textarea>
                         
                         {/* <Picker onEmojiClick={this.addEmoji} /> */}
@@ -96,7 +96,8 @@ class MessageInputComponent extends React.Component {
             msgText: text,
             showEmojiPicker: false,
         })
-        document.getElementById('txtInput').value = text
+        document.getElementById('txtInput').value = text;
+        document.getElementById('txtInput').focus();
         console.log(text);
     };
 
