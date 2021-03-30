@@ -12,6 +12,7 @@ class LoginComponent extends React.Component {
       errorLogin: ''
     }
   }
+  
   handleInput(inputType, e) {
     switch (inputType) {
       case 'email':

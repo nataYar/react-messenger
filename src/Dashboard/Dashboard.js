@@ -110,7 +110,7 @@ class DashboardComponent extends React.Component {
       })
       .catch(error => {
         console.error(error.message);
-      });;
+      });
     const chat = this.state.chats.find(chat => users.every(usr => chat.users.includes(usr)));
     const index = this.state.chats.indexOf(chat);
     this.chooseChat(index);
@@ -121,10 +121,7 @@ class DashboardComponent extends React.Component {
       selectedChat: index,
       chatVisible: true,
       newChatFormVisible: false,
-    })
-    .catch(error => {
-      console.error(error.message);
-    });;
+    });
     this.messageWasRead();
   }
 
@@ -208,10 +205,13 @@ class DashboardComponent extends React.Component {
               }),
               messageWasRead: false
             })
-            .catch(error => {
-              console.error(error.message);
-            })
+            // .catch(error => {
+            //   console.error(error.message);
+            // })
           })
+          .catch(error => {
+            console.error(error.message);
+          });
         });
     } else {
       fileRef.put(file)
@@ -232,10 +232,11 @@ class DashboardComponent extends React.Component {
               }),
               messageWasRead: false
             })
-            .catch(error => {
-              console.error(error.message);
-            });
+            
           })
+          .catch(error => {
+            console.error(error.message);
+          });
         })
     }
   }
@@ -254,16 +255,14 @@ class DashboardComponent extends React.Component {
         .collection('chats')
         .where('users', 'array-contains', currUser.email)
         //perform realtime db changes
-        .onSnapshot(async resp =>{
+        .onSnapshot(resp =>{
           const chats = resp.docs.map(doc => doc.data());
-          await this.setState({
+          this.setState({
             email: currUser.email,
             chats: chats,
           })
         })
-        .catch(error => {
-          console.error(error.message);
-        });
+        
       }
   })
 }}

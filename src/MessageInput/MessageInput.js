@@ -21,7 +21,7 @@ class MessageInputComponent extends React.Component {
         this.addEmoji = this.addEmoji.bind(this);
         this.toggleEmojiPicker = this.toggleEmojiPicker.bind(this);
     }
-    //height: 300
+   
     render () {
 
         if (this.props.visibility && this.props.selected != null ) {

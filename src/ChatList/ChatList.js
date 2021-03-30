@@ -1,9 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ChatList from './ChatList.css';
-import { createNoSubstitutionTemplateLiteral } from "typescript";
-
-// const firebase = require('firebase');
 
 class ChatListComponent extends React.Component {
     constructor(props) {

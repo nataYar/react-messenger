@@ -32,11 +32,15 @@ class NewChatComponent extends React.Component {
           break;
       }
     }
+
     submitForm = async (e) => {
       e.preventDefault();
       const docKey = this.docKey();
       const mess = this.state.mess;
-      const chatExists = await this.chatExists();
+      const chatExists = await this.chatExists()
+      .catch(error => {
+        console.error(error.message);
+      });
       chatExists ? this.props.goToExistingChat(docKey, mess) : this.props.createChat(docKey, mess);
     }
     
