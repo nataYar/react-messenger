@@ -29,17 +29,7 @@ class MessageInputComponent extends React.Component {
                 <main className='txtInputContainer'>
                     
                     <div className='txtInputContainerFlex'>
-                        <button type='button' className='icon toggle-emoji'
-                        onClick={this.toggleEmojiPicker}>
-                        
-                        </button>
-                        {this.state.showEmojiPicker ? <EmojiPicker pickerStyle={{ position:'absolute', width:'20rem', height:'20rem', bottom:'6rem', boxShadow: 'none'}} 
-                        id='emojiPicker' onEmojiClick={ this.addEmoji }
-                        groupVisibility={{flags: false,symbols: false, objects: false }}
-                         /> : null}
-                        {/* {this.state.showEmojiPicker ? <emoji-picker onEmojiClick={ this.addEmoji }></emoji-picker>
-                         : null} */}
-                        
+
                         <textarea autoFocus={true} id='txtInput' placeholder="Write a message..." type="text"
                         onKeyUp={e => this.onType(e)} ></textarea>
                         
@@ -58,7 +48,15 @@ class MessageInputComponent extends React.Component {
                             statusbar: false,
                             selector: '#txtInput',
                         }}/> */}
-                        <input type='file' className='icon attDoc' 
+                        <button type='button' className='icon toggle-emoji'
+                        onClick={this.toggleEmojiPicker}></button>
+
+                        {this.state.showEmojiPicker ? <EmojiPicker pickerStyle={{ position:'absolute', width:'20rem', height:'20rem', bottom:'6rem', boxShadow: 'none'}} 
+                        id='emojiPicker' onEmojiClick={ this.addEmoji }
+                        groupVisibility={{flags: false,symbols: false, objects: false }}
+                         /> : null}
+                         
+                        <input type='file' className='icon attDocBtn' 
                         onChange={e => this.addDocFn(e)}/> 
 
                         {/* <input type='file' className='icon attImg' 

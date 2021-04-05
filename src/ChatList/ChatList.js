@@ -6,12 +6,15 @@ class ChatListComponent extends React.Component {
         super(props);
         this.select = this.select.bind(this);
     }
+
     render () {
+
     
     if(this.props.chats.length > 0) {
         return (
-            <div className='listOfChats'>
-                {/* <div className='chatsContainer'> */}
+
+            
+            <div className={this.props.visibility ? 'listOfChats' : 'listOfChats_visible'}>
                     {
                         this.props.chats.map((chat, index) => {
                             return (
@@ -23,29 +26,28 @@ class ChatListComponent extends React.Component {
                                             'avatar-circle unread' : 'avatar-circle'}>
                                             <h1 className='initials'>{chat.users.find(friend => friend !== this.props.userEmail).split('')[0]}</h1>
                                         </div>
-                                        
                                         <div className='chatListItemText'>
                                             <p id='friendsEmail'>{chat.users.filter(user => user !== this.props.userEmail)[0]}</p>
-                                            {/* {
-                                                if
-                                            } */}
-                                            {/* <p>"{chat.messages[chat.messages.length - 1].message.slice(0, 14)}..."</p> */}
-                                             {/* if chat.messages[chat.messages.length - 1].[0] === message.slice(0, 14)}..." */}
+                                            <p>"{chat.messages[chat.messages.length - 1].message.slice(0, 14)}..."</p>
                                         </div>
                                     </div>
                                 </div>
                             )
                         })
                     } 
-            {/* </div> */}
-            </div>
-                 
+            </div>    
         );      
         } else {
             return (
                 <div></div>
             );
         }
+    }
+
+    toggleVisibility = () => {
+        this.props.toggleMobileVisibility();
+        console.log('hi from chatlist')
+        // document.getElementsByClassName('listOfChats').style.visibility = "hidden";
     }
 
     select = (index) => {

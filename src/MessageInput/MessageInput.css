@@ -64,13 +64,9 @@ EmojiPicker {
   align-items: center;
   justify-content: center;
   background-image: url('../icons/emoji_48.png');
-  /* background-color:rgba(216, 216, 216, 0.6); */
-  /* opacity: 100%; */
 }
-.attImg {
-  background-image: url('../icons/imageIcon.png');
-}
-.attDoc {
+
+.attDocBtn {
   background-image: url('../icons/fileimport_32.png');
 }
 .messSendBtn {
@@ -79,4 +75,17 @@ EmojiPicker {
 
 .icon:hover {
  background-color: rgb(249, 178, 173);
+}
+
+@media only screen and (max-width: 767px) {
+  .txtInputContainer {
+    grid-area: 3 / 1 / 4 / 5;
+  }
+  #txtInput {
+    width: 70%;
+    height: 100%;
+  }
+  .icon{
+    width: 10%;
+  }
 }

@@ -30,7 +30,7 @@ class DashboardComponent extends React.Component {
       selectedChat: null,
       chatVisible: false,
       newChatFormVisible: false,
-
+      mobileChatsList: true
     }
     this.showNewChatForm = this.showNewChatForm.bind(this);
     this.chooseChat = this.chooseChat.bind(this);
@@ -41,25 +41,30 @@ class DashboardComponent extends React.Component {
     this.goToExistingChat = this.goToExistingChat.bind(this);
     this.newChatFn = this.newChatFn.bind(this);
     this.messageWasRead = this.messageWasRead.bind(this); 
+    this.toggleMobileVisibility = this.toggleMobileVisibility.bind(this); 
   }
   
   render () {
     return (
         <div className='dashboard-cont gradient'>
           <div className='dashboard'>
-            <button className='signOutButton'
+            <button className=' dashboardBtn signOutButton'
               onClick={this.signOut}></button>
 
-            <button className='newChatButton'
-              onClick={this.showNewChatForm}>
-              New Chat</button>   
+            <button className='dashboardBtn newChatButton'
+              onClick={this.showNewChatForm}></button>
+
+            <button className='dashboardBtn goToChatButton'
+              onClick={this.toggleMobileVisibility}></button>      
               
             { this.state.newChatFormVisible ? <NewChatComponent email={this.state.email}
             goToExistingChat={this.goToExistingChat}
             createChat={this.newChatFn}></NewChatComponent> :  null
             }
-              
+
             <ChatListComponent
+              visibility={this.state.mobileChatsList}
+              toggleVisibility={this.toggleMobileVisibility}
               history={this.props.history}
               chats={this.state.chats} 
               userEmail={this.state.email}
@@ -77,7 +82,6 @@ class DashboardComponent extends React.Component {
               selected={this.state.selectedChat}
               addMsgFn={this.addMsg}
               addDocFn={this.uploadDoc}>
-              
               </MessageInputComponent>
           </div>
         </div>
@@ -85,6 +89,12 @@ class DashboardComponent extends React.Component {
   }
 
   signOut = () => firebase.auth().signOut();
+
+
+  toggleMobileVisibility = () => {
+    this.setState({mobileChatsList: !this.state.mobileChatsList});
+    console.log('hi from toggle')
+  }
 
   showNewChatForm = () => {
     this.setState({
@@ -245,7 +255,7 @@ class DashboardComponent extends React.Component {
   componentDidMount = () => {
     firebase
     .auth()
-    .onAuthStateChanged(async currUser => {
+    .onAuthStateChanged(currUser => {
       if (!currUser) {
         this.props.history.push('/signup')
       } else {

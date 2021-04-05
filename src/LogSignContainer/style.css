@@ -7,8 +7,6 @@
   height: 100vh;
   align-items: center;
   align-content: center; 
-
-  
 }
 
 .SLContainer{
@@ -23,8 +21,6 @@
   padding: 5%;
   border-radius: 5px;
   box-shadow: 0 9px 30px rgba(172, 172, 172, 0.616);
-  
-
 }
 
 .header {
@@ -41,6 +37,7 @@
   align-items: center;
   justify-content: center;
   flex-flow: column wrap;
+  font-size: 1.2rem
 }
 
 
@@ -65,21 +62,21 @@
 .inputBox:focus {
     transform: translateX(-5px);
     border-radius: 5px;
+    /* font-size: 1.1rem; */
 }
 
 .redirect {
   font-family: 'Abel', serif;
-  font-size: 1.2rem;
   width: auto;
-  font-size: 1rem;
+  /* font-size: 1.1rem; */
 }
 
 
 .SLButton {
   color: #252537;
-  font-size: 1.1rem;
-  width: 7rem;
-  height: 3rem;
+  font-size: 1.2rem;
+  width: 8rem;
+  height: 4rem;
   padding: 0 20px;
   background: #fff;
   border-radius: 5px;
@@ -106,11 +103,12 @@
 
 
 /* mobile devices mode */
-@media only screen and (max-width: 600px) {
-    .signupContainer {
-      background-color: pink;
-      height: 300px;
-      width: 250px;
+@media only screen and (max-width: 767px) {
+    .SLContainer {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      font-size: 1.4rem
     }
   }
 

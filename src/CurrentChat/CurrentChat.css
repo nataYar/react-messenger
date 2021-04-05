@@ -12,12 +12,10 @@
 } 
 
 .userMess {
-    /* flex: 1 1px; */
     align-self: flex-end;    
     position: relative;
-    float: right;
     max-width: 50%;
-    flex-basis: min-content;
+    /* flex-basis: min-content; */
     background-color: rgb(255, 255, 255);
     padding: 0.5em 0.8em;
     margin: 0.5em;
@@ -30,21 +28,33 @@
     padding: 0.5em 0.5em;
     margin: 0.5em;
     border-radius: 0.5em;
-    float: left;
     flex: 1 1px;
     align-self: flex-start;    
     max-width: 50%;
     font-size: 1.2rem;
-
 }
-
 
 .chatImg {
     max-height: 20em;
     max-width: 20em;
 } 
+/* .chatImg:target {
+    width:max-content;
+} */
 
+.fullSizePic {
+    width:max-content;
+}
+/* .fullSizePic:target{
+    display: none;
+} */
 .chatImg:hover{
     cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+    .chatBoard {
+        grid-area: 2 / 1 / 3 / 5;
+    }
 }
 
