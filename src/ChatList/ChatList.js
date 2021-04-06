@@ -17,6 +17,9 @@ class ChatListComponent extends React.Component {
             <div className={this.props.visibility ? 'listOfChats' : 'listOfChats_visible'}>
                     {
                         this.props.chats.map((chat, index) => {
+                            let lastMessage = chat.messages[chat.messages.length - 1];
+                            let docSent = 'doc sent';
+
                             return (
                                 <div key={index}>
                                     <div className={this.props.selectedChat === index ? 'chatListItem selected' : 'chatListItem'}
@@ -28,7 +31,7 @@ class ChatListComponent extends React.Component {
                                         </div>
                                         <div className='chatListItemText'>
                                             <p id='friendsEmail'>{chat.users.filter(user => user !== this.props.userEmail)[0]}</p>
-                                            <p>"{chat.messages[chat.messages.length - 1].message.slice(0, 14)}..."</p>
+                                            <p>"{lastMessage.message ? lastMessage.message.slice(0, 14) : docSent }..."</p>
                                         </div>
                                     </div>
                                 </div>

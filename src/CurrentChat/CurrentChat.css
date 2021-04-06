@@ -15,18 +15,17 @@
     align-self: flex-end;    
     position: relative;
     max-width: 50%;
-    /* flex-basis: min-content; */
     background-color: rgb(255, 255, 255);
-    padding: 0.5em 0.8em;
-    margin: 0.5em;
+    padding: 1.3%;
+    margin: 1%;
     border-radius: 0.5em;
     font-size: 1.2rem;
 }
 
 .friendMess {
     background-color: #F6D3D1;
-    padding: 0.5em 0.5em;
-    margin: 0.5em;
+    padding: 1.3%;
+    margin: 1%;
     border-radius: 0.5em;
     flex: 1 1px;
     align-self: flex-start;    
@@ -34,22 +33,22 @@
     font-size: 1.2rem;
 }
 
-.chatImg {
-    max-height: 20em;
-    max-width: 20em;
+.imgMessage {
+    align-items: center;
+    width: 100%;
+    padding-right: 1.2%;
 } 
-/* .chatImg:target {
-    width:max-content;
-} */
 
 .fullSizePic {
     width:max-content;
 }
-/* .fullSizePic:target{
-    display: none;
-} */
-.chatImg:hover{
+
+.imgMessage:hover{
     cursor: pointer;
+}
+
+.docMessage {
+    margin: 0;
 }
 
 @media only screen and (max-width: 767px) {

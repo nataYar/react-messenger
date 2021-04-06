@@ -24,16 +24,11 @@ class CurrentChatComponent extends React.Component {
                         <div key={index} className={ this.props.user === mess.sender ? 
                             'userMess' : 'friendMess'} id='font'>
                             {mess.message ? mess.message : mess.imgUrl ? 
-                            <a target='_blank' onClick={this.toggleImg} href={`${mess.imgUrl}`}><img 
-                            target='_blank' className= 'chatImg' alt="image sent in chat" src={`${mess.imgUrl}`} 
+                            <a target='_blank' rel='noopener noreferrer'  onClick={this.toggleImg} href={`${mess.imgUrl}`}><img 
+                            target='_blank' rel='noopener noreferrer'  className= 'imgMessage' alt="image sent in chat" src={`${mess.imgUrl}`} 
                             /></a>: 
-                            <p><a href={`${mess.docUrl}`} target='_blank'>{mess.docName}</a></p>
+                            <p className='docMessage'><a href={`${mess.docUrl}`} target='_blank'>{mess.docName}</a></p>
                             }
-                            {/* <a onClick={this.toggleImg} href={`${mess.imgUrl}`}><img 
-                            className= {this.state.fullImg === true ?  'fullSizePic' : 'chatImg' } alt="image sent in chat" src={`${mess.imgUrl}`} 
-                            /></a>: 
-                            <p><a href={`${mess.docUrl}`} target='_blank'>{mess.docName}</a></p>
-                            } */}
                         </div>
                         )})
                     }
