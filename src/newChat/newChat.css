@@ -53,3 +53,10 @@
   cursor: pointer;
   background-color: rgb(255, 128, 172, 0.8)
 }
+
+@media only screen and (max-width: 767px) {
+  .newChatContainer {
+    grid-area: 2 / 1 / 4 / 5; 
+  }
+
+}
