@@ -1,9 +1,9 @@
 import React from "react";
 import Dashboard from './Dashboard.css';
-import ChatListComponent from '../src/ChatList/ChatList';
-import CurrentChatComponent from '../src/CurrentChat/CurrentChat';
-import MessageInputComponent from '../src/MessageInput/MessageInput';
-import NewChatComponent from '../src/NewChat/NewChat';
+import ChatListComponent from '../ChatList/ChatList';
+import CurrentChatComponent from '../CurrentChat/CurrentChat';
+import MessageInputComponent from '../MessageInput/MessageInput';
+import NewChatComponent from '../NewChat/NewChat';
 
 const timestamp = () => {
   let today = new Date();
