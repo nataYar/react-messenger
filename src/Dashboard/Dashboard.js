@@ -1,9 +1,9 @@
 import React from "react";
 import Dashboard from './Dashboard.css';
-import ChatListComponent from 'src/ChatList/ChatList';
-import CurrentChatComponent from 'src/CurrentChat/CurrentChat';
-import MessageInputComponent from 'src/MessageInput/MessageInput';
-import NewChatComponent from 'src/NewChat/NewChat';
+import ChatListComponent from '../src/ChatList/ChatList';
+import CurrentChatComponent from '../src/CurrentChat/CurrentChat';
+import MessageInputComponent from '../src/MessageInput/MessageInput';
+import NewChatComponent from '../src/NewChat/NewChat';
 
 const timestamp = () => {
   let today = new Date();
@@ -12,8 +12,6 @@ const timestamp = () => {
 };
 
 const firebase = require('firebase');
-
-
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
 // const storage = firebase.storage();
