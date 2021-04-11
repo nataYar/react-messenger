@@ -1,17 +1,19 @@
 import React from "react";
 import Dashboard from './Dashboard.css';
-import ChatListComponent from '../ChatList/ChatList';
-import CurrentChatComponent from '../CurrentChat/CurrentChat';
-import MessageInputComponent from '../MessageInput/MessageInput';
-import NewChatComponent from '../NewChat/NewChat';
-
-const firebase = require('firebase');
+import ChatListComponent from 'src/ChatList/ChatList';
+import CurrentChatComponent from 'src/CurrentChat/CurrentChat';
+import MessageInputComponent from 'src/MessageInput/MessageInput';
+import NewChatComponent from 'src/NewChat/NewChat';
 
 const timestamp = () => {
   let today = new Date();
   let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'/'+today.getHours()+':'+today.getMinutes();
   return date;
 };
+
+const firebase = require('firebase');
+
+
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
 // const storage = firebase.storage();
