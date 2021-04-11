@@ -19,23 +19,27 @@
   padding: 1%;
   color: rgb(0, 0, 0);
   background-color: rgba(255, 255, 255, 0);
+  font-size: 1.2rem;
+}
+
+textarea::-webkit-input-placeholder {
+  font-family: 'Abel', sans-serif;
   font-size: 1rem;
 }
 
-#txtInpit::-webkit-input-placeholder {
+textarea:-ms-input-placeholder {
   font-family: 'Abel', sans-serif;
+  font-size: 1rem;
 }
 
-#txtInpit:-ms-input-placeholder {
+textarea:-moz-placeholder {
   font-family: 'Abel', sans-serif;
+  font-size: 1rem;
 }
 
-#txtInpit:-moz-placeholder {
+textarea::-moz-placeholder {
   font-family: 'Abel', sans-serif;
-}
-
-#txtInpit::-moz-placeholder {
-  font-family: 'Abel', sans-serif;
+  font-size: 1rem;
 }
 
 .icon::-webkit-file-upload-button {
@@ -73,10 +77,6 @@
 @media only screen and (max-width: 767px) {
   .txtInputContainer {
     grid-area: 3 / 1 / 4 / 5;
-  }
-  #txtInput {
-    width: 70%;
-    height: 100%;
   }
   .icon{
     width: 10%;
