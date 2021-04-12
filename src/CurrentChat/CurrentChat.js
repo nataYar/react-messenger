@@ -22,7 +22,7 @@ class CurrentChatComponent extends React.Component {
                     this.props.chat.messages.map((mess, index) => {
                         return(
                         <div key={index} className={ this.props.user === mess.sender ? 
-                            'userMess' : 'friendMess'} id='font'>
+                            'message userMess' : 'message friendMess'} id='font'>
                             {mess.message ? mess.message : mess.imgUrl ? 
                             <a target='_blank' rel='noopener noreferrer'  onClick={this.toggleImg} href={`${mess.imgUrl}`}><img 
                             target='_blank' rel='noopener noreferrer'  className= 'imgMessage' alt="image sent in chat" src={`${mess.imgUrl}`} 
