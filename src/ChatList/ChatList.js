@@ -25,13 +25,13 @@ class ChatListComponent extends React.Component {
                                     <div className={this.props.selectedChat === index ? 'chatListItem selected' : 'chatListItem'}
                                     onClick={() => this.select(index)}>
                           
-                                        <div className= { chat.messageWasRead === false && chat.messages[chat.messages.length - 1].sender !== this.props.userEmail  ? 
+                                        <div className= {chat.messageWasRead === false && chat.messages[chat.messages.length - 1].sender !== this.props.userEmail  ? 
                                             'avatar-circle unread' : 'avatar-circle'}>
-                                            <h1 className='initials'>{chat.users.find(friend => friend !== this.props.userEmail).split('')[0]}</h1>
+                                            <h1 className='initials'>{(chat.users.find(friend => friend !== this.props.userEmail).split('')[0]).toUpperCase()}</h1>
                                         </div>
                                         <div className='chatListItemText'>
                                             <p id='friendsEmail'>{chat.users.filter(user => user !== this.props.userEmail)[0]}</p>
-                                            <p>"{lastMessage.message ? lastMessage.message.slice(0, 14) : docSent }..."</p>
+                                            <p>{lastMessage.message ? lastMessage.message.slice(0, 14) : docSent }...</p>
                                         </div>
                                     </div>
                                 </div>

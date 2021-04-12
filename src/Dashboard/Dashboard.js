@@ -90,7 +90,6 @@ class DashboardComponent extends React.Component {
 
   toggleMobileVisibility = () => {
     this.setState({mobileChatsList: !this.state.mobileChatsList});
-    console.log('hi from toggle')
   }
 
   showNewChatForm = () => {

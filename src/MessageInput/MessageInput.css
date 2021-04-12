@@ -20,25 +20,26 @@
   color: rgb(0, 0, 0);
   background-color: rgba(255, 255, 255, 0);
   font-size: 1.2rem;
+  font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
 }
 
 textarea::-webkit-input-placeholder {
-  font-family: 'Abel', sans-serif;
+  font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
   font-size: 1rem;
 }
 
 textarea:-ms-input-placeholder {
-  font-family: 'Abel', sans-serif;
+  font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
   font-size: 1rem;
 }
 
 textarea:-moz-placeholder {
-  font-family: 'Abel', sans-serif;
+  font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
   font-size: 1rem;
 }
 
 textarea::-moz-placeholder {
-  font-family: 'Abel', sans-serif;
+  font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
   font-size: 1rem;
 }
 
@@ -64,14 +65,14 @@ textarea::-moz-placeholder {
 }
 
 .attDocBtn {
-  background-image: url('../icons/fileimport_32.png');
+  background-image: url('../icons/fileimport_48.png');
 }
 .messSendBtn {
   background-image: url('../icons/sendIcon.png');
 }
 
 .icon:hover {
- background-color: rgb(249, 178, 173);
+ background-color: rgb(255, 255, 255);
 }
 
 @media only screen and (max-width: 767px) {
@@ -80,5 +81,8 @@ textarea::-moz-placeholder {
   }
   .icon{
     width: 10%;
+  }
+  .toggle-emoji {
+    visibility: hidden;
   }
 }

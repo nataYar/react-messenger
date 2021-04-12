@@ -69,7 +69,7 @@ class NewChatComponent extends React.Component {
                 <input className='userInput' type='text' 
                 placeholder="Type your message"
                 onChange={e => this.userTyping('mess', e)}></input>
-                <button className='newChatBtn' type='submit'>Send</button>
+                <button className='newChatBtn' type='submit'></button>
             </form> 
           </div>
       )

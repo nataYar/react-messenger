@@ -4,22 +4,20 @@
   flex-flow: column wrap;
   align-items: center;
   align-content: center;
-  justify-content: center;
+   justify-content: center; 
 }
 
 .submitForm {
   display: flex;
   flex-flow: column wrap;
-  
   align-items: center;
   align-content: center;
   justify-content: space-around;
   background-color: rgba(255, 255, 255, 0.5);
   width: 50%;
-  height: 35%;
+  height: 50%;
   padding: 2%;
   border-radius: 10px;
-  /* margin: auto; */
 }
 
 .userInput {
@@ -33,30 +31,41 @@
 }
 
 .userInput:focus {
-  outline-color: rgb(255, 128, 172, 0.8)
+  outline-color: rgba(211, 211, 211, 0.884)
 }
 
 .newChatBtn {
-  font-size: 1rem;
-  width: 25%;
-  height:15%;
-  /* margin-top: 2%; */
+  background-image: url('../icons/sendIcon.png');
+  width: 20%;
+  height: 20%;
+  border-radius: 0.5rem;
+  background-size: 1.5rem 1.5rem;
+  background-color: rgb(255, 255, 255, 0.7);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
   padding: 2%;
   border-radius: 10px;
   border-style: none;
-  /* background-color:  rgba(122, 57, 196, 0.358); */
-  /* vertical-align: middle; */
-  line-height: 0.6rem;
 }
 
 .newChatBtn:hover {
   cursor: pointer;
-  background-color: rgb(255, 128, 172, 0.8)
+  background-color:  rgb(157, 157, 157)
 }
 
 @media only screen and (max-width: 767px) {
   .newChatContainer {
-    grid-area: 2 / 1 / 4 / 5; 
+    grid-area: 2 / 1 / 4 / 5;
+  }
+  .submitForm {
+    width: 90%;
+    height: 50%;
+    margin-top: 3%;
+  }
+  .newChatBtn {
+    width: 20%;
+    height: 15%;
   }
 
 }

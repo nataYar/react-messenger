@@ -8,7 +8,8 @@
     margin: 3%;
     margin-bottom: 0;
     overflow-y: scroll; 
-    overflow-wrap: break-word;  
+    overflow-wrap: break-word; 
+    font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
 } 
 
 .userMess {
@@ -19,7 +20,7 @@
     padding: 1.3%;
     margin-bottom: 2%;
     border-radius: 0.5em;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .friendMess {
@@ -30,7 +31,7 @@
     flex: 1 1px;
     align-self: flex-start;    
     max-width: 70%;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .imgMessage {
