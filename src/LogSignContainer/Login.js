@@ -50,25 +50,26 @@ class LoginComponent extends React.Component {
   render () {
     return (
       <main className="backgroundContainer">
-        <div className="SLContainer">
-          <h1 className="header">Log In</h1>
+        {/* <div className="SLContainer"> */}
+          
           <form className='flexItems' onSubmit={(e) => this.submitLogin(e)}>
-              <input className="inputBox" placeholder="Email" type="text"  
-              value={this.state.email}
-              onChange={(e) => this.handleInput('email', e)} required/>
+            <h1 className="header">Log In</h1>
+            <input className="inputBox" placeholder="Email" type="text"  
+            value={this.state.email}
+            onChange={(e) => this.handleInput('email', e)} required/>
 
-              <input className="inputBox" placeholder="Password" type="password"   minLength="4" 
-              value={this.state.password}
-              onChange={(e) => this.handleInput('password', e)} required/>
+            <input className="inputBox" placeholder="Password" type="password"   minLength="4" 
+            value={this.state.password}
+            onChange={(e) => this.handleInput('password', e)} required/>
 
-              <button className="SLButton" type="submit">Log in</button>
-              {
-                this.state.errorLogin ? <h5>{this.state.errorLogin}</h5> : null
-              }
-              <p className='redirect'>Not registered yet?</p>
-              <Link className='redirect' id="signupLink" style={{ marginLeft: '5%'}} to="/signup">Sign up</Link>
+            <button className="SLButton" type="submit">Log in</button>
+            {
+              this.state.errorLogin ? <h5>{this.state.errorLogin}</h5> : null
+            }
+            <p className='redirect'>Not registered yet?</p>
+            <Link className='redirect' id="signupLink" style={{ marginLeft: '5%'}} to="/signup">Sign up</Link>
           </form>
-        </div>
+        {/* </div> */}
       </main>
     )
   }

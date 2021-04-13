@@ -94,7 +94,7 @@ class SignupComponent extends React.Component {
   render () {
     return (
       <main className="backgroundContainer">
-        <div className="SLContainer">
+        {/* <div className="SLContainer"> */}
           
           <form className='flexItems' onSubmit={(e) => this.submitSignUp(e)}>
             <h1 className="header">Sign up</h1>
@@ -117,7 +117,7 @@ class SignupComponent extends React.Component {
             <p className='redirect'>Registered user? </p>
               <Link className='redirect'  to="/login">Log in</Link>
           </form>
-        </div>
+        {/* </div> */}
       </main>
     )
   }
