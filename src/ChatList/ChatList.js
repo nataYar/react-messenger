@@ -14,7 +14,7 @@ class ChatListComponent extends React.Component {
         return (
 
             
-            <div className={this.props.visibility ? 'listOfChats' : 'listOfChats_visible'}>
+            <div id={this.props.visibility ? 'listOfChats' : 'listOfChats_visible'}>
                     {
                         this.props.chats.map((chat, index) => {
                             let lastMessage = chat.messages[chat.messages.length - 1];

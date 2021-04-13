@@ -95,8 +95,9 @@ class SignupComponent extends React.Component {
     return (
       <main className="backgroundContainer">
         <div className="SLContainer">
-          <h1 className="header">Sign up</h1>
+          
           <form className='flexItems' onSubmit={(e) => this.submitSignUp(e)}>
+            <h1 className="header">Sign up</h1>
             <input className="inputBox" id="txt-input" placeholder="Email" type="text"  
             value={this.state.email}
             onChange={(e) => this.handleInput('email', e)} required/>
@@ -115,8 +116,6 @@ class SignupComponent extends React.Component {
             }
             <p className='redirect'>Registered user? </p>
               <Link className='redirect'  to="/login">Log in</Link>
-            
-            
           </form>
         </div>
       </main>

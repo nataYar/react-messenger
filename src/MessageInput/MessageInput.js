@@ -99,8 +99,8 @@ class MessageInputComponent extends React.Component {
     };
 
     // we set up message text to an input
-    onType = (e) => e.keyCode === 13? this.sendMsg() : this.setState({msgText: e.target.value}); 
-
+    onType = (e) => e.keyCode === 13 ? this.sendMsg() : this.setState({msgText: e.target.value}); 
+   
     textValidFn = (msg) => msg && msg.trim().length;
 
     addDocFn = (e) => {

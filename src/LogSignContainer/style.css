@@ -5,27 +5,24 @@
   display: flex;
   justify-content: center;
   height: 100vh;
+  width: 100vw;
   align-items: center;
-  align-content: center; 
 }
 
-.SLContainer{
+.SLContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column wrap;
-
   background: linear-gradient(117.81089044264013deg, rgb(86, 187, 215) 6.472719522591646%,rgb(148, 245, 211) 70.87851662404091%);
-  width: auto;
+  width: 30%;
   height: auto;
-  padding: 5%;
+  padding: 2%;
   border-radius: 5px;
   box-shadow: 0 9px 30px rgba(172, 172, 172, 0.616);
 }
 
 .header {
-  margin-top: 2%;
-  margin-bottom: 2%;
   letter-spacing: 0.05em;
   font-size: 2rem;
   font-family: 'Playfair Display', serif;
@@ -33,20 +30,23 @@
 }
 
 .flexItems {
+  justify-content: center;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column wrap;
-  font-size: 1.2rem
+  font-size: 1.2rem;
+  width: 100%;
+
 }
 
 
 .inputBox {
-  width: 15rem;
-  height: 2.8rem;
+  width: 80%;
+  height: 8%;
 
   margin-top: 5%;
-  padding: 1rem;
+  padding: 5%;
   
   font-size: 1.1rem;
   font-family: 'Abel', sans-serif;
@@ -75,9 +75,9 @@
 .SLButton {
   color: #252537;
   font-size: 1.2rem;
-  width: 8rem;
-  height: 4rem;
-  padding: 0 20px;
+  width: 50%;
+  height: auto;
+  padding: 5% 5%;
   background: #fff;
   border-radius: 5px;
   margin: 7% auto;
@@ -107,8 +107,7 @@
     .SLContainer {
       width: 100%;
       height: 100%;
-      padding: 0;
-      font-size: 1.4rem
+      font-size: 1.2rem
     }
   }
 

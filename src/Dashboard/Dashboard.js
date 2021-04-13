@@ -129,6 +129,8 @@ class DashboardComponent extends React.Component {
       newChatFormVisible: false,
     });
     this.messageWasRead();
+    this.toggleMobileVisibility()
+    // document.getElementById('listOfChats_visible').style.visibility='hidden';
   }
 
   messageWasRead = () => {
