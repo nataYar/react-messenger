@@ -24,10 +24,14 @@ class CurrentChatComponent extends React.Component {
                         <div key={index} className={ this.props.user === mess.sender ? 
                             'message userMess' : 'message friendMess'} id='font'>
                             {mess.message ? mess.message : mess.imgUrl ? 
+                            
                             <a target='_blank' rel='noopener noreferrer'  onClick={this.toggleImg} href={`${mess.imgUrl}`}><img 
                             target='_blank' rel='noopener noreferrer'  className= 'imgMessage' alt="image sent in chat" src={`${mess.imgUrl}`} 
-                            /></a>: 
-                            <p className='docMessage'><a href={`${mess.docUrl}`} target='_blank'>{mess.docName}</a></p>
+                            /></a> :  mess.docUrl ? 
+
+                            <p className='docMessage'><a href={`${mess.docUrl}`} target='_blank'>{mess.docName}</a></p> : mess.vidUrl ?
+                            <video className='videoMess'  controls><source src={`${mess.vidUrl}`} />
+                            </video> : <p>Unsupported file format</p>
                             }
                         </div>
                         )})

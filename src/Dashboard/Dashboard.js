@@ -188,18 +188,16 @@ class DashboardComponent extends React.Component {
   uploadDoc = (e) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
     const docId = this.buildDocId(friend);
-
     const file = e.target.files[0];
     console.log(file);
     console.log(file.type);
-    const fileRef = firebase.storage().ref('images').child(file.name);
+    const fileRef = firebase.storage().ref('docs').child(file.name);
 
     if (file.type.includes('image')) {
       fileRef.put(file)
         .then(data => {
           data.ref.getDownloadURL()
           .then((url) => {
-            console.log('docurl: ' + url)
             firebase //add URL to Database
             .firestore()
             .collection('chats')
@@ -213,20 +211,16 @@ class DashboardComponent extends React.Component {
               }),
               messageWasRead: false
             })
-            // .catch(error => {
-            //   console.error(error.message);
-            // })
           })
           .catch(error => {
             console.error(error.message);
           });
         });
-    } else {
+    } else if (file.type.includes('application')) {
       fileRef.put(file)
         .then(data => {
           data.ref.getDownloadURL()
           .then((url) => {
-            console.log('docurl: ' + url)
             firebase //add URL to Database
             .firestore()
             .collection('chats')
@@ -240,12 +234,37 @@ class DashboardComponent extends React.Component {
               }),
               messageWasRead: false
             })
-            
           })
           .catch(error => {
             console.error(error.message);
           });
         })
+    } else if (file.type.includes('video')) {
+      fileRef.put(file)
+        .then(data => {
+          data.ref.getDownloadURL()
+          .then((url) => {
+            firebase //add URL to Database
+            .firestore()
+            .collection('chats')
+            .doc(docId)
+            .update({
+              messages: firebase.firestore.FieldValue.arrayUnion({
+                vidUrl: url,
+                docName: file.name,
+                sender: this.state.email,
+                timestamp: timestamp(),
+              }),
+              messageWasRead: false
+            })
+            console.log('url of vid is : ' + url)
+          })
+          .catch(error => {
+            console.error(error.message);
+          });
+        })
+    } else {
+      throw error => console.error(error.message);
     }
   }
 

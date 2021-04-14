@@ -65,10 +65,10 @@ class NewChatComponent extends React.Component {
             <form className='submitForm' onSubmit={(e) => this.submitForm(e)}>
                 <input className='userInput' type='text' 
                 placeholder="Enter friend's email"
-                onChange={e => this.userTyping('friendsEmail', e)}></input>
+                onChange={e => this.userTyping('friendsEmail', e)} required></input>
                 <input className='userInput' type='text' 
                 placeholder="Type your message"
-                onChange={e => this.userTyping('mess', e)}></input>
+                onChange={e => this.userTyping('mess', e)} required></input>
                 <button className='newChatBtn' type='submit'></button>
             </form> 
           </div>
