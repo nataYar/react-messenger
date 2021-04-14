@@ -13,11 +13,7 @@
 
 .gradient {
     background: linear-gradient(117deg, #3cdeab, #4ecdf0, #8742a5);
-    /* background: linear-gradient(117deg, #56f0a8, #56bbd7, #9d45c2,  #fa5279, #edb704); */
-    /* background: linear-gradient(117deg, #149b72f1, #076a85, #4c3665, #68152f ); */
     background-size: 500% 500%;;
-    /* -webkit-animation: gradient 5s ease infinite;
-    -moz-animation: gradient 5s ease infinite; */
     animation: gradient 60s ease infinite;
 }
 
