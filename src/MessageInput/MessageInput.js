@@ -51,7 +51,7 @@ class MessageInputComponent extends React.Component {
                         <button type='button' className='icon toggle-emoji'
                         onClick={this.toggleEmojiPicker}></button>
 
-                        {this.state.showEmojiPicker ? <EmojiPicker pickerStyle={{ position:'absolute', width:'20rem', height:'20rem', bottom:'6rem', boxShadow: 'none'}} 
+                        {this.state.showEmojiPicker ? <EmojiPicker pickerStyle={{ position:'absolute', width:'20rem', height:'20rem', bottom:'15%', boxShadow: 'none'}} 
                         id='emojiPicker' onEmojiClick={ this.addEmoji }
                         groupVisibility={{flags: false,symbols: false, objects: false }}
                          /> : null}

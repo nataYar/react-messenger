@@ -12,13 +12,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-flow: column wrap;
+  flex-flow: column;
   background: linear-gradient(117.81089044264013deg, rgb(86, 187, 215) 6.472719522591646%,rgb(148, 245, 211) 70.87851662404091%);
   width: 30%;
   height: auto;
   padding: 2%;
   border-radius: 5px;
   box-shadow: 0 9px 30px rgba(172, 172, 172, 0.616);
+  
 }
 
 .header {
@@ -32,7 +33,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: column wrap;
+  flex-flow: column;
   font-size: 1.2rem;
 
   width: 30%;
@@ -131,6 +132,16 @@ input::-moz-placeholder {
     height: auto;
     margin: 2%
   }
+}
+
+@media screen and (min-height: 320px) and (max-height: 382) {
+  .SLContainer{
+    visibility: hidden;
+  }
+  .flexItems {
+    visibility: hidden;
+  }
+  
 }
 
 

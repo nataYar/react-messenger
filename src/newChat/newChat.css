@@ -49,9 +49,12 @@
   border-style: none;
 }
 
-.newChatBtn:hover {
+.newChatBtn:active{
   cursor: pointer;
   background-color:  rgb(157, 157, 157)
+}
+.newChatBtn:focus {
+ outline: none;
 }
 
 @media only screen and (max-width: 767px) {
@@ -67,5 +70,10 @@
     width: 20%;
     height: 15%;
   }
+  .newChatBtn:focus {
+    background-color: rgb(255, 255, 255, 0.7);
+  }
+
+
 
 }

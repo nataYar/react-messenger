@@ -9,16 +9,19 @@
     overflow-y: scroll; 
     overflow-wrap: break-word; 
     font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
+    scroll-margin-left: 20px;
+    scroll-padding-left: 20px;
 } 
 
 .message {   
     position: relative;
     max-width: 70%;
-    height: 80%;
-    padding: 1.2%;
+    /* max-width: 70%; */
+    max-height: auto;
+    padding: 1.5%;
     margin-bottom: 2%;
     border-radius: 0.5em;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 .userMess {
     background-color: rgb(255, 255, 255);
