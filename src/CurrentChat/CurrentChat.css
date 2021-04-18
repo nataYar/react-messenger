@@ -16,12 +16,11 @@
 .message {   
     position: relative;
     max-width: 70%;
-    /* max-width: 70%; */
     max-height: auto;
     padding: 1.5%;
-    margin-bottom: 2%;
+    margin-bottom: 1.5%;
     border-radius: 0.5em;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 .userMess {
     background-color: rgb(255, 255, 255);

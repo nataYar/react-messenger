@@ -13,11 +13,6 @@ const timestamp = () => {
 
 const firebase = require('firebase');
 
-// Get a reference to the storage service, which is used to create references in your storage bucket
-// const storage = firebase.storage();
-// Create a storage reference from our storage service
-// var storageRef = storage.ref();
-
 class DashboardComponent extends React.Component {
   constructor() {
     super();
@@ -27,7 +22,8 @@ class DashboardComponent extends React.Component {
       selectedChat: null,
       chatVisible: false,
       newChatFormVisible: false,
-      mobileChatsList: true
+      mobileChatsMode: true, 
+      fullScreen: false
     }
     this.showNewChatForm = this.showNewChatForm.bind(this);
     this.chooseChat = this.chooseChat.bind(this);
@@ -39,12 +35,12 @@ class DashboardComponent extends React.Component {
     this.newChatFn = this.newChatFn.bind(this);
     this.messageWasRead = this.messageWasRead.bind(this); 
     this.toggleMobileVisibility = this.toggleMobileVisibility.bind(this); 
+    this.goFS = this.goFS.bind(this);
   }
-  
   render () {
     return (
         <div className='dashboard-cont gradient'>
-          <div className='dashboard'>
+          <div className='dashboard' id='fs'>
             <button className=' dashboardBtn signOutButton'
               onClick={this.signOut}></button>
 
@@ -52,7 +48,8 @@ class DashboardComponent extends React.Component {
               onClick={this.showNewChatForm}></button>
 
             <button className='dashboardBtn goToChatButton'
-              onClick={this.toggleMobileVisibility}></button>      
+              onClick={() => { this.toggleMobileVisibility(); this.goFS();}}
+              ></button>      
               
             { this.state.newChatFormVisible ? <NewChatComponent email={this.state.email}
             goToExistingChat={this.goToExistingChat}
@@ -60,8 +57,8 @@ class DashboardComponent extends React.Component {
             }
 
             <ChatListComponent
-              visibility={this.state.mobileChatsList}
-              toggleVisibility={this.toggleMobileVisibility}
+              mobileChatsMode={this.state.mobileChatsMode}
+              // toggleVisibility={this.toggleMobileVisibility}
               history={this.props.history}
               chats={this.state.chats} 
               userEmail={this.state.email}
@@ -75,6 +72,7 @@ class DashboardComponent extends React.Component {
               </CurrentChatComponent> 
             
             <MessageInputComponent
+              mobileChatsMode={this.state.mobileChatsMode}
               visibility={this.state.chatVisible}
               selected={this.state.selectedChat}
               addMsgFn={this.addMsg}
@@ -84,12 +82,24 @@ class DashboardComponent extends React.Component {
         </div>
     )
   }
-
   signOut = () => firebase.auth().signOut();
 
+  toggleMobileVisibility = () => { 
+    this.setState({
+      mobileChatsMode: !this.state.mobileChatsMode});
+      console.log('toggleMobileVisibility') 
+  } 
+    // if (this.state.fullScreen) {
+    //   console.log('this.state.fullScreen is true, go FS');
+    //   document.body.requestFullscreen();
+    // } else {
+    //   console.log('Error attempting to enable full-screen mode');
+    // }
+  
 
-  toggleMobileVisibility = () => {
-    this.setState({mobileChatsList: !this.state.mobileChatsList});
+  goFS = () => {
+    this.setState({fullScreen: true});
+    console.log(' state fullScreen: true')
   }
 
   showNewChatForm = () => {
@@ -129,7 +139,11 @@ class DashboardComponent extends React.Component {
       newChatFormVisible: false,
     });
     this.messageWasRead();
-    this.toggleMobileVisibility()
+    this.toggleMobileVisibility();
+    if (this.state.fullScreen) {
+      console.log('this.state.fullScreen is true, go FS');
+      document.body.requestFullscreen();
+    } 
     // document.getElementById('listOfChats_visible').style.visibility='hidden';
   }
 
@@ -145,7 +159,7 @@ class DashboardComponent extends React.Component {
       .doc(docId)
       .update({ messageWasRead: true })
     } else {
-      console.log('Clicked message where the user was the sender');
+      console.error();
     } 
   }
 
@@ -289,7 +303,6 @@ class DashboardComponent extends React.Component {
             chats: chats,
           })
         })
-        
       }
   })
 }}

@@ -14,7 +14,7 @@ class ChatListComponent extends React.Component {
         return (
 
             
-            <div id={this.props.visibility ? 'listOfChats' : 'listOfChats_visible'}>
+            <div id={this.props.mobileChatsMode ? 'listOfChats' : 'listOfChats_visible'}>
                     {
                         this.props.chats.map((chat, index) => {
                             let lastMessage = chat.messages[chat.messages.length - 1];
@@ -47,11 +47,11 @@ class ChatListComponent extends React.Component {
         }
     }
 
-    toggleVisibility = () => {
-        this.props.toggleMobileVisibility();
-        console.log('hi from chatlist')
-        // document.getElementsByClassName('listOfChats').style.visibility = "hidden";
-    }
+    // toggleVisibility = () => {
+    //     this.props.toggleMobileVisibility();
+    //     console.log('hi from chatlist')
+    //     // document.getElementsByClassName('listOfChats').style.visibility = "hidden";
+    // }
 
     select = (index) => {
         this.props.select(index);

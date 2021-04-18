@@ -19,7 +19,7 @@ class MessageInputComponent extends React.Component {
         this.textValidFn = this.textValidFn.bind(this);
         this.addDocFn = this.addDocFn.bind(this);
         this.addEmoji = this.addEmoji.bind(this);
-        this.toggleEmojiPicker = this.toggleEmojiPicker.bind(this);
+        this.toggleEmojiPicker = this.toggleEmojiPicker.bind(this); 
     }
    
     render () {
@@ -31,7 +31,7 @@ class MessageInputComponent extends React.Component {
                     <div className='txtInputContainerFlex'>
 
                         <textarea autoFocus={true} id='txtInput' placeholder="Write a message..." type="text"
-                        onKeyUp={e => this.onType(e)} ></textarea>
+                        onKeyUp={e => this.onType(e)}></textarea>
                         
                         {/* <Picker onEmojiClick={this.addEmoji} /> */}
 
@@ -58,11 +58,8 @@ class MessageInputComponent extends React.Component {
                          
                         <input type='file' className='icon attDocBtn' 
                         onChange={e => this.addDocFn(e)}/> 
-
-                        {/* <input type='file' className='icon attImg' 
-                        onChange={e => this.addDocFn(e)}/>  */}
                         
-                        <button className=' icon messSendBtn' 
+                        <button className=' icon messSendBtn' id='goFS' 
                         onClick={this.sendMsg}></button>
                         
                     </div>
@@ -75,6 +72,31 @@ class MessageInputComponent extends React.Component {
         }
     }
     
+
+        // let elem = document.querySelector("video");
+        // if (!document.fullscreenElement) {
+        //     fs.requestFullscreen().catch(err => {
+        //       alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        //     });
+        //   } else {
+        //     document.exitFullscreen();
+        //   }
+        
+        // fs.addEventListener("click",
+        // function() { document.getElementById('fs').requestFullscreen();}, false);
+    
+
+    // goFS = () => {
+    //     let elem = document.getElementById('goFS');
+    //     if (elem.requestFullscreen) {
+    //       elem.requestFullscreen();
+    //     } else if (elem.webkitRequestFullscreen) { /* Safari */
+    //       elem.webkitRequestFullscreen();
+    //     } else if (elem.msRequestFullscreen) { /* IE11 */
+    //       elem.msRequestFullscreen();
+    //     }
+    // }
+
     toggleEmojiPicker = () => {
         this.setState({
           showEmojiPicker: !this.state.showEmojiPicker,
