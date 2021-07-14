@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap');
+
+.dashboard-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
+}
+
+
+.gradient {
+    background: linear-gradient(117deg, #3cdeab, #4ecdf0, #8742a5);
+    background-size: 500% 500%;;
+    animation: gradient 60s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.dashboard {
+    display: grid;
+    grid-template: 10% 80% 10%/ 6% 15% 79%;
+    width: 90%;
+    height: 90%;
+    background: rgba(255, 255, 255, 0.123);
+    border-radius: 7px;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dashboardBtn{
+    width: 100%;
+    height: 100%; 
+    border-radius: 0.5rem;
+    background-color:rgba(255, 255, 255, 0.7);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer; 
+    border: none;
+    border-color: transparent;
+    background-size: 2rem 2rem;
+}
+
+.signOutButton {
+    grid-area: 1 / 1 / 2 / 2;
+    background-image: url('../icons/home_256.png');
+}
+
+.newChatButton {
+    grid-area: 1 / 2 / 2 / 2;
+    background-image: url('../icons/addnote_256.png');
+}
+
+.goToChatButton{
+    visibility: hidden;
+}
+
+
+
+/* .signOutButton:hover,
+.newChatButton:hover,
+.goToChatButton:hover {
+    background-color: rgb(255, 255, 255);
+} */
+.dashboardBtn:hover {
+    background-color: rgb(255, 255, 255);
+}
+.dashboardBtn:active {
+    background-color: rgb(255, 255, 255);
+}
+.dashboardBtn:focus {outline:0;}
+
+/* mobile devices mode */
+@media only screen and (max-width: 767px) {
+    .dashboard {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template: 8% 82% 10%/ 15% 15% 15% 55%;
+    }
+    .signOutButton {
+        grid-area: 1 / 1 / 2 / 1;
+    }
+    .newChatButton{
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    .goToChatButton{
+        grid-area: 1 / 3 / 2 / 4;
+        background-image: url('../icons/chats_256.png');
+        visibility: visible;
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+    
+
