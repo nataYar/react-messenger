@@ -84,7 +84,6 @@ class DashboardComponent extends React.Component {
         </div>
     )
   }
-
   signOut = () => firebase.auth().signOut();
 
   toggleMobileVisibility = () => { 

@@ -54,7 +54,6 @@ textarea::-moz-placeholder {
   cursor: pointer;
   transition-duration: 0.2s;
 }
-
 .toggle-emoji {
   display: flex;
   align-items: center;

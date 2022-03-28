@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # react-messenger
 Web messenger built with React
 =======
@@ -71,3 +72,13 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 >>>>>>> Initialize project using Create React App
+=======
+Real-time chat where users can interact with each other by sending messages/documents/images. 
+Features: 
+•	Responsive design
+•	Messages are saved in a database.
+•	User can select and send an emoji.
+•	Users are notified about unread messages.
+•	Gradient background changing color.
+Technologies used: JavaScript, HTML, CSS, React, Firebase.
+>>>>>>> f2845061be0c913473ac5888219846b2395ad509
