@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './style.css';
-const firebase = require("firebase/app");
+// const firebase = require("firebase/app");
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+
+import { createBrowserHistory } from "history";
+let history = createBrowserHistory();
 
 class LoginComponent extends React.Component {
   constructor(){
@@ -38,7 +44,8 @@ class LoginComponent extends React.Component {
     .auth()
     .signInWithEmailAndPassword(this.state.email, this.state.password)
     .then(() => {
-      this.props.history.push('/dashboard')
+      history.push('/dashboard');
+      history.go(0);
     }, databaseError => {
       console.log(databaseError);
       this.setState({

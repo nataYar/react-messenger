@@ -48,21 +48,13 @@ class CurrentChatComponent extends React.Component {
         this.setState({
             fullImg: true
         });
-        console.log('clicked fullImg: true')
     }
 
-    scrollToBottom = () => {
-        this.messagesEnd && this.messagesEnd.scrollIntoView({behavior: 'smooth'});
-        
-      }
+    scrollToBottom = () => { this.messagesEnd && this.messagesEnd.scrollIntoView({behavior: 'smooth'}); }
       
-    componentDidMount() {
-        this.scrollToBottom();
-      }
+    componentDidMount() { this.scrollToBottom(); }
       
-    componentDidUpdate() {
-        this.scrollToBottom();
-      }
+    componentDidUpdate() { this.scrollToBottom(); }
   };
 
 export default CurrentChatComponent;

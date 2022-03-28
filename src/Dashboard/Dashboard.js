@@ -5,13 +5,17 @@ import CurrentChatComponent from '../CurrentChat/CurrentChat';
 import MessageInputComponent from '../MessageInput/MessageInput';
 import NewChatComponent from '../NewChat/NewChat';
 
+
+const firebase = require('firebase');
+
+import { createBrowserHistory } from "history";
+let history = createBrowserHistory();
+
 const timestamp = () => {
   let today = new Date();
   let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'/'+today.getHours()+':'+today.getMinutes();
   return date;
 };
-
-const firebase = require('firebase');
 
 class DashboardComponent extends React.Component {
   constructor() {
@@ -35,7 +39,6 @@ class DashboardComponent extends React.Component {
     this.newChatFn = this.newChatFn.bind(this);
     this.messageWasRead = this.messageWasRead.bind(this); 
     this.toggleMobileVisibility = this.toggleMobileVisibility.bind(this); 
-    this.goFS = this.goFS.bind(this);
   }
   render () {
     return (
@@ -48,7 +51,7 @@ class DashboardComponent extends React.Component {
               onClick={this.showNewChatForm}></button>
 
             <button className='dashboardBtn goToChatButton'
-              onClick={() => { this.toggleMobileVisibility(); this.goFS();}}
+              onClick={() => { this.toggleMobileVisibility()}}
               ></button>      
               
             { this.state.newChatFormVisible ? <NewChatComponent email={this.state.email}
@@ -58,7 +61,6 @@ class DashboardComponent extends React.Component {
 
             <ChatListComponent
               mobileChatsMode={this.state.mobileChatsMode}
-              // toggleVisibility={this.toggleMobileVisibility}
               history={this.props.history}
               chats={this.state.chats} 
               userEmail={this.state.email}
@@ -82,30 +84,22 @@ class DashboardComponent extends React.Component {
         </div>
     )
   }
+
   signOut = () => firebase.auth().signOut();
 
   toggleMobileVisibility = () => { 
     this.setState({
-      mobileChatsMode: !this.state.mobileChatsMode});
-      console.log('toggleMobileVisibility') 
-  } 
-    // if (this.state.fullScreen) {
-    //   console.log('this.state.fullScreen is true, go FS');
-    //   document.body.requestFullscreen();
-    // } else {
-    //   console.log('Error attempting to enable full-screen mode');
-    // }
-  
-
-  goFS = () => {
-    this.setState({fullScreen: true});
-    console.log(' state fullScreen: true')
+      mobileChatsMode: !this.state.mobileChatsMode,
+      newChatFormVisible: false });
   }
+
 
   showNewChatForm = () => {
     this.setState({
       newChatFormVisible: true,
-      selectedChat: null
+      selectedChat: null,
+      // mobileChatsMode: false,
+      chatVisible: false
     })
   }
 
@@ -140,11 +134,9 @@ class DashboardComponent extends React.Component {
     });
     this.messageWasRead();
     this.toggleMobileVisibility();
-    if (this.state.fullScreen) {
-      console.log('this.state.fullScreen is true, go FS');
-      document.body.requestFullscreen();
-    } 
-    // document.getElementById('listOfChats_visible').style.visibility='hidden';
+    if ( window.innerWidth <= 767 ) {
+      document.body.requestFullscreen()
+  }
   }
 
   messageWasRead = () => {
@@ -173,7 +165,7 @@ class DashboardComponent extends React.Component {
     await this.chooseChat(index)
     .catch(error => {
       console.error(error.message);
-    });;
+    });
     this.addMsg(msg);
   }
 
@@ -196,17 +188,15 @@ class DashboardComponent extends React.Component {
         }),
         messageWasRead: false
       })
-
   }
 
   uploadDoc = (e) => {
     const friend = this.state.chats[this.state.selectedChat].users.filter(user => user !== this.state.email)[0];
     const docId = this.buildDocId(friend);
     const file = e.target.files[0];
-    console.log(file);
-    console.log(file.type);
     const fileRef = firebase.storage().ref('docs').child(file.name);
-
+    // console.log(firebase.firestore().ref('docs'));
+    
     if (file.type.includes('image')) {
       fileRef.put(file)
         .then(data => {
@@ -271,7 +261,6 @@ class DashboardComponent extends React.Component {
               }),
               messageWasRead: false
             })
-            console.log('url of vid is : ' + url)
           })
           .catch(error => {
             console.error(error.message);
@@ -288,7 +277,8 @@ class DashboardComponent extends React.Component {
     .auth()
     .onAuthStateChanged(currUser => {
       if (!currUser) {
-        this.props.history.push('/signup')
+        history.push('/signup');
+        history.go(0);
       } else {
         //we checked if the user exists, then we should grab his info from db
         firebase
@@ -303,9 +293,12 @@ class DashboardComponent extends React.Component {
             chats: chats,
           })
         })
+
       }
-  })
-}}
+    })
+  }
+
+}
 
 
 

@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import { withRouter } from "react-router";
 import './style.css';
-const firebase = require("firebase/app");
+
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+import { createBrowserHistory } from "history";
+let history = createBrowserHistory();
+
 
 class SignupComponent extends React.Component {
   constructor(props) {
@@ -50,7 +57,7 @@ class SignupComponent extends React.Component {
    //we should add passwort verifying function before submitting
    submitSignUp(e) {
     e.preventDefault();
-
+   
     if(!this.verifyPasswords) {
       this.setState({ errorSignup: 'Passwords should match' })
       return;
@@ -64,8 +71,8 @@ class SignupComponent extends React.Component {
       //we get response and create a user object
         const userObject = {
           email: res.user.email
-        };
-
+        }
+      
         //now we access the cloud firebase storage/database
         firebase
         .firestore()
@@ -74,9 +81,13 @@ class SignupComponent extends React.Component {
         .doc(this.state.email)
         //we're setting the doc to a user object
         .set(userObject)
+        .then(
+          console.log(history)
+        )
         .then(() => {
           //history object is passed in automatically by Router
-          this.props.history.push('/dashboard')
+          history.push("/dashboard"); 
+          history.go(0);
         }, databaseError => {
             console.log(databaseError);
             this.setState({
@@ -94,8 +105,6 @@ class SignupComponent extends React.Component {
   render () {
     return (
       <main className="backgroundContainer">
-        {/* <div className="SLContainer"> */}
-          
           <form className='flexItems' onSubmit={(e) => this.submitSignUp(e)}>
             <h1 className="header">Sign up</h1>
             <input className="inputBox" id="txt-input" placeholder="Email" type="text"  
@@ -117,7 +126,6 @@ class SignupComponent extends React.Component {
             <p className='redirect'>Registered user? </p>
               <Link className='redirect'  to="/">Log in</Link>
           </form>
-        {/* </div> */}
       </main>
     )
   }

@@ -4,17 +4,17 @@
   border-radius: 7px;
   border: none;
   outline: none;
-  padding: 1%;
 }
 .txtInputContainerFlex {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
-  
 }
 
 #txtInput {
-  width: 77%;
+  width: 80%;
+  padding: 1%;
   border: none;
   outline: none;
   color: rgb(0, 0, 0);
@@ -25,55 +25,45 @@
 
 textarea::-webkit-input-placeholder {
   font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
-  font-size: 1rem;
-}
+  font-size: 1rem; }
 
 textarea:-ms-input-placeholder {
   font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
-  font-size: 1rem;
-}
+  font-size: 1rem; }
 
 textarea:-moz-placeholder {
   font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
-  font-size: 1rem;
-}
+  font-size: 1rem; }
 
 textarea::-moz-placeholder {
   font-family: 'Lato', sans-serif, 'Open Sans', sans-serif, 'Raleway', sans-serif;
-  font-size: 1rem;
-}
+  font-size: 1rem; }
 
 .icon::-webkit-file-upload-button {
-  visibility: hidden;
-}
+  visibility: hidden; }
+
 .icon {
   width: 7%;
-  /* height: 100%; */
-  /* margin-top: 0;
-  margin-bottom: -1%; */
-  /* margin-left: 0.5%; */
+  height: 100%;
   border-radius: 0.5rem;
   background-size: 2rem 2rem;
-  background-color: rgb(255, 255, 255, 0.7);
+  background-color: rgb(255, 255, 255, 0.6);
   background-position: center;
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
   transition-duration: 0.2s;
 }
+
 .toggle-emoji {
   display: flex;
   align-items: center;
   justify-content: center;
   background-image: url('../icons/smile_256.png');
 }
+.attDocBtn { background-image: url('../icons/imagegallery_256.png'); }
 
-.attDocBtn {
-  background-image: url('../icons/imagegallery_256.png');
-}
-.messSendBtn {
-  background-image: url('../icons/send_256.png');
-}
+.messSendBtn { background-image: url('../icons/send_256.png'); }
 
 .icon:hover {
  background-color: rgb(255, 255, 255);
@@ -86,7 +76,6 @@ textarea::-moz-placeholder {
 @media only screen and (max-width: 767px) {
   .txtInputContainer {
     grid-area: 3 / 1 / 4 / 5;
-    padding: 2% 0 2% 2%;
   }
   .txtInputContainerFlex {
     display: flex;
@@ -96,7 +85,7 @@ textarea::-moz-placeholder {
   .icon{
     width: 13%;
     height: 100%;
-    /* margin-right: 0; */
+    background-color:rgba(255, 255, 255, 0.4);
   }
   .icon:hover {
     background-color: rgb(255, 255, 255, 0.7);
@@ -104,6 +93,6 @@ textarea::-moz-placeholder {
   .toggle-emoji {
     display: none;
   }
-  
+  #txtInput {padding: 2% 0 2% 2%;} 
 }
 

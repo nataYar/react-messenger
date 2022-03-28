@@ -66,13 +66,6 @@
     visibility: hidden;
 }
 
-
-
-/* .signOutButton:hover,
-.newChatButton:hover,
-.goToChatButton:hover {
-    background-color: rgb(255, 255, 255);
-} */
 .dashboardBtn:hover {
     background-color: rgb(255, 255, 255);
 }
@@ -100,7 +93,6 @@
         background-image: url('../icons/chats_256.png');
         visibility: visible;
     }
-
   }
 
 

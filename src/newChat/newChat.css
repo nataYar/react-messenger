@@ -4,7 +4,7 @@
   flex-flow: column wrap;
   align-items: center;
   align-content: center;
-   justify-content: center; 
+  justify-content: center; 
 }
 
 .submitForm {
@@ -15,7 +15,7 @@
   justify-content: space-around;
   background-color: rgba(255, 255, 255, 0.5);
   width: 50%;
-  height: 50%;
+  height: 35%;
   padding: 2%;
   border-radius: 10px;
 }
@@ -36,15 +36,14 @@
 
 .newChatBtn {
   background-image: url('../icons/send_256.png');
-  width: 20%;
-  height: 20%;
+  width: 3rem;
+  height: 3rem;
   border-radius: 0.5rem;
   background-size: 1.5rem 1.5rem;
   background-color: rgb(255, 255, 255, 0.7);
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
-  padding: 2%;
   border-radius: 10px;
   border-style: none;
 }
@@ -53,9 +52,8 @@
   cursor: pointer;
   background-color:  rgb(157, 157, 157)
 }
-.newChatBtn:focus {
- outline: none;
-}
+.newChatBtn:focus { outline: none; }
+.newChatBtn:hover{ background-color: rgb(255, 255, 255); }
 
 @media only screen and (max-width: 767px) {
   .newChatContainer {
@@ -73,7 +71,4 @@
   .newChatBtn:focus {
     background-color: rgb(255, 255, 255, 0.7);
   }
-
-
-
 }

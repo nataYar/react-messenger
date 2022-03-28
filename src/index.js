@@ -1,19 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+// import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { render } from "react-dom";
+
 import SignupComponent from './LogSignContainer/Signup';
 import LoginComponent from './LogSignContainer/Login';
 import DashboardComponent from './Dashboard/Dashboard';
-import './index.css';
-import * as serviceWorker from './serviceWorker';
-// import * as firebase from "firebase";
-const firebase = require('firebase');
-// Required for side-effects
-require('firebase/firestore');
 
-require('firebase/auth');
-require('firebase/database');
-require('firebase/storage');
+import './index.css';
+
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+
+// require('firebase/firestore');
+// require('firebase/auth');
+// require('firebase/database');
+// require('firebase/storage');
+
 
 const dbConfig = {
   apiKey: "AIzaSyBi_NSBGYtRV1-bsmZMMfUfujthVEilXW4",
@@ -28,19 +32,16 @@ const dbConfig = {
 
 firebase.initializeApp(dbConfig);
 
-const routing = (
-  //gives us history attribute
-  <Router>
-    <div>
-      <Route exact path='/signup' component={SignupComponent}/>
-      <Route exact path='/' component={LoginComponent}/>
-      <Route exact path='/dashboard' component={DashboardComponent}/>
-    </div>
-  </Router>
+const rootElement = document.getElementById("root");
+render(
+  <BrowserRouter>
+    <Routes>
+        <Route path='/' element={<LoginComponent/>}/>
+        <Route path='/signup' element={<SignupComponent />} />
+        <Route path='/dashboard' element={<DashboardComponent /> }/>
+    </Routes>
+  </BrowserRouter>
+  , rootElement
 );
 
-ReactDOM.render(
-  routing,
-  document.getElementById('root')
-);
 
